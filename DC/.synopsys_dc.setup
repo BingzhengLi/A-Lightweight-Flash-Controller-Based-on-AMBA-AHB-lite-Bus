@@ -1,0 +1,82 @@
+#################################################################
+#								#
+#	 SYNOPSYS Design Compiler SetUp File 			#
+#								#
+#################################################################
+
+# Define working directory:DC
+
+set TOPDIR	[sh pwd]
+
+# Define RTL source files directory
+
+#set topDir 		"../aes_ASIC/rtl"
+set topDir              "../rtl"
+# Output files directory
+set reportsDir 		"$TOPDIR/reports"
+set netlistDir 		"$TOPDIR/netlist"
+set svfDir 		"$TOPDIR/svf"
+
+# Design Compile system setting
+set search_path      	"$topDir"
+lappend search_path  	"../lib/SMIC18_Ver2.5/FEView_STDIO/IO/Synopsys/"
+lappend search_path  	"../lib/SMIC18_Ver2.5/FEView_STDIO/IO/Verilog/"
+lappend search_path  	"../lib/SMIC18_Ver2.5/FEView_STDIO/STD/Synopsys/"
+lappend search_path  	"../lib/SMIC18_Ver2.5/FEView_STDIO/STD/Verilog/"
+#lappend search_path	"./lib/user_ram/vs_sp_512x24"
+lappend search_path     "../rtl"
+# Cell library
+set target_library     	"smic18_ss.db"
+#lappend target_library 	"smic18_ff.db"
+
+# Pad library
+lappend target_library "smic18IO_line_ss.db"
+#lappend target_library "smic18IO_line_ff.db"
+
+# User Customed Ram library
+#lappend target_library "vs_dp_16x64_worst.db"
+#lappend target_library "vs_dp_16x64_best.db"
+
+set synthetic_library 	"dw_foundation.sldb"
+
+set link_library    	"* $target_library $synthetic_library"
+
+# symbol library
+set symbol_library	"smic18IO.sdb"
+lappend symbol_library	"smic18.sdb"
+
+#set acs_hdl_verilog_define_list 	"TARGET_ASIC GENERIC_TAP INST_CLK_BUF_ASIC"
+
+# specify directory for intermediate files from analyze
+define_design_lib DEFAULT -path ./analyzed
+
+set cache_write ./
+
+set cache_read $cache_write
+
+alias h history
+
+history keep 100
+
+# suppress Driving cell warning
+# suppress_message {UID-401 DDB-24 INFO-103 ACS-128 ACS-130 VER-130}
+set suppress_message {VER-130 VER-311 VER-314 LINT-1 LINT-2 LINT-3 LINT-10 LINT-25 LINT-28 LINT-29 LINT-31 LINT-32 LINT-33 LINT-52 LINT-58 LINT-59 OPT-1055 OPT-1207 VER-61 ELAB-391 VER-318 ELAB-909 ELAB-311 INFO-103 ACS-128 ACS-130 UID-401}
+set suppress_errors {VER-130 VER-311 VER-314 LINT-1 LINT-2 LINT-3 LINT-10 LINT-25 LINT-28 LINT-29 LINT-31 LINT-32 LINT-33 LINT-52 LINT-58 LINT-59 OPT-1055 OPT-1207 VER-61 ELAB-391 VER-318 ELAB-909 ELAB-311 INFO-103 ACS-128 ACS-130 UID-401}
+
+
+# specify varibles
+#set dw_prefer_mc_inside true
+set sh_enable_line_editing true
+
+set hdlin_ff_always_sync_set_reset "TRUE"
+
+
+set write_name_nets_same_as_ports true
+
+# reserve unused register
+#set compile_seqmap_propagate_constants false
+#set compile_delete_unloaded_sequential_cells false
+
+set high_fanout_net_threshold           60
+set high_fanout_net_pin_capacitance     0.01
+

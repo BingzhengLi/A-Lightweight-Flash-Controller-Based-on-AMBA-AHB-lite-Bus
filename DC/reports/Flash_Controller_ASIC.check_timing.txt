@@ -1,0 +1,111 @@
+Information: Updating design information... (UID-85)
+Warning: Design 'Flash_Controller_ASIC' contains 3 high-fanout nets. A fanout number of 60 will be used for delay calculations involving these nets. (TIM-134)
+
+Information: Checking generated_clocks...
+
+Information: Checking loops...
+Warning: timing loops detected. (TIM-209)
+    #              loop breakpoint
+
+                 cell_arc                            lib cell
+--------------------------------------------------------------------------------
+AHB_Controller_FLASH_BOOT_inst/AHB2SPI_FLASH_ctrl/SF3/U3/BN
+                         -> AHB_Controller_FLASH_BOOT_inst/AHB2SPI_FLASH_ctrl/SF3/U3/Z
+                                                     smic18_ss/OAI22B2HD2X   #
+
+Information: Checking no_input_delay...
+Warning: The following input ports have no clock_relative delay specified, the command set_input_delay without -clock option will be ignored. (TIM-216)
+--------------------
+pad_HRST_n
+
+Information: Checking unconstrained_endpoints...
+
+Warning: The following end-points are not constrained for maximum delay.
+
+End point
+---------------
+AHB_Controller_FLASH_BOOT_inst/AHB2SPI_FLASH_ctrl/SF3/cnt_read_reg[0]/D
+AHB_Controller_FLASH_BOOT_inst/AHB2SPI_FLASH_ctrl/SF3/cnt_read_reg[1]/D
+AHB_Controller_FLASH_BOOT_inst/AHB2SPI_FLASH_ctrl/SF3/cnt_read_reg[2]/D
+AHB_Controller_FLASH_BOOT_inst/AHB2SPI_FLASH_ctrl/SF3/cnt_write_reg[0]/D
+AHB_Controller_FLASH_BOOT_inst/AHB2SPI_FLASH_ctrl/SF3/cnt_write_reg[1]/D
+AHB_Controller_FLASH_BOOT_inst/AHB2SPI_FLASH_ctrl/SF3/cnt_write_reg[2]/D
+AHB_Controller_FLASH_BOOT_inst/AHB2SPI_FLASH_ctrl/SF3/read_data_reg_reg[0]/D
+AHB_Controller_FLASH_BOOT_inst/AHB2SPI_FLASH_ctrl/SF3/read_data_reg_reg[1]/D
+AHB_Controller_FLASH_BOOT_inst/AHB2SPI_FLASH_ctrl/SF3/read_data_reg_reg[2]/D
+AHB_Controller_FLASH_BOOT_inst/AHB2SPI_FLASH_ctrl/SF3/read_data_reg_reg[3]/D
+AHB_Controller_FLASH_BOOT_inst/AHB2SPI_FLASH_ctrl/SF3/read_data_reg_reg[4]/D
+AHB_Controller_FLASH_BOOT_inst/AHB2SPI_FLASH_ctrl/SF3/read_data_reg_reg[5]/D
+AHB_Controller_FLASH_BOOT_inst/AHB2SPI_FLASH_ctrl/SF3/read_data_reg_reg[6]/D
+AHB_Controller_FLASH_BOOT_inst/AHB2SPI_FLASH_ctrl/SF3/read_data_reg_reg[7]/D
+AHB_Controller_FLASH_BOOT_inst/HRDATA_reg[0]/D
+AHB_Controller_FLASH_BOOT_inst/HRDATA_reg[1]/D
+AHB_Controller_FLASH_BOOT_inst/HRDATA_reg[2]/D
+AHB_Controller_FLASH_BOOT_inst/HRDATA_reg[3]/D
+AHB_Controller_FLASH_BOOT_inst/HRDATA_reg[4]/D
+AHB_Controller_FLASH_BOOT_inst/HRDATA_reg[5]/D
+AHB_Controller_FLASH_BOOT_inst/HRDATA_reg[6]/D
+AHB_Controller_FLASH_BOOT_inst/HRDATA_reg[7]/D
+AHB_Controller_FLASH_BOOT_inst/HRDATA_reg[8]/D
+AHB_Controller_FLASH_BOOT_inst/HRDATA_reg[9]/D
+AHB_Controller_FLASH_BOOT_inst/HRDATA_reg[10]/D
+AHB_Controller_FLASH_BOOT_inst/HRDATA_reg[11]/D
+AHB_Controller_FLASH_BOOT_inst/HRDATA_reg[12]/D
+AHB_Controller_FLASH_BOOT_inst/HRDATA_reg[13]/D
+AHB_Controller_FLASH_BOOT_inst/HRDATA_reg[14]/D
+AHB_Controller_FLASH_BOOT_inst/HRDATA_reg[15]/D
+AHB_Controller_FLASH_BOOT_inst/HRDATA_reg[16]/D
+AHB_Controller_FLASH_BOOT_inst/HRDATA_reg[17]/D
+AHB_Controller_FLASH_BOOT_inst/HRDATA_reg[18]/D
+AHB_Controller_FLASH_BOOT_inst/HRDATA_reg[19]/D
+AHB_Controller_FLASH_BOOT_inst/HRDATA_reg[20]/D
+AHB_Controller_FLASH_BOOT_inst/HRDATA_reg[21]/D
+AHB_Controller_FLASH_BOOT_inst/HRDATA_reg[22]/D
+AHB_Controller_FLASH_BOOT_inst/HRDATA_reg[23]/D
+AHB_Controller_FLASH_BOOT_inst/HRDATA_reg[24]/D
+AHB_Controller_FLASH_BOOT_inst/HRDATA_reg[25]/D
+AHB_Controller_FLASH_BOOT_inst/HRDATA_reg[26]/D
+AHB_Controller_FLASH_BOOT_inst/HRDATA_reg[27]/D
+AHB_Controller_FLASH_BOOT_inst/HRDATA_reg[28]/D
+AHB_Controller_FLASH_BOOT_inst/HRDATA_reg[29]/D
+AHB_Controller_FLASH_BOOT_inst/HRDATA_reg[30]/D
+AHB_Controller_FLASH_BOOT_inst/HRDATA_reg[31]/D
+pad_HRDATA[0]
+pad_HRDATA[1]
+pad_HRDATA[2]
+pad_HRDATA[3]
+pad_HRDATA[4]
+pad_HRDATA[5]
+pad_HRDATA[6]
+pad_HRDATA[7]
+pad_HRDATA[8]
+pad_HRDATA[9]
+pad_HRDATA[10]
+pad_HRDATA[11]
+pad_HRDATA[12]
+pad_HRDATA[13]
+pad_HRDATA[14]
+pad_HRDATA[15]
+pad_HRDATA[16]
+pad_HRDATA[17]
+pad_HRDATA[18]
+pad_HRDATA[19]
+pad_HRDATA[20]
+pad_HRDATA[21]
+pad_HRDATA[22]
+pad_HRDATA[23]
+pad_HRDATA[24]
+pad_HRDATA[25]
+pad_HRDATA[26]
+pad_HRDATA[27]
+pad_HRDATA[28]
+pad_HRDATA[29]
+pad_HRDATA[30]
+pad_HRDATA[31]
+
+Information: Checking pulse_clock_cell_type...
+
+Information: Checking no_driving_cell...
+
+Information: Checking partial_input_delay...
+1

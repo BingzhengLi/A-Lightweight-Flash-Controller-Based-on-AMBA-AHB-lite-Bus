@@ -1,0 +1,195 @@
+m255
+K4
+z2
+!s11f vlog 2020.2_1 2020.05, May 21 2020
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z0 d/home/class/U45/SM3
+T_opt
+!s110 1698732007
+V8onGhl?T:1n@;i9RLDDk:2
+Z1 04 10 4 work tb_SM3_top fast 0
+=1-12e74758a790-654097e7-20b9-370d
+o-quiet -auto_acc_if_foreign -work work +acc
+Z2 tCvgOpt 0
+n@_opt
+Z3 OE;O;2020.2_1;71
+R0
+T_opt1
+!s110 1698884656
+Vi22ONIU;PmD>;Gza4@A3W3
+R1
+=1-12e74758a790-6542ec30-6009e-4d90
+o-quiet +acc -auto_acc_if_foreign -work work +acc
+R2
+n@_opt1
+R3
+R0
+vbarrel_shifter
+Z4 !s110 1698885172
+!i10b 1
+!s100 _?O0@WZ?<HB18=EP[MCRG0
+Z5 !s11b Dg1SIo80bB@j0V0VzS_@n1
+I5e22GUHeA?]J2K][J[liT1
+Z6 VDg1SIo80bB@j0V0VzS_@n1
+R0
+Z7 w1533434015
+8/home/class/U45/SM3/rtl/barrel_shifter.v
+F/home/class/U45/SM3/rtl/barrel_shifter.v
+!i122 18
+L0 13 48
+Z8 OE;L;2020.2_1;71
+r1
+!s85 0
+31
+Z9 !s108 1698885172.000000
+!s107 /home/class/U45/SM3/tb/tb_SM3_top.v|/home/class/U45/SM3/rtl/SM3_top.v|/home/class/U45/SM3/rtl/SM3_ASIC.v|/home/class/U45/SM3/rtl/msg_padding.v|/home/class/U45/SM3/rtl/message_expansion.v|/home/class/U45/SM3/rtl/compression_function.v|/home/class/U45/SM3/rtl/barrel_shifter.v|
+Z10 !s90 +acc|/home/class/U45/SM3/rtl/barrel_shifter.v|/home/class/U45/SM3/rtl/compression_function.v|/home/class/U45/SM3/rtl/message_expansion.v|/home/class/U45/SM3/rtl/msg_padding.v|/home/class/U45/SM3/rtl/SM3_ASIC.v|/home/class/U45/SM3/rtl/SM3_top.v|/home/class/U45/SM3/tb/tb_SM3_top.v|
+!i113 0
+Z11 o+acc -L mtiAvm -L mtiRnm -L mtiOvm -L mtiUvm -L mtiUPF -L infact
+R2
+vcompression_function
+R4
+!i10b 1
+!s100 >D72UakUPVV;]dcFi1hY>1
+R5
+IXY[Je=Peo:IkWXE<9K_3Z0
+R6
+R0
+w1698824044
+8/home/class/U45/SM3/rtl/compression_function.v
+F/home/class/U45/SM3/rtl/compression_function.v
+!i122 18
+L0 13 240
+R8
+r1
+!s85 0
+31
+R9
+Z12 !s107 /home/class/U45/SM3/tb/tb_SM3_top.v|/home/class/U45/SM3/rtl/SM3_top.v|/home/class/U45/SM3/rtl/SM3_ASIC.v|/home/class/U45/SM3/rtl/msg_padding.v|/home/class/U45/SM3/rtl/message_expansion.v|/home/class/U45/SM3/rtl/compression_function.v|/home/class/U45/SM3/rtl/barrel_shifter.v|
+R10
+!i113 0
+R11
+R2
+vmsg_expansion
+R4
+!i10b 1
+!s100 HbG][CJEK>5GzV>E<Uj_>2
+R5
+IDJ<j5dVgeT[7mO;lKRgii3
+R6
+R0
+R7
+8/home/class/U45/SM3/rtl/message_expansion.v
+F/home/class/U45/SM3/rtl/message_expansion.v
+!i122 18
+L0 13 137
+R8
+r1
+!s85 0
+31
+R9
+R12
+R10
+!i113 0
+R11
+R2
+vmsg_padding
+R4
+!i10b 1
+!s100 DUim=3WWV4fe>`6eDUigT1
+R5
+ImMn37:@MTzDkJXU4KVz2S2
+R6
+R0
+R7
+8/home/class/U45/SM3/rtl/msg_padding.v
+F/home/class/U45/SM3/rtl/msg_padding.v
+!i122 18
+L0 13 453
+R8
+r1
+!s85 0
+31
+R9
+R12
+R10
+!i113 0
+R11
+R2
+vSM3_ASIC
+R4
+!i10b 1
+!s100 8B:jY7;<cMWbPAOofbRXZ2
+R5
+IMeRiQS@f8l6ChfJO8fS_b2
+R6
+R0
+w1698825693
+8/home/class/U45/SM3/rtl/SM3_ASIC.v
+F/home/class/U45/SM3/rtl/SM3_ASIC.v
+!i122 18
+L0 5 140
+R8
+r1
+!s85 0
+31
+R9
+R12
+R10
+!i113 0
+R11
+R2
+n@s@m3_@a@s@i@c
+vSM3_top
+R4
+!i10b 1
+!s100 ;11OA<=4Y0B[MWWUlf3Ge1
+R5
+IWQJ<VX`NmUngD8E8YzN3^2
+R6
+R0
+R7
+8/home/class/U45/SM3/rtl/SM3_top.v
+F/home/class/U45/SM3/rtl/SM3_top.v
+!i122 18
+L0 13 160
+R8
+r1
+!s85 0
+31
+R9
+R12
+R10
+!i113 0
+R11
+R2
+n@s@m3_top
+vtb_SM3_top
+R4
+!i10b 1
+!s100 zZ`>^VhN?SDHnR@KebW0G3
+R5
+I6IUNX7gS=dQH;m_nKPFN`2
+R6
+R0
+R7
+8/home/class/U45/SM3/tb/tb_SM3_top.v
+F/home/class/U45/SM3/tb/tb_SM3_top.v
+!i122 18
+L0 13 100
+R8
+r1
+!s85 0
+31
+R9
+R12
+R10
+!i113 0
+R11
+R2
+ntb_@s@m3_top

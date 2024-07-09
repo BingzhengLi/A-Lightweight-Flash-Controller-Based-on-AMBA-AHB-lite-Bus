@@ -1,0 +1,1386 @@
+/////////////////////////////////////////////////////////////
+// Created by: Synopsys DC Expert(TM) in wire load mode
+// Version   : R-2020.09-SP1
+// Date      : Tue Jul  2 20:24:59 2024
+/////////////////////////////////////////////////////////////
+
+
+module spi_SF3 ( clk, rst, write_req, read_req, write_data, miso, write_ack, 
+        mosi, read_data_7__BAR, read_data_6__BAR, read_data_5__BAR, 
+        read_data_4__BAR, read_data_3__BAR, read_data_2__BAR, read_data_1__BAR, 
+        read_data_0__BAR );
+  input [7:0] write_data;
+  input clk, rst, write_req, read_req, miso;
+  output write_ack, mosi, read_data_7__BAR, read_data_6__BAR, read_data_5__BAR,
+         read_data_4__BAR, read_data_3__BAR, read_data_2__BAR,
+         read_data_1__BAR, read_data_0__BAR;
+  wire   N9, N10, N11, \n[61] , \n[62] , \n[63] , \read_data[6] ,
+         \read_data[5] , \read_data[4] , \read_data[3] , \read_data[2] ,
+         \read_data[1] , \read_data[0] , n64, spi_clk_1, spi_clk_2,
+         \cnt_write[2] , \cnt_write[1] , \cnt_write[0] , N26, N27, N60, N62,
+         n4, n6, n7, n8, n90, n100, n110, n12, n13, n14, n15, n16, n17, n19,
+         n20, n22, n260, n270, n29, n30, n32, n33, n34, n35, n36, n37, n38,
+         n39, n40, n41, n42, n43, n44, n45, n47, n48, n1, n2, n3, n5, n18, n21,
+         n23, n24, n25, n28, n46, n49, n50, n51, n59, n600;
+
+  OAI22B2HD2X U3 ( .C(n5), .D(n4), .AN(n4), .BN(mosi), .Z(mosi) );
+  FFDSHD1X spi_state_c_reg_0_ ( .D(N60), .CK(clk), .SN(rst), .Q(\n[63] ) );
+  FFDRHD1X cnt_read_reg_0_ ( .D(n43), .CK(n64), .RN(rst), .QN(n48) );
+  FFDRHD1X cnt_read_reg_1_ ( .D(n42), .CK(n64), .RN(rst), .QN(n30) );
+  FFDRHDLX cnt_read_reg_2_ ( .D(n40), .CK(n64), .RN(rst), .QN(n47) );
+  FFDRHDLX read_data_reg_reg_7_ ( .D(n32), .CK(n64), .RN(rst), .QN(
+        read_data_7__BAR) );
+  FFDRHDLX cnt_write_reg_2_ ( .D(N27), .CK(n64), .RN(rst), .Q(\cnt_write[2] ), 
+        .QN(N11) );
+  FFDRHDLX read_data_reg_reg_6_ ( .D(n33), .CK(n64), .RN(rst), .Q(
+        \read_data[6] ), .QN(read_data_6__BAR) );
+  FFDRHD1X cnt_write_reg_1_ ( .D(N26), .CK(n64), .RN(rst), .Q(\cnt_write[1] ), 
+        .QN(N10) );
+  FFDRHD1X read_data_reg_reg_0_ ( .D(n39), .CK(n64), .RN(rst), .Q(
+        \read_data[0] ), .QN(read_data_0__BAR) );
+  FFDRHD1X read_data_reg_reg_1_ ( .D(n38), .CK(n64), .RN(rst), .Q(
+        \read_data[1] ), .QN(read_data_1__BAR) );
+  FFDRHD1X read_data_reg_reg_2_ ( .D(n37), .CK(n64), .RN(rst), .Q(
+        \read_data[2] ), .QN(read_data_2__BAR) );
+  FFDRHD1X read_data_reg_reg_3_ ( .D(n36), .CK(n64), .RN(rst), .Q(
+        \read_data[3] ), .QN(read_data_3__BAR) );
+  FFDRHD1X read_data_reg_reg_4_ ( .D(n35), .CK(n64), .RN(rst), .Q(
+        \read_data[4] ), .QN(read_data_4__BAR) );
+  FFDRHD1X read_data_reg_reg_5_ ( .D(n34), .CK(n64), .RN(rst), .Q(
+        \read_data[5] ), .QN(read_data_5__BAR) );
+  FFDRHD1X cnt_write_reg_0_ ( .D(N9), .CK(n64), .RN(rst), .Q(\cnt_write[0] ), 
+        .QN(N9) );
+  FFDSHD2X spi_clk_reg_reg ( .D(n41), .CK(clk), .SN(rst), .Q(n64), .QN(n44) );
+  FFDRHDLX spi_state_c_reg_1_ ( .D(n45), .CK(clk), .RN(rst), .Q(\n[62] ), .QN(
+        n2) );
+  FFDRHDLX spi_state_c_reg_2_ ( .D(N62), .CK(clk), .RN(rst), .Q(\n[61] ), .QN(
+        n1) );
+  FFDRHDLX spi_clk_3_reg ( .D(spi_clk_2), .CK(clk), .RN(rst), .QN(n3) );
+  FFDRHDLX spi_clk_2_reg ( .D(spi_clk_1), .CK(clk), .RN(rst), .Q(spi_clk_2) );
+  FFDRHDLX spi_clk_1_reg ( .D(n64), .CK(clk), .RN(rst), .Q(spi_clk_1) );
+  NOR2HD2X U4 ( .A(n22), .B(n59), .Z(n6) );
+  OAI32HDLX U5 ( .A(n270), .B(write_req), .C(read_req), .D(n600), .E(n17), .Z(
+        N60) );
+  INVHDLX U6 ( .A(n17), .Z(n59) );
+  NOR3HD1X U7 ( .A(\n[63] ), .B(\n[61] ), .C(n2), .Z(n17) );
+  INVHDPX U8 ( .A(n6), .Z(n8) );
+  INVHDPX U9 ( .A(n21), .Z(n23) );
+  INVHDPX U10 ( .A(read_req), .Z(n22) );
+  OAI21HD1X U11 ( .A(n22), .B(n24), .C(n21), .Z(n19) );
+  INVHDPX U12 ( .A(n270), .Z(n600) );
+  AOI22HD1X U13 ( .A(n46), .B(\cnt_write[2] ), .C(N11), .D(n51), .Z(n5) );
+  NOR3HD2X U14 ( .A(n1), .B(\n[62] ), .C(\n[63] ), .Z(write_ack) );
+  NAND3HD1X U15 ( .A(n2), .B(n1), .C(\n[63] ), .Z(n270) );
+  XNOR2HD1X U16 ( .A(n44), .B(n17), .Z(n41) );
+  AND2HD1X U17 ( .A(n30), .B(n48), .Z(n260) );
+  NOR2HD1X U18 ( .A(n8), .B(n48), .Z(n16) );
+  OAI22B2HD1X U19 ( .C(n6), .D(read_data_7__BAR), .AN(n6), .BN(\read_data[6] ), 
+        .Z(n32) );
+  XNOR2HD1X U20 ( .A(n6), .B(n48), .Z(n43) );
+  INVHDPX U21 ( .A(n7), .Z(n33) );
+  AOI22HD1X U22 ( .A(n6), .B(\read_data[5] ), .C(n8), .D(\read_data[6] ), .Z(
+        n7) );
+  INVHDPX U23 ( .A(n90), .Z(n34) );
+  AOI22HD1X U24 ( .A(n6), .B(\read_data[4] ), .C(n8), .D(\read_data[5] ), .Z(
+        n90) );
+  INVHDPX U25 ( .A(n100), .Z(n35) );
+  AOI22HD1X U26 ( .A(n6), .B(\read_data[3] ), .C(n8), .D(\read_data[4] ), .Z(
+        n100) );
+  INVHDPX U27 ( .A(n110), .Z(n36) );
+  AOI22HD1X U28 ( .A(n6), .B(\read_data[2] ), .C(n8), .D(\read_data[3] ), .Z(
+        n110) );
+  INVHDPX U29 ( .A(n12), .Z(n37) );
+  AOI22HD1X U30 ( .A(n6), .B(\read_data[1] ), .C(n8), .D(\read_data[2] ), .Z(
+        n12) );
+  INVHDPX U31 ( .A(n13), .Z(n38) );
+  AOI22HDLX U32 ( .A(n6), .B(\read_data[0] ), .C(n8), .D(\read_data[1] ), .Z(
+        n13) );
+  XNOR2HD1X U33 ( .A(\cnt_write[2] ), .B(n29), .Z(N27) );
+  NAND2HD1X U34 ( .A(\cnt_write[1] ), .B(\cnt_write[0] ), .Z(n29) );
+  XNOR2HD1X U35 ( .A(\cnt_write[1] ), .B(N9), .Z(N26) );
+  XNOR2HD1X U36 ( .A(n16), .B(n30), .Z(n42) );
+  XOR2HD1X U37 ( .A(n15), .B(n47), .Z(n40) );
+  NAND2B1HD1X U38 ( .AN(n30), .B(n16), .Z(n15) );
+  INVHDPX U39 ( .A(n14), .Z(n39) );
+  AOI22HDLX U40 ( .A(n8), .B(\read_data[0] ), .C(miso), .D(n6), .Z(n14) );
+  OAI21HDLX U41 ( .A(read_req), .B(write_req), .C(n600), .Z(n20) );
+  OAI21HD1X U42 ( .A(n59), .B(n19), .C(n20), .Z(n45) );
+  INVHDLX U43 ( .A(n4), .Z(n18) );
+  NAND3HD1X U44 ( .A(spi_clk_2), .B(write_req), .C(n3), .Z(n4) );
+  NAND4HD1X U45 ( .A(n47), .B(spi_clk_2), .C(n260), .D(n3), .Z(n24) );
+  NAND4HD1X U46 ( .A(n18), .B(N11), .C(N10), .D(N9), .Z(n21) );
+  OAI22B2HD1X U47 ( .C(n8), .D(n24), .AN(n23), .BN(n17), .Z(N62) );
+  AOI22HD1X U48 ( .A(write_data[2]), .B(\cnt_write[0] ), .C(write_data[3]), 
+        .D(N9), .Z(n28) );
+  AOI22HD1X U49 ( .A(write_data[0]), .B(\cnt_write[0] ), .C(write_data[1]), 
+        .D(N9), .Z(n25) );
+  OAI22HD1X U50 ( .A(\cnt_write[1] ), .B(n28), .C(N10), .D(n25), .Z(n46) );
+  AOI22HD1X U51 ( .A(write_data[6]), .B(\cnt_write[0] ), .C(write_data[7]), 
+        .D(N9), .Z(n50) );
+  AOI22HD1X U52 ( .A(write_data[4]), .B(\cnt_write[0] ), .C(write_data[5]), 
+        .D(N9), .Z(n49) );
+  OAI22HD1X U53 ( .A(n50), .B(\cnt_write[1] ), .C(N10), .D(n49), .Z(n51) );
+endmodule
+
+
+module flash_sf3_DW01_inc_0_DW01_inc_2 ( A, SUM );
+  input [9:0] A;
+  output [9:0] SUM;
+  wire   \carry[9] , \carry[8] , \carry[7] , \carry[6] , \carry[5] ,
+         \carry[4] , \carry[3] , \carry[2] ;
+
+  HAHDLX U1_1_8 ( .A(A[8]), .B(\carry[8] ), .CO(\carry[9] ), .S(SUM[8]) );
+  HAHDLX U1_1_7 ( .A(A[7]), .B(\carry[7] ), .CO(\carry[8] ), .S(SUM[7]) );
+  HAHDLX U1_1_6 ( .A(A[6]), .B(\carry[6] ), .CO(\carry[7] ), .S(SUM[6]) );
+  HAHDLX U1_1_5 ( .A(A[5]), .B(\carry[5] ), .CO(\carry[6] ), .S(SUM[5]) );
+  HAHDLX U1_1_3 ( .A(A[3]), .B(\carry[3] ), .CO(\carry[4] ), .S(SUM[3]) );
+  HAHDLX U1_1_2 ( .A(A[2]), .B(\carry[2] ), .CO(\carry[3] ), .S(SUM[2]) );
+  HAHDLX U1_1_4 ( .A(A[4]), .B(\carry[4] ), .CO(\carry[5] ), .S(SUM[4]) );
+  HAHDLX U1_1_1 ( .A(A[1]), .B(A[0]), .CO(\carry[2] ), .S(SUM[1]) );
+  XOR2HD1X U1 ( .A(\carry[9] ), .B(A[9]), .Z(SUM[9]) );
+  INVHD1X U2 ( .A(A[0]), .Z(SUM[0]) );
+endmodule
+
+
+module flash_sf3_DW01_inc_1_DW01_inc_3 ( A, SUM );
+  input [32:0] A;
+  output [32:0] SUM;
+  wire   \carry[30] , \carry[29] , \carry[21] , \carry[20] , \carry[19] ,
+         \carry[18] , \carry[17] , \carry[16] , \carry[15] , \carry[14] ,
+         \carry[13] , \carry[12] , \carry[6] , n1, n2, n3, n4, n5, n6, n7, n8,
+         n9, n10, n11, n12, n13, n14, n15, n16, n17, n18, n19, n20, n21;
+
+  HAHDLX U1_1_16 ( .A(A[16]), .B(\carry[16] ), .CO(\carry[17] ), .S(SUM[16])
+         );
+  HAHDLX U1_1_15 ( .A(A[15]), .B(\carry[15] ), .CO(\carry[16] ), .S(SUM[15])
+         );
+  HAHDLX U1_1_14 ( .A(A[14]), .B(\carry[14] ), .CO(\carry[15] ), .S(SUM[14])
+         );
+  HAHDLX U1_1_13 ( .A(A[13]), .B(\carry[13] ), .CO(\carry[14] ), .S(SUM[13])
+         );
+  HAHDLX U1_1_12 ( .A(A[12]), .B(\carry[12] ), .CO(\carry[13] ), .S(SUM[12])
+         );
+  HAHD1X U1_1_20 ( .A(A[20]), .B(\carry[20] ), .CO(\carry[21] ), .S(SUM[20])
+         );
+  HAHDLX U1_1_11 ( .A(A[11]), .B(n7), .CO(\carry[12] ), .S(SUM[11]) );
+  HAHD1X U1_1_5 ( .A(A[5]), .B(n12), .CO(\carry[6] ), .S(SUM[5]) );
+  HAHD2X U1_1_18 ( .A(A[18]), .B(\carry[18] ), .CO(\carry[19] ), .S(SUM[18])
+         );
+  HAHD2X U1_1_19 ( .A(A[19]), .B(\carry[19] ), .CO(\carry[20] ), .S(SUM[19])
+         );
+  HAHD1X U1_1_17 ( .A(A[17]), .B(\carry[17] ), .CO(\carry[18] ), .S(SUM[17])
+         );
+  AND2HD2X U1 ( .A(A[31]), .B(n19), .Z(n15) );
+  NOR2B1HD4X U2 ( .AN(A[30]), .B(n21), .Z(n19) );
+  AND2HD1X U3 ( .A(A[26]), .B(n11), .Z(n1) );
+  AND2HD1X U4 ( .A(A[22]), .B(n10), .Z(n3) );
+  AND2HD1X U5 ( .A(A[7]), .B(n8), .Z(n4) );
+  INVHDLX U6 ( .A(A[0]), .Z(SUM[0]) );
+  AND2HD4X U7 ( .A(A[1]), .B(A[0]), .Z(n18) );
+  AND2HD2X U8 ( .A(A[9]), .B(n14), .Z(n2) );
+  AND2HD1X U9 ( .A(n18), .B(n16), .Z(n5) );
+  AND2HD1X U10 ( .A(A[23]), .B(n3), .Z(n6) );
+  AND2HD1X U11 ( .A(A[10]), .B(n2), .Z(n7) );
+  AND2HD1X U12 ( .A(A[6]), .B(\carry[6] ), .Z(n8) );
+  AND2HD1X U13 ( .A(A[24]), .B(n6), .Z(n9) );
+  AND2HD1X U14 ( .A(A[21]), .B(\carry[21] ), .Z(n10) );
+  AND2HD1X U15 ( .A(A[25]), .B(n9), .Z(n11) );
+  AND2HD1X U16 ( .A(A[4]), .B(n5), .Z(n12) );
+  AND2HD1X U17 ( .A(A[27]), .B(n1), .Z(n13) );
+  AND2HD1X U18 ( .A(A[8]), .B(n4), .Z(n14) );
+  AND2HD1X U19 ( .A(A[2]), .B(A[3]), .Z(n16) );
+  AND2HD1X U20 ( .A(A[2]), .B(n18), .Z(n17) );
+  NAND2HD2X U21 ( .A(A[29]), .B(\carry[29] ), .Z(n21) );
+  XOR2HDLX U22 ( .A(A[31]), .B(n19), .Z(SUM[31]) );
+  INVHDPX U23 ( .A(n21), .Z(\carry[30] ) );
+  XOR2HDLX U24 ( .A(A[30]), .B(\carry[30] ), .Z(SUM[30]) );
+  XOR2HDLX U25 ( .A(A[6]), .B(\carry[6] ), .Z(SUM[6]) );
+  XOR2HDLX U26 ( .A(A[21]), .B(\carry[21] ), .Z(SUM[21]) );
+  XOR2HDLX U27 ( .A(A[2]), .B(n18), .Z(SUM[2]) );
+  NAND2HD1X U28 ( .A(A[28]), .B(n13), .Z(n20) );
+  XOR2HDLX U29 ( .A(A[27]), .B(n1), .Z(SUM[27]) );
+  XOR2HDLX U30 ( .A(A[22]), .B(n10), .Z(SUM[22]) );
+  XOR2HDLX U31 ( .A(A[7]), .B(n8), .Z(SUM[7]) );
+  XOR2HDLX U32 ( .A(A[29]), .B(\carry[29] ), .Z(SUM[29]) );
+  XOR2HDLX U33 ( .A(A[28]), .B(n13), .Z(SUM[28]) );
+  XOR2HDLX U34 ( .A(A[3]), .B(n17), .Z(SUM[3]) );
+  XOR2HDLX U35 ( .A(A[23]), .B(n3), .Z(SUM[23]) );
+  XOR2HDLX U36 ( .A(A[26]), .B(n11), .Z(SUM[26]) );
+  XOR2HDLX U37 ( .A(A[8]), .B(n4), .Z(SUM[8]) );
+  XOR2HD1X U38 ( .A(n15), .B(A[32]), .Z(SUM[32]) );
+  INVHDPX U39 ( .A(n20), .Z(\carry[29] ) );
+  XOR2HDLX U40 ( .A(A[4]), .B(n5), .Z(SUM[4]) );
+  XOR2HDLX U41 ( .A(A[24]), .B(n6), .Z(SUM[24]) );
+  XOR2HDLX U42 ( .A(A[9]), .B(n14), .Z(SUM[9]) );
+  XOR2HDLX U43 ( .A(A[10]), .B(n2), .Z(SUM[10]) );
+  XOR2HDLX U44 ( .A(A[25]), .B(n9), .Z(SUM[25]) );
+  XOR2HDLX U45 ( .A(A[1]), .B(A[0]), .Z(SUM[1]) );
+endmodule
+
+
+module flash_sf3 ( clk, rst, read_rq, read_addr, read_data_word, mosi, miso, 
+        spi_cs, FLASH_state_c_out_12_, FLASH_state_c_out_11_, 
+        FLASH_state_c_out_6__BAR, FLASH_state_c_out_0_ );
+  input [23:0] read_addr;
+  output [31:0] read_data_word;
+  input clk, rst, read_rq, miso;
+  output mosi, spi_cs, FLASH_state_c_out_12_, FLASH_state_c_out_11_,
+         FLASH_state_c_out_6__BAR, FLASH_state_c_out_0_;
+  wire   \n[140] , \n[141] , \n[142] , \n[143] , \n[144] , \n[145] , \n[146] ,
+         \n[147] , \state_n[12] , \state_n[6] , \state_n[0] , \state_w[6] ,
+         \state_w[0] , \wait_cnt[32] , \wait_cnt[31] , \wait_cnt[30] ,
+         \wait_cnt[29] , \wait_cnt[28] , \wait_cnt[27] , \wait_cnt[26] ,
+         \wait_cnt[25] , \wait_cnt[24] , \wait_cnt[23] , \wait_cnt[22] ,
+         \wait_cnt[21] , \wait_cnt[20] , \wait_cnt[19] , \wait_cnt[18] ,
+         \wait_cnt[17] , \wait_cnt[16] , \wait_cnt[15] , \wait_cnt[14] ,
+         \wait_cnt[13] , \wait_cnt[12] , \wait_cnt[11] , \wait_cnt[10] ,
+         \wait_cnt[9] , \wait_cnt[8] , \wait_cnt[7] , \wait_cnt[6] ,
+         \wait_cnt[5] , \wait_cnt[4] , \wait_cnt[3] , \wait_cnt[2] ,
+         \wait_cnt[1] , \wait_cnt[0] , N95, N96, N97, N98, N99, N100, N101,
+         N102, N103, N104, N105, N106, N107, N108, N109, N110, N111, N112,
+         N113, N114, N115, N116, N117, N118, N119, N120, N121, N122, N123,
+         N124, N125, N126, N127, N128, N129, N130, N131, N132, N133, N134,
+         N135, N136, N137, N138, N139, N140, N141, N142, N143, N144, N145,
+         N146, N147, N148, N149, N150, N151, N152, N153, N154, N155, N156,
+         N157, N158, N159, N160, spi_write_ack, N499, N508, N509, N510, N511,
+         N512, N513, N514, N515, N516, N517, N518, N519, N520, N521, N522,
+         N523, N524, N525, N526, N527, \write_data_shif[24] ,
+         \write_data_shif[16] , \write_data_shif[8] , \write_data_shif[0] ,
+         N578, N586, N594, spi_read_req, spi_write_req, \spi_write_data[7] ,
+         \spi_write_data[6] , \spi_write_data[5] , \spi_write_data[4] ,
+         \spi_write_data[3] , \spi_write_data[2] , \spi_write_data[1] ,
+         \spi_write_data[0] , N918, N919, N920, N921, N923, n419, n420, n421,
+         n422, n423, n424, n425, n426, n591, n593, n754, n755, n756, n757,
+         n758, n774, n775, n776, n777, n778, n779, n780, n781, n782, n783,
+         n784, n785, n786, n787, n788, n789, n790, n791, n792, n793, n794,
+         n795, n796, n797, n798, n799, n800, n801, n802, n803, n804, n805,
+         net12825, net12917, net12930, net12941, net12974, net12980, net13020,
+         net13054, net13053, net13066, net13067, net13069, net13074, net13081,
+         net13088, net13087, net13136, net14227, net14230, net14245, net14262,
+         net14391, n1, n2, n3, n4, n5, n6, n7, n8, n9, n10, n11, n12, n13, n14,
+         n15, n16, n17, n18, n19, n20, n21, n22, n23, n24, n25, n26, n27, n28,
+         n29, n30, n31, n32, n33, n34, n35, n36, n37, n38, n39, n40, n41, n42,
+         n43, n44, n45, n46, n47, n48, n49, n50, n51, n52, n53, n54, n55, n56,
+         n57, n58, n59, n60, n61, n62, n63, n64, n65, n66, n67, n68, n69, n70,
+         n71, n72, n73, n74, n75, n76, n77, n78, n79, n80, n81, n82, n83, n84,
+         n85, n86, n87, n88, n89, n90, n91, n92, n93, n94, n950, n960, n970,
+         n980, n990, n1000, n1010, n1020, n1030, n1040, n1050, n1060, n1070,
+         n1080, n1090, n1100, n1110, n1120, n1130, n1140, n1150, n1160, n1170,
+         n1180, n1190, n1200, n1210, n1220, n1230, n1240, n1250, n1260, n1270,
+         n1280, n1290, n1300, n1310, n1320, n1330, n1340, n1350, n1360, n1370,
+         n1380, n1390;
+
+  FFDRHD4X state_c_reg_11_ ( .D(n754), .CK(clk), .RN(rst), .Q(
+        FLASH_state_c_out_11_) );
+  FFDRHD4X spi_byte_cnt_reg_2_ ( .D(N520), .CK(clk), .RN(rst), .Q(n6), .QN(
+        net14391) );
+  FFDRHD4X spi_byte_cnt_reg_4_ ( .D(N522), .CK(clk), .RN(rst), .Q(n19), .QN(
+        net12941) );
+  FFDRHD4X spi_byte_cnt_reg_9_ ( .D(N527), .CK(clk), .RN(rst), .Q(n55), .QN(
+        n38) );
+  FFDRHD4X state_c_reg_12_ ( .D(\state_n[12] ), .CK(clk), .RN(rst), .Q(
+        FLASH_state_c_out_12_), .QN(n9) );
+  FFDSHD4X state_c_reg_0_ ( .D(\state_n[0] ), .CK(clk), .SN(rst), .Q(
+        FLASH_state_c_out_0_), .QN(n10) );
+  spi_SF3 SF3 ( .clk(clk), .rst(rst), .write_req(spi_write_req), .read_req(
+        spi_read_req), .write_data({\spi_write_data[7] , \spi_write_data[6] , 
+        \spi_write_data[5] , \spi_write_data[4] , \spi_write_data[3] , 
+        \spi_write_data[2] , \spi_write_data[1] , \spi_write_data[0] }), 
+        .miso(miso), .write_ack(spi_write_ack), .mosi(mosi), 
+        .read_data_7__BAR(\n[140] ), .read_data_6__BAR(\n[141] ), 
+        .read_data_5__BAR(\n[142] ), .read_data_4__BAR(\n[143] ), 
+        .read_data_3__BAR(\n[144] ), .read_data_2__BAR(\n[145] ), 
+        .read_data_1__BAR(\n[146] ), .read_data_0__BAR(\n[147] ) );
+  flash_sf3_DW01_inc_0_DW01_inc_2 add_266 ( .A({n55, n56, n57, n58, n59, n19, 
+        n20, n6, n60, n61}), .SUM({N517, N516, N515, N514, N513, N512, N511, 
+        N510, N509, N508}) );
+  flash_sf3_DW01_inc_1_DW01_inc_3 add_163 ( .A({\wait_cnt[32] , \wait_cnt[31] , 
+        \wait_cnt[30] , \wait_cnt[29] , \wait_cnt[28] , \wait_cnt[27] , 
+        \wait_cnt[26] , \wait_cnt[25] , \wait_cnt[24] , \wait_cnt[23] , 
+        \wait_cnt[22] , \wait_cnt[21] , \wait_cnt[20] , \wait_cnt[19] , 
+        \wait_cnt[18] , \wait_cnt[17] , \wait_cnt[16] , \wait_cnt[15] , 
+        \wait_cnt[14] , \wait_cnt[13] , \wait_cnt[12] , \wait_cnt[11] , 
+        \wait_cnt[10] , \wait_cnt[9] , \wait_cnt[8] , \wait_cnt[7] , 
+        \wait_cnt[6] , \wait_cnt[5] , \wait_cnt[4] , \wait_cnt[3] , 
+        \wait_cnt[2] , n4, n5}), .SUM({N127, N126, N125, N124, N123, N122, 
+        N121, N120, N119, N118, N117, N116, N115, N114, N113, N112, N111, N110, 
+        N109, N108, N107, N106, N105, N104, N103, N102, N101, N100, N99, N98, 
+        N97, N96, N95}) );
+  FFDRHD4X spi_byte_cnt_reg_3_ ( .D(N521), .CK(clk), .RN(rst), .Q(n20), .QN(
+        net13069) );
+  FFDRHDLX read_data_word_reg_31_ ( .D(n805), .CK(clk), .RN(rst), .Q(
+        read_data_word[31]), .QN(n426) );
+  FFDRHDLX read_data_word_reg_30_ ( .D(n804), .CK(clk), .RN(rst), .Q(
+        read_data_word[30]), .QN(n425) );
+  FFDRHDLX read_data_word_reg_29_ ( .D(n803), .CK(clk), .RN(rst), .Q(
+        read_data_word[29]), .QN(n424) );
+  FFDRHDLX read_data_word_reg_28_ ( .D(n802), .CK(clk), .RN(rst), .Q(
+        read_data_word[28]), .QN(n423) );
+  FFDRHDLX read_data_word_reg_27_ ( .D(n801), .CK(clk), .RN(rst), .Q(
+        read_data_word[27]), .QN(n422) );
+  FFDRHDLX read_data_word_reg_26_ ( .D(n800), .CK(clk), .RN(rst), .Q(
+        read_data_word[26]), .QN(n421) );
+  FFDRHDLX read_data_word_reg_25_ ( .D(n799), .CK(clk), .RN(rst), .Q(
+        read_data_word[25]), .QN(n420) );
+  FFDRHDLX read_data_word_reg_24_ ( .D(n798), .CK(clk), .RN(rst), .Q(
+        read_data_word[24]), .QN(n419) );
+  FFDQHD1X write_data_shif_reg_0_ ( .D(n758), .CK(clk), .Q(
+        \write_data_shif[0] ) );
+  FFDQHD1X write_data_shif_reg_24_ ( .D(N594), .CK(clk), .Q(
+        \write_data_shif[24] ) );
+  FFDQHD1X write_data_shif_reg_8_ ( .D(N578), .CK(clk), .Q(
+        \write_data_shif[8] ) );
+  FFDQHD1X write_data_shif_reg_16_ ( .D(N586), .CK(clk), .Q(
+        \write_data_shif[16] ) );
+  FFDRHDLX read_data_word_reg_7_ ( .D(n781), .CK(clk), .RN(rst), .Q(
+        read_data_word[7]), .QN(n22) );
+  FFDRHDLX read_data_word_reg_15_ ( .D(n789), .CK(clk), .RN(rst), .Q(
+        read_data_word[15]), .QN(n18) );
+  FFDRHDLX read_data_word_reg_23_ ( .D(n797), .CK(clk), .RN(rst), .Q(
+        read_data_word[23]), .QN(n37) );
+  FFDRHDLX read_data_word_reg_6_ ( .D(n780), .CK(clk), .RN(rst), .Q(
+        read_data_word[6]), .QN(n23) );
+  FFDRHDLX read_data_word_reg_14_ ( .D(n788), .CK(clk), .RN(rst), .Q(
+        read_data_word[14]), .QN(n17) );
+  FFDRHDLX read_data_word_reg_22_ ( .D(n796), .CK(clk), .RN(rst), .Q(
+        read_data_word[22]), .QN(n36) );
+  FFDRHDLX read_data_word_reg_5_ ( .D(n779), .CK(clk), .RN(rst), .Q(
+        read_data_word[5]), .QN(n29) );
+  FFDRHDLX read_data_word_reg_13_ ( .D(n787), .CK(clk), .RN(rst), .Q(
+        read_data_word[13]), .QN(n16) );
+  FFDRHDLX read_data_word_reg_21_ ( .D(n795), .CK(clk), .RN(rst), .Q(
+        read_data_word[21]), .QN(n35) );
+  FFDRHDLX read_data_word_reg_4_ ( .D(n778), .CK(clk), .RN(rst), .Q(
+        read_data_word[4]), .QN(n28) );
+  FFDRHDLX read_data_word_reg_12_ ( .D(n786), .CK(clk), .RN(rst), .Q(
+        read_data_word[12]), .QN(n15) );
+  FFDRHDLX read_data_word_reg_20_ ( .D(n794), .CK(clk), .RN(rst), .Q(
+        read_data_word[20]), .QN(n34) );
+  FFDRHDLX read_data_word_reg_3_ ( .D(n777), .CK(clk), .RN(rst), .Q(
+        read_data_word[3]), .QN(n27) );
+  FFDRHDLX read_data_word_reg_11_ ( .D(n785), .CK(clk), .RN(rst), .Q(
+        read_data_word[11]), .QN(n14) );
+  FFDRHDLX read_data_word_reg_19_ ( .D(n793), .CK(clk), .RN(rst), .Q(
+        read_data_word[19]), .QN(n33) );
+  FFDRHDLX read_data_word_reg_2_ ( .D(n776), .CK(clk), .RN(rst), .Q(
+        read_data_word[2]), .QN(n26) );
+  FFDRHDLX read_data_word_reg_10_ ( .D(n784), .CK(clk), .RN(rst), .Q(
+        read_data_word[10]), .QN(n13) );
+  FFDRHDLX read_data_word_reg_18_ ( .D(n792), .CK(clk), .RN(rst), .Q(
+        read_data_word[18]), .QN(n32) );
+  FFDRHDLX read_data_word_reg_1_ ( .D(n775), .CK(clk), .RN(rst), .Q(
+        read_data_word[1]), .QN(n25) );
+  FFDRHDLX read_data_word_reg_9_ ( .D(n783), .CK(clk), .RN(rst), .Q(
+        read_data_word[9]), .QN(n12) );
+  FFDRHDLX read_data_word_reg_17_ ( .D(n791), .CK(clk), .RN(rst), .Q(
+        read_data_word[17]), .QN(n31) );
+  FFDRHDLX read_data_word_reg_0_ ( .D(n774), .CK(clk), .RN(rst), .Q(
+        read_data_word[0]), .QN(n24) );
+  FFDRHDLX read_data_word_reg_8_ ( .D(n782), .CK(clk), .RN(rst), .Q(
+        read_data_word[8]), .QN(n11) );
+  FFDRHDLX read_data_word_reg_16_ ( .D(n790), .CK(clk), .RN(rst), .Q(
+        read_data_word[16]), .QN(n30) );
+  FFDRHDLX state_w_reg_6_ ( .D(n591), .CK(clk), .RN(rst), .Q(\state_w[6] ) );
+  FFDRHDLX wait_cnt_reg_20_ ( .D(N148), .CK(clk), .RN(rst), .Q(\wait_cnt[20] )
+         );
+  FFDRHD1X wait_cnt_reg_16_ ( .D(N144), .CK(clk), .RN(rst), .Q(\wait_cnt[16] )
+         );
+  FFDRHDLX wait_cnt_reg_19_ ( .D(N147), .CK(clk), .RN(rst), .Q(\wait_cnt[19] )
+         );
+  FFDRHD1X wait_cnt_reg_18_ ( .D(N146), .CK(clk), .RN(rst), .Q(\wait_cnt[18] )
+         );
+  FFDRHDLX wait_cnt_reg_17_ ( .D(N145), .CK(clk), .RN(rst), .Q(\wait_cnt[17] )
+         );
+  FFDRHD1X wait_cnt_reg_14_ ( .D(N142), .CK(clk), .RN(rst), .Q(\wait_cnt[14] )
+         );
+  FFDRHDLX wait_cnt_reg_15_ ( .D(N143), .CK(clk), .RN(rst), .Q(\wait_cnt[15] )
+         );
+  FFDRHD1X wait_cnt_reg_24_ ( .D(N152), .CK(clk), .RN(rst), .Q(\wait_cnt[24] )
+         );
+  FFDRHDLX wait_cnt_reg_13_ ( .D(N141), .CK(clk), .RN(rst), .Q(\wait_cnt[13] )
+         );
+  FFDRHDLX wait_cnt_reg_32_ ( .D(N160), .CK(clk), .RN(rst), .Q(\wait_cnt[32] )
+         );
+  FFDSHDLX state_w_reg_0_ ( .D(n593), .CK(clk), .SN(rst), .Q(\state_w[0] ) );
+  FFDRHDLX wait_cnt_reg_12_ ( .D(N140), .CK(clk), .RN(rst), .Q(\wait_cnt[12] )
+         );
+  FFDRHDLX wait_cnt_reg_11_ ( .D(N139), .CK(clk), .RN(rst), .Q(\wait_cnt[11] )
+         );
+  FFDRHD1X wait_cnt_reg_6_ ( .D(N134), .CK(clk), .RN(rst), .Q(\wait_cnt[6] )
+         );
+  FFDRHDLX wait_cnt_reg_5_ ( .D(N133), .CK(clk), .RN(rst), .Q(\wait_cnt[5] )
+         );
+  FFDRHD1X wait_cnt_reg_3_ ( .D(N131), .CK(clk), .RN(rst), .Q(\wait_cnt[3] )
+         );
+  FFDRHD1X wait_cnt_reg_1_ ( .D(N129), .CK(clk), .RN(rst), .Q(\wait_cnt[1] )
+         );
+  FFDRHDLX spi_write_data_reg_5_ ( .D(N921), .CK(clk), .RN(rst), .Q(
+        \spi_write_data[5] ) );
+  FFDRHDLX spi_write_data_reg_4_ ( .D(N920), .CK(clk), .RN(rst), .Q(
+        \spi_write_data[4] ) );
+  FFDRHDLX spi_write_data_reg_7_ ( .D(N923), .CK(clk), .RN(rst), .Q(
+        \spi_write_data[7] ) );
+  FFDRHDLX spi_write_data_reg_6_ ( .D(n757), .CK(clk), .RN(rst), .Q(
+        \spi_write_data[6] ) );
+  FFDRHDLX spi_write_data_reg_1_ ( .D(n756), .CK(clk), .RN(rst), .Q(
+        \spi_write_data[1] ) );
+  FFDRHD1X spi_write_data_reg_0_ ( .D(n755), .CK(clk), .RN(rst), .Q(
+        \spi_write_data[0] ) );
+  FFDRHD1X spi_write_data_reg_3_ ( .D(N919), .CK(clk), .RN(rst), .Q(
+        \spi_write_data[3] ) );
+  FFDRHD1X spi_write_data_reg_2_ ( .D(N918), .CK(clk), .RN(rst), .Q(
+        \spi_write_data[2] ) );
+  FFDRHD1X spi_byte_cnt_reg_0_ ( .D(N518), .CK(clk), .RN(rst), .Q(n61), .QN(
+        net14230) );
+  FFDSHD2X spi_cs_reg_reg ( .D(N499), .CK(clk), .SN(rst), .Q(spi_cs) );
+  FFDRHD1X spi_byte_cnt_reg_1_ ( .D(N519), .CK(clk), .RN(rst), .Q(n60), .QN(
+        net14245) );
+  FFDRHD1X wait_cnt_reg_0_ ( .D(N128), .CK(clk), .RN(rst), .Q(\wait_cnt[0] )
+         );
+  FFDRHD1X wait_cnt_reg_29_ ( .D(N157), .CK(clk), .RN(rst), .Q(\wait_cnt[29] )
+         );
+  FFDRHD1X wait_cnt_reg_25_ ( .D(N153), .CK(clk), .RN(rst), .Q(\wait_cnt[25] )
+         );
+  FFDRHD1X wait_cnt_reg_10_ ( .D(N138), .CK(clk), .RN(rst), .Q(\wait_cnt[10] )
+         );
+  FFDRHD1X wait_cnt_reg_9_ ( .D(N137), .CK(clk), .RN(rst), .Q(\wait_cnt[9] )
+         );
+  FFDRHD1X wait_cnt_reg_28_ ( .D(N156), .CK(clk), .RN(rst), .Q(\wait_cnt[28] )
+         );
+  FFDRHD1X wait_cnt_reg_4_ ( .D(N132), .CK(clk), .RN(rst), .Q(\wait_cnt[4] )
+         );
+  FFDRHD1X wait_cnt_reg_31_ ( .D(N159), .CK(clk), .RN(rst), .Q(\wait_cnt[31] )
+         );
+  FFDRHD1X wait_cnt_reg_8_ ( .D(N136), .CK(clk), .RN(rst), .Q(\wait_cnt[8] )
+         );
+  FFDRHD1X wait_cnt_reg_26_ ( .D(N154), .CK(clk), .RN(rst), .Q(\wait_cnt[26] )
+         );
+  FFDRHD1X wait_cnt_reg_23_ ( .D(N151), .CK(clk), .RN(rst), .Q(\wait_cnt[23] )
+         );
+  FFDRHD1X wait_cnt_reg_7_ ( .D(N135), .CK(clk), .RN(rst), .Q(\wait_cnt[7] )
+         );
+  FFDRHD1X wait_cnt_reg_30_ ( .D(N158), .CK(clk), .RN(rst), .Q(\wait_cnt[30] )
+         );
+  FFDRHD1X wait_cnt_reg_22_ ( .D(N150), .CK(clk), .RN(rst), .Q(\wait_cnt[22] )
+         );
+  FFDRHD1X wait_cnt_reg_27_ ( .D(N155), .CK(clk), .RN(rst), .Q(\wait_cnt[27] )
+         );
+  FFDRHD1X wait_cnt_reg_2_ ( .D(N130), .CK(clk), .RN(rst), .Q(\wait_cnt[2] )
+         );
+  FFDRHD1X wait_cnt_reg_21_ ( .D(N149), .CK(clk), .RN(rst), .Q(\wait_cnt[21] )
+         );
+  FFDRHD2X spi_byte_cnt_reg_5_ ( .D(N523), .CK(clk), .RN(rst), .Q(n59), .QN(
+        net13066) );
+  FFDRHD2X spi_byte_cnt_reg_7_ ( .D(N525), .CK(clk), .RN(rst), .Q(n57), .QN(
+        net13087) );
+  FFDRHD2X spi_byte_cnt_reg_8_ ( .D(N526), .CK(clk), .RN(rst), .Q(n56), .QN(
+        net13088) );
+  FFDRHD2X spi_byte_cnt_reg_6_ ( .D(N524), .CK(clk), .RN(rst), .Q(n58), .QN(
+        net13074) );
+  FFDRHD2X state_c_reg_6_ ( .D(\state_n[6] ), .CK(clk), .RN(rst), .Q(net13136), 
+        .QN(FLASH_state_c_out_6__BAR) );
+  TIELHD U3 ( .Z(n2) );
+  TIEHHD U4 ( .Z(n1) );
+  OAI221HDLX U5 ( .A(n77), .B(n83), .C(n1170), .D(n71), .E(n1), .Z(n754) );
+  NAND2HD4X U6 ( .A(n950), .B(n94), .Z(n756) );
+  INVCLKHD4X U7 ( .A(n1030), .Z(N923) );
+  NAND4HD1X U8 ( .A(n1), .B(n9), .C(net14262), .D(FLASH_state_c_out_0_), .Z(
+        n1140) );
+  NAND2HD4X U9 ( .A(n1080), .B(n1070), .Z(n755) );
+  INVCLKHD4X U10 ( .A(n73), .Z(n1380) );
+  OAI22B2HD1X U11 ( .C(n1), .D(n1060), .AN(n69), .BN(\write_data_shif[24] ), 
+        .Z(N594) );
+  OAI22B2HD1X U12 ( .C(n1), .D(n1050), .AN(\write_data_shif[16] ), .BN(n70), 
+        .Z(N586) );
+  OAI22B2HD1X U13 ( .C(n1), .D(n1040), .AN(\write_data_shif[8] ), .BN(n70), 
+        .Z(N578) );
+  INVCLKHD4X U14 ( .A(net14227), .Z(n86) );
+  INVCLKHD4X U15 ( .A(n75), .Z(n82) );
+  INVCLKHD4X U16 ( .A(n960), .Z(N918) );
+  NAND4B1HDLX U17 ( .AN(\wait_cnt[12] ), .B(n1300), .C(n1), .D(n1), .Z(n1280)
+         );
+  INVCLKHD4X U18 ( .A(n1210), .Z(n1180) );
+  NAND2HDLX U19 ( .A(FLASH_state_c_out_6__BAR), .B(n1), .Z(n74) );
+  NAND2HD1X U20 ( .A(net13067), .B(n1), .Z(n1120) );
+  AND4HD1X U21 ( .A(n1), .B(n1), .C(n62), .D(FLASH_state_c_out_11_), .Z(n8) );
+  AOI222HD1X U22 ( .A(n80), .B(n2), .C(n79), .D(FLASH_state_c_out_11_), .E(n78), .F(net13136), .Z(n81) );
+  NOR2HD4X U23 ( .A(n1380), .B(n1120), .Z(n1370) );
+  MUXI2HD1X U24 ( .A(n1180), .B(n2), .S0(\wait_cnt[9] ), .Z(n1110) );
+  NOR2HD4X U25 ( .A(n1110), .B(n71), .Z(\state_n[12] ) );
+  NAND3HD2X U26 ( .A(net13053), .B(n83), .C(net12825), .Z(n85) );
+  NAND2HD4X U27 ( .A(n83), .B(n1120), .Z(n75) );
+  AOI221HD1X U28 ( .A(read_addr[14]), .B(n1090), .C(read_addr[22]), .D(n1100), 
+        .E(n2), .Z(n1010) );
+  AOI222HD1X U29 ( .A(net13020), .B(net12825), .C(\write_data_shif[24] ), .D(
+        n2), .E(read_addr[0]), .F(n21), .Z(n1070) );
+  NAND2HD4X U30 ( .A(read_addr[6]), .B(n21), .Z(n1020) );
+  NAND2HD4X U31 ( .A(read_addr[4]), .B(n21), .Z(n1000) );
+  NAND2HD4X U32 ( .A(read_addr[3]), .B(n21), .Z(n980) );
+  NAND2HD4X U33 ( .A(read_addr[1]), .B(n21), .Z(n950) );
+  NAND2HD4X U34 ( .A(read_addr[5]), .B(n21), .Z(n1150) );
+  INVCLKHD4X U35 ( .A(\state_w[6] ), .Z(n1190) );
+  NOR2HD4X U36 ( .A(n1250), .B(n1190), .Z(n1220) );
+  NOR2HD4X U37 ( .A(n1240), .B(\wait_cnt[10] ), .Z(n1230) );
+  INVCLKHD4X U38 ( .A(n74), .Z(net13081) );
+  OAI22B2HDLX U39 ( .C(FLASH_state_c_out_6__BAR), .D(n80), .AN(n76), .BN(
+        read_rq), .Z(\state_n[6] ) );
+  NAND2HD2X U40 ( .A(n39), .B(n40), .Z(net13067) );
+  AND3HD1X U41 ( .A(n81), .B(spi_write_ack), .C(n63), .Z(n7) );
+  NAND2HD2X U42 ( .A(net13066), .B(net13074), .Z(n53) );
+  NOR2HD1X U43 ( .A(n19), .B(n6), .Z(n42) );
+  NAND2HD1X U44 ( .A(net14230), .B(net14245), .Z(n49) );
+  INVHDPX U45 ( .A(n44), .Z(n43) );
+  INVHDPX U46 ( .A(n54), .Z(net14262) );
+  NAND2B1HD1X U47 ( .AN(FLASH_state_c_out_11_), .B(net13081), .Z(n54) );
+  INVHDPX U48 ( .A(\wait_cnt[1] ), .Z(n3) );
+  INVHDPX U49 ( .A(n93), .Z(n67) );
+  INVHDPX U50 ( .A(n93), .Z(n66) );
+  OAI21HD1X U51 ( .A(net12930), .B(net13069), .C(n41), .Z(N521) );
+  NAND2HD1X U52 ( .A(N511), .B(n7), .Z(n41) );
+  NAND2HD1X U53 ( .A(N510), .B(n7), .Z(n48) );
+  INVCLKHD4X U54 ( .A(n3), .Z(n4) );
+  BUFHD4X U55 ( .A(\wait_cnt[0] ), .Z(n5) );
+  NOR3HDLX U56 ( .A(\state_w[0] ), .B(\wait_cnt[26] ), .C(n5), .Z(n1330) );
+  NAND2B1HD1X U57 ( .AN(n49), .B(net13054), .Z(net14227) );
+  AND4HD2X U58 ( .A(net12825), .B(n87), .C(n90), .D(net14227), .Z(n21) );
+  NAND2HD1X U59 ( .A(n42), .B(n43), .Z(net13053) );
+  INVHDPX U60 ( .A(n8), .Z(n71) );
+  INVHDPX U61 ( .A(spi_write_ack), .Z(n51) );
+  NAND2HD1X U62 ( .A(n47), .B(n43), .Z(net12980) );
+  NAND2HD4X U63 ( .A(n45), .B(n46), .Z(n44) );
+  NOR3B1HD4X U64 ( .AN(n50), .B(n44), .C(net13067), .Z(net12917) );
+  NAND2HD4X U65 ( .A(net13087), .B(net13088), .Z(n52) );
+  NOR2HD4X U66 ( .A(n55), .B(n52), .Z(n46) );
+  NOR2HD4X U67 ( .A(n20), .B(n53), .Z(n45) );
+  NOR2HD4X U68 ( .A(FLASH_state_c_out_11_), .B(FLASH_state_c_out_0_), .Z(n40)
+         );
+  NOR2HD4X U69 ( .A(FLASH_state_c_out_6__BAR), .B(FLASH_state_c_out_12_), .Z(
+        n39) );
+  NOR2HD4X U70 ( .A(n19), .B(n6), .Z(n50) );
+  NOR2HD1X U71 ( .A(net14391), .B(n51), .Z(n47) );
+  OAI21HD1X U72 ( .A(net12930), .B(net14391), .C(n48), .Z(N520) );
+  AND2HD1X U73 ( .A(N127), .B(n8), .Z(N160) );
+  NOR3HDLX U74 ( .A(\wait_cnt[2] ), .B(\wait_cnt[31] ), .C(\wait_cnt[30] ), 
+        .Z(n1350) );
+  NOR4B1HDLX U75 ( .AN(n1320), .B(\wait_cnt[6] ), .C(\wait_cnt[7] ), .D(
+        \wait_cnt[25] ), .Z(n1260) );
+  NAND4HDLX U76 ( .A(\wait_cnt[3] ), .B(n4), .C(n1220), .D(n1230), .Z(n1210)
+         );
+  OR3HDLX U77 ( .A(\wait_cnt[14] ), .B(\wait_cnt[5] ), .C(\wait_cnt[11] ), .Z(
+        n1240) );
+  NOR3HDLX U78 ( .A(\wait_cnt[32] ), .B(\wait_cnt[8] ), .C(\wait_cnt[4] ), .Z(
+        n1360) );
+  AND3HD1X U79 ( .A(n9), .B(n10), .C(net13081), .Z(n62) );
+  INVHDPX U80 ( .A(net13067), .Z(net12825) );
+  INVHDPX U81 ( .A(n93), .Z(n68) );
+  INVHDPX U82 ( .A(\state_n[6] ), .Z(n78) );
+  NAND3HD2X U83 ( .A(n81), .B(n51), .C(n63), .Z(net12930) );
+  INVHDPX U84 ( .A(n8), .Z(n73) );
+  INVHDPX U85 ( .A(net14227), .Z(net13020) );
+  INVHDPX U86 ( .A(n86), .Z(n69) );
+  INVHDPX U87 ( .A(n86), .Z(n70) );
+  INVHDPX U88 ( .A(n92), .Z(n1090) );
+  INVHDPX U89 ( .A(n90), .Z(n91) );
+  INVHDPX U90 ( .A(n89), .Z(n1100) );
+  INVHDPX U91 ( .A(n87), .Z(n88) );
+  INVHD2X U92 ( .A(n8), .Z(n72) );
+  INVHDPX U93 ( .A(n754), .Z(n79) );
+  INVHDPX U94 ( .A(n82), .Z(n80) );
+  INVHDPX U95 ( .A(n1120), .Z(n77) );
+  INVHDPX U96 ( .A(net12980), .Z(net12974) );
+  NOR2HD1X U97 ( .A(n85), .B(n84), .Z(spi_read_req) );
+  INVHDLX U98 ( .A(rst), .Z(n84) );
+  NOR2HD1X U99 ( .A(n64), .B(FLASH_state_c_out_12_), .Z(n63) );
+  XNOR2HD1X U100 ( .A(n10), .B(\state_n[0] ), .Z(n64) );
+  AND2HD1X U101 ( .A(n60), .B(n61), .Z(n65) );
+  INVHDPX U102 ( .A(\write_data_shif[16] ), .Z(n1060) );
+  INVHDPX U103 ( .A(\write_data_shif[8] ), .Z(n1050) );
+  INVHDPX U104 ( .A(\write_data_shif[0] ), .Z(n1040) );
+  AND2HD1X U105 ( .A(\write_data_shif[0] ), .B(n69), .Z(n758) );
+  OAI22B2HDLX U106 ( .C(net12930), .D(net13074), .AN(N514), .BN(n7), .Z(N524)
+         );
+  MUX2HDLX U107 ( .A(n1130), .B(\state_w[0] ), .S0(n1140), .Z(n593) );
+  MUX2HDLX U108 ( .A(read_rq), .B(\state_w[6] ), .S0(n1140), .Z(n591) );
+  MUX2HDLX U109 ( .A(n1130), .B(n1370), .S0(n1140), .Z(\state_n[0] ) );
+  NAND3HDLX U110 ( .A(n73), .B(n1140), .C(n1390), .Z(N499) );
+  INVHDLX U111 ( .A(n1140), .Z(n76) );
+  NAND3B1HDLX U112 ( .AN(FLASH_state_c_out_0_), .B(FLASH_state_c_out_12_), .C(
+        net14262), .Z(n1390) );
+  INVHDPX U113 ( .A(net13053), .Z(net13054) );
+  NAND3HDLX U114 ( .A(n60), .B(net13054), .C(net14230), .Z(n90) );
+  NAND3HDLX U115 ( .A(n61), .B(net13054), .C(net14245), .Z(n87) );
+  AND2HD4X U116 ( .A(rst), .B(net12917), .Z(spi_write_req) );
+  NAND3HD1X U117 ( .A(net12974), .B(net12941), .C(n65), .Z(n83) );
+  OAI22B2HD1X U118 ( .C(net12941), .D(net12930), .AN(N512), .BN(n7), .Z(N522)
+         );
+  OAI22B2HD1X U119 ( .C(net12930), .D(net13088), .AN(N516), .BN(n7), .Z(N526)
+         );
+  OAI22B2HD1X U120 ( .C(net12930), .D(net13087), .AN(N515), .BN(n7), .Z(N525)
+         );
+  OAI22B2HD1X U121 ( .C(net12930), .D(net13066), .AN(N513), .BN(n7), .Z(N523)
+         );
+  OAI22B2HD1X U122 ( .C(net12930), .D(n38), .AN(N517), .BN(n7), .Z(N527) );
+  OAI22B2HD1X U123 ( .C(net14230), .D(net12930), .AN(N508), .BN(n7), .Z(N518)
+         );
+  OAI22B2HD1X U124 ( .C(net14245), .D(net12930), .AN(N509), .BN(n7), .Z(N519)
+         );
+  NAND2HD1X U125 ( .A(n88), .B(net12825), .Z(n89) );
+  NAND2HD1X U126 ( .A(n91), .B(net12825), .Z(n92) );
+  NAND2HD1X U127 ( .A(spi_write_ack), .B(net13053), .Z(n93) );
+  MUXI2HD1X U128 ( .A(n24), .B(\n[147] ), .S0(n66), .Z(n774) );
+  MUXI2HD1X U129 ( .A(n25), .B(\n[146] ), .S0(n66), .Z(n775) );
+  MUXI2HD1X U130 ( .A(n26), .B(\n[145] ), .S0(n66), .Z(n776) );
+  MUXI2HD1X U131 ( .A(n27), .B(\n[144] ), .S0(n66), .Z(n777) );
+  MUXI2HD1X U132 ( .A(n28), .B(\n[143] ), .S0(n66), .Z(n778) );
+  MUXI2HD1X U133 ( .A(n29), .B(\n[142] ), .S0(n66), .Z(n779) );
+  MUXI2HD1X U134 ( .A(n23), .B(\n[141] ), .S0(n66), .Z(n780) );
+  MUXI2HD1X U135 ( .A(n22), .B(\n[140] ), .S0(n66), .Z(n781) );
+  MUXI2HD1X U136 ( .A(n11), .B(n24), .S0(n66), .Z(n782) );
+  MUXI2HD1X U137 ( .A(n12), .B(n25), .S0(n66), .Z(n783) );
+  MUXI2HD1X U138 ( .A(n13), .B(n26), .S0(n66), .Z(n784) );
+  MUXI2HD1X U139 ( .A(n14), .B(n27), .S0(n66), .Z(n785) );
+  MUXI2HD1X U140 ( .A(n15), .B(n28), .S0(n67), .Z(n786) );
+  MUXI2HD1X U141 ( .A(n16), .B(n29), .S0(n67), .Z(n787) );
+  MUXI2HD1X U142 ( .A(n17), .B(n23), .S0(n67), .Z(n788) );
+  MUXI2HD1X U143 ( .A(n18), .B(n22), .S0(n67), .Z(n789) );
+  MUXI2HD1X U144 ( .A(n30), .B(n11), .S0(n67), .Z(n790) );
+  MUXI2HD1X U145 ( .A(n31), .B(n12), .S0(n67), .Z(n791) );
+  MUXI2HD1X U146 ( .A(n32), .B(n13), .S0(n67), .Z(n792) );
+  MUXI2HD1X U147 ( .A(n33), .B(n14), .S0(n67), .Z(n793) );
+  MUXI2HD1X U148 ( .A(n34), .B(n15), .S0(n67), .Z(n794) );
+  MUXI2HD1X U149 ( .A(n35), .B(n16), .S0(n67), .Z(n795) );
+  MUXI2HD1X U150 ( .A(n36), .B(n17), .S0(n67), .Z(n796) );
+  MUXI2HD1X U151 ( .A(n37), .B(n18), .S0(n67), .Z(n797) );
+  MUXI2HD1X U152 ( .A(n419), .B(n30), .S0(n68), .Z(n798) );
+  MUXI2HD1X U153 ( .A(n420), .B(n31), .S0(n68), .Z(n799) );
+  MUXI2HD1X U154 ( .A(n421), .B(n32), .S0(n68), .Z(n800) );
+  MUXI2HD1X U155 ( .A(n422), .B(n33), .S0(n68), .Z(n801) );
+  MUXI2HD1X U156 ( .A(n423), .B(n34), .S0(n68), .Z(n802) );
+  MUXI2HD1X U157 ( .A(n424), .B(n35), .S0(n68), .Z(n803) );
+  MUXI2HD1X U158 ( .A(n425), .B(n36), .S0(n68), .Z(n804) );
+  MUXI2HD1X U159 ( .A(n426), .B(n37), .S0(n68), .Z(n805) );
+  AOI222HD1X U160 ( .A(read_addr[9]), .B(n1090), .C(net13020), .D(n1120), .E(
+        read_addr[17]), .F(n1100), .Z(n94) );
+  AOI222HD1X U161 ( .A(read_addr[10]), .B(n1090), .C(read_addr[2]), .D(n21), 
+        .E(read_addr[18]), .F(n1100), .Z(n960) );
+  AOI22HD1X U162 ( .A(read_addr[19]), .B(n1100), .C(read_addr[11]), .D(n1090), 
+        .Z(n970) );
+  NAND2HD1X U163 ( .A(n980), .B(n970), .Z(N919) );
+  AOI22HD1X U164 ( .A(read_addr[20]), .B(n1100), .C(read_addr[12]), .D(n1090), 
+        .Z(n990) );
+  NAND2HD1X U165 ( .A(n1000), .B(n990), .Z(N920) );
+  NAND2HD1X U166 ( .A(n1020), .B(n1010), .Z(n757) );
+  AOI222HD1X U167 ( .A(read_addr[15]), .B(n1090), .C(read_addr[7]), .D(n21), 
+        .E(read_addr[23]), .F(n1100), .Z(n1030) );
+  AOI22HD1X U168 ( .A(read_addr[16]), .B(n1100), .C(read_addr[8]), .D(n1090), 
+        .Z(n1080) );
+  NAND2HD1X U169 ( .A(n1150), .B(n1160), .Z(N921) );
+  AOI22HD1X U170 ( .A(read_addr[21]), .B(n1100), .C(read_addr[13]), .D(n1090), 
+        .Z(n1160) );
+  INVHD1X U171 ( .A(n1110), .Z(n1170) );
+  INVHD1X U172 ( .A(n1200), .Z(n1250) );
+  NOR4B1HD1X U173 ( .AN(n1260), .B(n1270), .C(n1280), .D(n1290), .Z(n1200) );
+  OR4HD1X U174 ( .A(\wait_cnt[19] ), .B(\wait_cnt[20] ), .C(\wait_cnt[21] ), 
+        .D(\wait_cnt[22] ), .Z(n1290) );
+  OR4HD1X U175 ( .A(n1310), .B(\wait_cnt[17] ), .C(\wait_cnt[18] ), .D(
+        \wait_cnt[16] ), .Z(n1270) );
+  OR2HD1X U176 ( .A(\wait_cnt[15] ), .B(\wait_cnt[13] ), .Z(n1310) );
+  NOR2HD1X U177 ( .A(\wait_cnt[24] ), .B(\wait_cnt[23] ), .Z(n1320) );
+  AND4HD1X U178 ( .A(n1330), .B(n1340), .C(n1350), .D(n1360), .Z(n1300) );
+  NOR3HD1X U179 ( .A(\wait_cnt[27] ), .B(\wait_cnt[29] ), .C(\wait_cnt[28] ), 
+        .Z(n1340) );
+  INVHD1X U180 ( .A(read_rq), .Z(n1130) );
+  NOR2B1HD1X U181 ( .AN(N126), .B(n71), .Z(N159) );
+  NOR2B1HD1X U182 ( .AN(N125), .B(n71), .Z(N158) );
+  NOR2B1HD1X U183 ( .AN(N124), .B(n71), .Z(N157) );
+  NOR2B1HD1X U184 ( .AN(N123), .B(n71), .Z(N156) );
+  NOR2B1HD1X U185 ( .AN(N122), .B(n71), .Z(N155) );
+  NOR2B1HD1X U186 ( .AN(N121), .B(n72), .Z(N154) );
+  NOR2B1HD1X U187 ( .AN(N120), .B(n71), .Z(N153) );
+  NOR2B1HD1X U188 ( .AN(N119), .B(n71), .Z(N152) );
+  NOR2B1HD1X U189 ( .AN(N118), .B(n71), .Z(N151) );
+  NOR2B1HD1X U190 ( .AN(N117), .B(n71), .Z(N150) );
+  NOR2B1HD1X U191 ( .AN(N116), .B(n72), .Z(N149) );
+  NOR2B1HD1X U192 ( .AN(N115), .B(n72), .Z(N148) );
+  NOR2B1HD1X U193 ( .AN(N114), .B(n72), .Z(N147) );
+  NOR2B1HD1X U194 ( .AN(N113), .B(n72), .Z(N146) );
+  NOR2B1HD1X U195 ( .AN(N112), .B(n72), .Z(N145) );
+  NOR2B1HD1X U196 ( .AN(N111), .B(n72), .Z(N144) );
+  NOR2B1HD1X U197 ( .AN(N110), .B(n72), .Z(N143) );
+  NOR2B1HD1X U198 ( .AN(N109), .B(n72), .Z(N142) );
+  NOR2B1HD1X U199 ( .AN(N108), .B(n72), .Z(N141) );
+  NOR2B1HD1X U200 ( .AN(N107), .B(n72), .Z(N140) );
+  NOR2B1HD1X U201 ( .AN(N106), .B(n72), .Z(N139) );
+  NOR2B1HD1X U202 ( .AN(N105), .B(n72), .Z(N138) );
+  NOR2B1HD1X U203 ( .AN(N104), .B(n73), .Z(N137) );
+  NOR2B1HD1X U204 ( .AN(N103), .B(n73), .Z(N136) );
+  NOR2B1HD1X U205 ( .AN(N102), .B(n73), .Z(N135) );
+  NOR2B1HD1X U206 ( .AN(N101), .B(n73), .Z(N134) );
+  NOR2B1HD1X U207 ( .AN(N100), .B(n73), .Z(N133) );
+  NOR2B1HD1X U208 ( .AN(N99), .B(n73), .Z(N132) );
+  NOR2B1HD1X U209 ( .AN(N98), .B(n73), .Z(N131) );
+  NOR2B1HD1X U210 ( .AN(N97), .B(n73), .Z(N130) );
+  NOR2B1HD1X U211 ( .AN(N96), .B(n73), .Z(N129) );
+  NOR2B1HD1X U212 ( .AN(N95), .B(n71), .Z(N128) );
+endmodule
+
+
+module AHB_Controler_FLASH_BOOT ( HCLK, HRST_n, HADDR, HWRITE, HSELx, 
+        i_pad_pmodb_miso, o_pad_pmodb_mosi, o_pad_pmodb_cs, HRDATA, HREADY, 
+        HTRANS_1_ );
+  input [31:0] HADDR;
+  output [31:0] HRDATA;
+  input HCLK, HRST_n, HWRITE, HSELx, i_pad_pmodb_miso, HTRANS_1_;
+  output o_pad_pmodb_mosi, o_pad_pmodb_cs, HREADY;
+  wire   n_Logic1_, SLAVE_state_n_2_, \FLASH_state_c_out[12] ,
+         \FLASH_state_c_out[11] , \FLASH_state_c_out[6] ,
+         \FLASH_state_c_out[0] , N54, FLASH_read_req, \FLASH_read_addr[23] ,
+         \FLASH_read_addr[22] , \FLASH_read_addr[21] , \FLASH_read_addr[20] ,
+         \FLASH_read_addr[19] , \FLASH_read_addr[18] , \FLASH_read_addr[17] ,
+         \FLASH_read_addr[16] , \FLASH_read_addr[15] , \FLASH_read_addr[14] ,
+         \FLASH_read_addr[13] , \FLASH_read_addr[12] , \FLASH_read_addr[11] ,
+         \FLASH_read_addr[10] , \FLASH_read_addr[9] , \FLASH_read_addr[8] ,
+         \FLASH_read_addr[7] , \FLASH_read_addr[6] , \FLASH_read_addr[5] ,
+         \FLASH_read_addr[4] , \FLASH_read_addr[3] , \FLASH_read_addr[2] ,
+         \FLASH_read_addr[1] , \FLASH_read_addr[0] ,
+         \FLASH_read_data_word[31] , \FLASH_read_data_word[30] ,
+         \FLASH_read_data_word[29] , \FLASH_read_data_word[28] ,
+         \FLASH_read_data_word[27] , \FLASH_read_data_word[26] ,
+         \FLASH_read_data_word[25] , \FLASH_read_data_word[24] ,
+         \FLASH_read_data_word[23] , \FLASH_read_data_word[22] ,
+         \FLASH_read_data_word[21] , \FLASH_read_data_word[20] ,
+         \FLASH_read_data_word[19] , \FLASH_read_data_word[18] ,
+         \FLASH_read_data_word[17] , \FLASH_read_data_word[16] ,
+         \FLASH_read_data_word[15] , \FLASH_read_data_word[14] ,
+         \FLASH_read_data_word[13] , \FLASH_read_data_word[12] ,
+         \FLASH_read_data_word[11] , \FLASH_read_data_word[10] ,
+         \FLASH_read_data_word[9] , \FLASH_read_data_word[8] ,
+         \FLASH_read_data_word[7] , \FLASH_read_data_word[6] ,
+         \FLASH_read_data_word[5] , \FLASH_read_data_word[4] ,
+         \FLASH_read_data_word[3] , \FLASH_read_data_word[2] ,
+         \FLASH_read_data_word[1] , \FLASH_read_data_word[0] , N83, N84, N85,
+         N86, N89, N92, N95, N98, N101, N104, N107, N110, N113, N116, N119,
+         N122, N125, N128, N131, N134, N137, N140, N143, N146, N149, N152,
+         N155, N158, N161, N164, N167, N170, N173, N176, N179, n3, n4, n5, n6,
+         n7, n8, n9, n10, n11, n13, n17, n18, n19, n20, n21, n22, n23, n24,
+         n25, n26, n27, n28, n29, n30, n31, n32, n33, n34, n35, n36, n37, n38,
+         n39, n40, n41, n42, n43, n44, n45, n46, n47, n48, n49, n50, n51, n52,
+         n53, n540, n1, n2, n12, n14, n15, n16, n55, n56, n57;
+
+  LATHD2X HREADY_reg ( .G(N83), .D(N84), .Q(HREADY) );
+  INVCLKHD4X U5 ( .A(n5), .Z(n53) );
+  INVCLKHD4X U14 ( .A(HRST_n), .Z(n52) );
+  NAND2HD4X U15 ( .A(n4), .B(HRST_n), .Z(N85) );
+  flash_sf3 AHB2SPI_FLASH_ctrl ( .clk(HCLK), .rst(HRST_n), .read_rq(
+        FLASH_read_req), .read_addr({\FLASH_read_addr[23] , 
+        \FLASH_read_addr[22] , \FLASH_read_addr[21] , \FLASH_read_addr[20] , 
+        \FLASH_read_addr[19] , \FLASH_read_addr[18] , \FLASH_read_addr[17] , 
+        \FLASH_read_addr[16] , \FLASH_read_addr[15] , \FLASH_read_addr[14] , 
+        \FLASH_read_addr[13] , \FLASH_read_addr[12] , \FLASH_read_addr[11] , 
+        \FLASH_read_addr[10] , \FLASH_read_addr[9] , \FLASH_read_addr[8] , 
+        \FLASH_read_addr[7] , \FLASH_read_addr[6] , \FLASH_read_addr[5] , 
+        \FLASH_read_addr[4] , \FLASH_read_addr[3] , \FLASH_read_addr[2] , 
+        \FLASH_read_addr[1] , \FLASH_read_addr[0] }), .read_data_word({
+        \FLASH_read_data_word[31] , \FLASH_read_data_word[30] , 
+        \FLASH_read_data_word[29] , \FLASH_read_data_word[28] , 
+        \FLASH_read_data_word[27] , \FLASH_read_data_word[26] , 
+        \FLASH_read_data_word[25] , \FLASH_read_data_word[24] , 
+        \FLASH_read_data_word[23] , \FLASH_read_data_word[22] , 
+        \FLASH_read_data_word[21] , \FLASH_read_data_word[20] , 
+        \FLASH_read_data_word[19] , \FLASH_read_data_word[18] , 
+        \FLASH_read_data_word[17] , \FLASH_read_data_word[16] , 
+        \FLASH_read_data_word[15] , \FLASH_read_data_word[14] , 
+        \FLASH_read_data_word[13] , \FLASH_read_data_word[12] , 
+        \FLASH_read_data_word[11] , \FLASH_read_data_word[10] , 
+        \FLASH_read_data_word[9] , \FLASH_read_data_word[8] , 
+        \FLASH_read_data_word[7] , \FLASH_read_data_word[6] , 
+        \FLASH_read_data_word[5] , \FLASH_read_data_word[4] , 
+        \FLASH_read_data_word[3] , \FLASH_read_data_word[2] , 
+        \FLASH_read_data_word[1] , \FLASH_read_data_word[0] }), .mosi(
+        o_pad_pmodb_mosi), .miso(i_pad_pmodb_miso), .spi_cs(o_pad_pmodb_cs), 
+        .FLASH_state_c_out_12_(\FLASH_state_c_out[12] ), 
+        .FLASH_state_c_out_11_(\FLASH_state_c_out[11] ), 
+        .FLASH_state_c_out_6__BAR(\FLASH_state_c_out[6] ), 
+        .FLASH_state_c_out_0_(\FLASH_state_c_out[0] ) );
+  FFDRHDLX SLAVE_state_n_reg_2_ ( .D(n51), .CK(HCLK), .RN(HRST_n), .Q(
+        SLAVE_state_n_2_), .QN(n18) );
+  FFEDQHDLX FLASH_read_addr_reg_11_ ( .D(HADDR[11]), .E(n53), .CK(HCLK), .Q(
+        \FLASH_read_addr[11] ) );
+  FFEDQHDLX FLASH_read_addr_reg_12_ ( .D(HADDR[12]), .E(n53), .CK(HCLK), .Q(
+        \FLASH_read_addr[12] ) );
+  FFEDQHDLX FLASH_read_addr_reg_13_ ( .D(HADDR[13]), .E(n53), .CK(HCLK), .Q(
+        \FLASH_read_addr[13] ) );
+  FFEDQHDLX FLASH_read_addr_reg_1_ ( .D(HADDR[1]), .E(n53), .CK(HCLK), .Q(
+        \FLASH_read_addr[1] ) );
+  FFEDQHDLX FLASH_read_addr_reg_5_ ( .D(HADDR[5]), .E(n53), .CK(HCLK), .Q(
+        \FLASH_read_addr[5] ) );
+  FFEDQHDLX FLASH_read_addr_reg_19_ ( .D(HADDR[19]), .E(n53), .CK(HCLK), .Q(
+        \FLASH_read_addr[19] ) );
+  FFEDQHDLX FLASH_read_addr_reg_20_ ( .D(HADDR[20]), .E(n53), .CK(HCLK), .Q(
+        \FLASH_read_addr[20] ) );
+  FFEDQHDLX FLASH_read_addr_reg_21_ ( .D(HADDR[21]), .E(n53), .CK(HCLK), .Q(
+        \FLASH_read_addr[21] ) );
+  FFEDQHDLX FLASH_read_addr_reg_8_ ( .D(HADDR[8]), .E(n53), .CK(HCLK), .Q(
+        \FLASH_read_addr[8] ) );
+  FFEDQHDLX FLASH_read_addr_reg_23_ ( .D(HADDR[23]), .E(n53), .CK(HCLK), .Q(
+        \FLASH_read_addr[23] ) );
+  FFEDQHDLX FLASH_read_addr_reg_3_ ( .D(HADDR[3]), .E(n53), .CK(HCLK), .Q(
+        \FLASH_read_addr[3] ) );
+  FFEDQHDLX FLASH_read_addr_reg_4_ ( .D(HADDR[4]), .E(n53), .CK(HCLK), .Q(
+        \FLASH_read_addr[4] ) );
+  FFEDQHDLX FLASH_read_addr_reg_6_ ( .D(HADDR[6]), .E(n53), .CK(HCLK), .Q(
+        \FLASH_read_addr[6] ) );
+  FFEDQHDLX FLASH_read_addr_reg_22_ ( .D(HADDR[22]), .E(n53), .CK(HCLK), .Q(
+        \FLASH_read_addr[22] ) );
+  FFEDQHDLX FLASH_read_addr_reg_16_ ( .D(HADDR[16]), .E(n53), .CK(HCLK), .Q(
+        \FLASH_read_addr[16] ) );
+  FFEDQHDLX FLASH_read_addr_reg_17_ ( .D(HADDR[17]), .E(n53), .CK(HCLK), .Q(
+        \FLASH_read_addr[17] ) );
+  FFEDQHDLX FLASH_read_addr_reg_14_ ( .D(HADDR[14]), .E(n53), .CK(HCLK), .Q(
+        \FLASH_read_addr[14] ) );
+  FFEDQHDLX FLASH_read_addr_reg_7_ ( .D(HADDR[7]), .E(n53), .CK(HCLK), .Q(
+        \FLASH_read_addr[7] ) );
+  FFEDQHDLX FLASH_read_addr_reg_18_ ( .D(HADDR[18]), .E(n53), .CK(HCLK), .Q(
+        \FLASH_read_addr[18] ) );
+  FFEDQHDLX FLASH_read_addr_reg_0_ ( .D(HADDR[0]), .E(n53), .CK(HCLK), .Q(
+        \FLASH_read_addr[0] ) );
+  FFEDQHDLX FLASH_read_addr_reg_15_ ( .D(HADDR[15]), .E(n53), .CK(HCLK), .Q(
+        \FLASH_read_addr[15] ) );
+  FFEDQHDLX FLASH_read_addr_reg_9_ ( .D(HADDR[9]), .E(n53), .CK(HCLK), .Q(
+        \FLASH_read_addr[9] ) );
+  FFEDQHDLX FLASH_read_addr_reg_2_ ( .D(HADDR[2]), .E(n53), .CK(HCLK), .Q(
+        \FLASH_read_addr[2] ) );
+  FFEDQHDLX FLASH_read_addr_reg_10_ ( .D(HADDR[10]), .E(n53), .CK(HCLK), .Q(
+        \FLASH_read_addr[10] ) );
+  FFDRHD1X SLAVE_state_c_reg_2_ ( .D(SLAVE_state_n_2_), .CK(HCLK), .RN(HRST_n), 
+        .QN(n17) );
+  FFDQHD1X FLASH_read_req_reg ( .D(n540), .CK(HCLK), .Q(FLASH_read_req) );
+  LATHDLX HRDATA_tri_enable_reg_31_ ( .G(N85), .D(n52), .QN(n19) );
+  LATHDLX HRDATA_tri_enable_reg_30_ ( .G(N85), .D(n52), .QN(n20) );
+  LATHDLX HRDATA_tri_enable_reg_29_ ( .G(N85), .D(n52), .QN(n21) );
+  LATHDLX HRDATA_tri_enable_reg_28_ ( .G(N85), .D(n52), .QN(n22) );
+  LATHDLX HRDATA_tri_enable_reg_27_ ( .G(N85), .D(n52), .QN(n23) );
+  LATHDLX HRDATA_tri_enable_reg_26_ ( .G(N85), .D(n52), .QN(n24) );
+  LATHDLX HRDATA_tri_enable_reg_25_ ( .G(N85), .D(n52), .QN(n25) );
+  LATHDLX HRDATA_tri_enable_reg_24_ ( .G(N85), .D(n52), .QN(n26) );
+  LATHDLX HRDATA_tri_enable_reg_23_ ( .G(N85), .D(n52), .QN(n27) );
+  LATHDLX HRDATA_tri_enable_reg_22_ ( .G(N85), .D(n52), .QN(n28) );
+  LATHDLX HRDATA_tri_enable_reg_21_ ( .G(N85), .D(n52), .QN(n29) );
+  LATHDLX HRDATA_tri_enable_reg_20_ ( .G(N85), .D(n52), .QN(n30) );
+  LATHDLX HRDATA_tri_enable_reg_19_ ( .G(N85), .D(n52), .QN(n31) );
+  LATHDLX HRDATA_tri_enable_reg_18_ ( .G(N85), .D(n52), .QN(n32) );
+  LATHDLX HRDATA_tri_enable_reg_17_ ( .G(N85), .D(n52), .QN(n33) );
+  LATHDLX HRDATA_tri_enable_reg_16_ ( .G(N85), .D(n52), .QN(n34) );
+  LATHDLX HRDATA_tri_enable_reg_15_ ( .G(N85), .D(n52), .QN(n35) );
+  LATHDLX HRDATA_tri_enable_reg_14_ ( .G(N85), .D(n52), .QN(n36) );
+  LATHDLX HRDATA_tri_enable_reg_13_ ( .G(N85), .D(n52), .QN(n37) );
+  LATHDLX HRDATA_tri_enable_reg_12_ ( .G(N85), .D(n52), .QN(n38) );
+  LATHDLX HRDATA_tri_enable_reg_11_ ( .G(N85), .D(n52), .QN(n39) );
+  LATHDLX HRDATA_tri_enable_reg_10_ ( .G(N85), .D(n52), .QN(n40) );
+  LATHDLX HRDATA_tri_enable_reg_9_ ( .G(N85), .D(n52), .QN(n41) );
+  LATHDLX HRDATA_tri_enable_reg_8_ ( .G(N85), .D(n52), .QN(n42) );
+  LATHDLX HRDATA_tri_enable_reg_7_ ( .G(N85), .D(n52), .QN(n43) );
+  LATHDLX HRDATA_tri_enable_reg_6_ ( .G(N85), .D(n52), .QN(n44) );
+  LATHDLX HRDATA_tri_enable_reg_5_ ( .G(N85), .D(n52), .QN(n45) );
+  LATHDLX HRDATA_tri_enable_reg_4_ ( .G(N85), .D(n52), .QN(n46) );
+  LATHDLX HRDATA_tri_enable_reg_3_ ( .G(N85), .D(n52), .QN(n47) );
+  LATHDLX HRDATA_tri_enable_reg_2_ ( .G(N85), .D(n52), .QN(n48) );
+  LATHDLX HRDATA_tri_enable_reg_1_ ( .G(N85), .D(n52), .QN(n49) );
+  LATHDLX HRDATA_tri_enable_reg_0_ ( .G(N85), .D(n52), .QN(n50) );
+  LATHDLX HRDATA_reg_31_ ( .G(N85), .D(\FLASH_read_data_word[31] ), .Q(N86) );
+  LATHDLX HRDATA_reg_30_ ( .G(N85), .D(\FLASH_read_data_word[30] ), .Q(N89) );
+  LATHDLX HRDATA_reg_29_ ( .G(N85), .D(\FLASH_read_data_word[29] ), .Q(N92) );
+  LATHDLX HRDATA_reg_28_ ( .G(N85), .D(\FLASH_read_data_word[28] ), .Q(N95) );
+  LATHDLX HRDATA_reg_27_ ( .G(N85), .D(\FLASH_read_data_word[27] ), .Q(N98) );
+  LATHDLX HRDATA_reg_26_ ( .G(N85), .D(\FLASH_read_data_word[26] ), .Q(N101)
+         );
+  LATHDLX HRDATA_reg_25_ ( .G(N85), .D(\FLASH_read_data_word[25] ), .Q(N104)
+         );
+  LATHDLX HRDATA_reg_24_ ( .G(N85), .D(\FLASH_read_data_word[24] ), .Q(N107)
+         );
+  LATHDLX HRDATA_reg_23_ ( .G(N85), .D(\FLASH_read_data_word[23] ), .Q(N110)
+         );
+  LATHDLX HRDATA_reg_22_ ( .G(N85), .D(\FLASH_read_data_word[22] ), .Q(N113)
+         );
+  LATHDLX HRDATA_reg_21_ ( .G(N85), .D(\FLASH_read_data_word[21] ), .Q(N116)
+         );
+  LATHDLX HRDATA_reg_20_ ( .G(N85), .D(\FLASH_read_data_word[20] ), .Q(N119)
+         );
+  LATHDLX HRDATA_reg_19_ ( .G(N85), .D(\FLASH_read_data_word[19] ), .Q(N122)
+         );
+  LATHDLX HRDATA_reg_18_ ( .G(N85), .D(\FLASH_read_data_word[18] ), .Q(N125)
+         );
+  LATHDLX HRDATA_reg_17_ ( .G(N85), .D(\FLASH_read_data_word[17] ), .Q(N128)
+         );
+  LATHDLX HRDATA_reg_16_ ( .G(N85), .D(\FLASH_read_data_word[16] ), .Q(N131)
+         );
+  LATHDLX HRDATA_reg_15_ ( .G(N85), .D(\FLASH_read_data_word[15] ), .Q(N134)
+         );
+  LATHDLX HRDATA_reg_14_ ( .G(N85), .D(\FLASH_read_data_word[14] ), .Q(N137)
+         );
+  LATHDLX HRDATA_reg_13_ ( .G(N85), .D(\FLASH_read_data_word[13] ), .Q(N140)
+         );
+  LATHDLX HRDATA_reg_12_ ( .G(N85), .D(\FLASH_read_data_word[12] ), .Q(N143)
+         );
+  LATHDLX HRDATA_reg_11_ ( .G(N85), .D(\FLASH_read_data_word[11] ), .Q(N146)
+         );
+  LATHDLX HRDATA_reg_10_ ( .G(N85), .D(\FLASH_read_data_word[10] ), .Q(N149)
+         );
+  LATHDLX HRDATA_reg_9_ ( .G(N85), .D(\FLASH_read_data_word[9] ), .Q(N152) );
+  LATHDLX HRDATA_reg_8_ ( .G(N85), .D(\FLASH_read_data_word[8] ), .Q(N155) );
+  LATHDLX HRDATA_reg_7_ ( .G(N85), .D(\FLASH_read_data_word[7] ), .Q(N158) );
+  LATHDLX HRDATA_reg_6_ ( .G(N85), .D(\FLASH_read_data_word[6] ), .Q(N161) );
+  LATHDLX HRDATA_reg_5_ ( .G(N85), .D(\FLASH_read_data_word[5] ), .Q(N164) );
+  LATHDLX HRDATA_reg_4_ ( .G(N85), .D(\FLASH_read_data_word[4] ), .Q(N167) );
+  LATHDLX HRDATA_reg_3_ ( .G(N85), .D(\FLASH_read_data_word[3] ), .Q(N170) );
+  LATHDLX HRDATA_reg_2_ ( .G(N85), .D(\FLASH_read_data_word[2] ), .Q(N173) );
+  LATHDLX HRDATA_reg_1_ ( .G(N85), .D(\FLASH_read_data_word[1] ), .Q(N176) );
+  LATHDLX HRDATA_reg_0_ ( .G(N85), .D(\FLASH_read_data_word[0] ), .Q(N179) );
+  BUFTSHD2X HRDATA_tri_0_ ( .A(N179), .E(n50), .Z(HRDATA[0]) );
+  BUFTSHD2X HRDATA_tri_1_ ( .A(N176), .E(n49), .Z(HRDATA[1]) );
+  BUFTSHD2X HRDATA_tri_2_ ( .A(N173), .E(n48), .Z(HRDATA[2]) );
+  BUFTSHD2X HRDATA_tri_3_ ( .A(N170), .E(n47), .Z(HRDATA[3]) );
+  BUFTSHD2X HRDATA_tri_4_ ( .A(N167), .E(n46), .Z(HRDATA[4]) );
+  BUFTSHD2X HRDATA_tri_5_ ( .A(N164), .E(n45), .Z(HRDATA[5]) );
+  BUFTSHD2X HRDATA_tri_6_ ( .A(N161), .E(n44), .Z(HRDATA[6]) );
+  BUFTSHD2X HRDATA_tri_7_ ( .A(N158), .E(n43), .Z(HRDATA[7]) );
+  BUFTSHD2X HRDATA_tri_8_ ( .A(N155), .E(n42), .Z(HRDATA[8]) );
+  BUFTSHD2X HRDATA_tri_9_ ( .A(N152), .E(n41), .Z(HRDATA[9]) );
+  BUFTSHD2X HRDATA_tri_10_ ( .A(N149), .E(n40), .Z(HRDATA[10]) );
+  BUFTSHD2X HRDATA_tri_11_ ( .A(N146), .E(n39), .Z(HRDATA[11]) );
+  BUFTSHD2X HRDATA_tri_12_ ( .A(N143), .E(n38), .Z(HRDATA[12]) );
+  BUFTSHD2X HRDATA_tri_13_ ( .A(N140), .E(n37), .Z(HRDATA[13]) );
+  BUFTSHD2X HRDATA_tri_14_ ( .A(N137), .E(n36), .Z(HRDATA[14]) );
+  BUFTSHD2X HRDATA_tri_15_ ( .A(N134), .E(n35), .Z(HRDATA[15]) );
+  BUFTSHD2X HRDATA_tri_16_ ( .A(N131), .E(n34), .Z(HRDATA[16]) );
+  BUFTSHD2X HRDATA_tri_17_ ( .A(N128), .E(n33), .Z(HRDATA[17]) );
+  BUFTSHD2X HRDATA_tri_18_ ( .A(N125), .E(n32), .Z(HRDATA[18]) );
+  BUFTSHD2X HRDATA_tri_19_ ( .A(N122), .E(n31), .Z(HRDATA[19]) );
+  BUFTSHD2X HRDATA_tri_20_ ( .A(N119), .E(n30), .Z(HRDATA[20]) );
+  BUFTSHD2X HRDATA_tri_21_ ( .A(N116), .E(n29), .Z(HRDATA[21]) );
+  BUFTSHD2X HRDATA_tri_22_ ( .A(N113), .E(n28), .Z(HRDATA[22]) );
+  BUFTSHD2X HRDATA_tri_23_ ( .A(N110), .E(n27), .Z(HRDATA[23]) );
+  BUFTSHD2X HRDATA_tri_24_ ( .A(N107), .E(n26), .Z(HRDATA[24]) );
+  BUFTSHD2X HRDATA_tri_25_ ( .A(N104), .E(n25), .Z(HRDATA[25]) );
+  BUFTSHD2X HRDATA_tri_26_ ( .A(N101), .E(n24), .Z(HRDATA[26]) );
+  BUFTSHD2X HRDATA_tri_27_ ( .A(N98), .E(n23), .Z(HRDATA[27]) );
+  BUFTSHD2X HRDATA_tri_28_ ( .A(N95), .E(n22), .Z(HRDATA[28]) );
+  BUFTSHD2X HRDATA_tri_29_ ( .A(N92), .E(n21), .Z(HRDATA[29]) );
+  BUFTSHD2X HRDATA_tri_30_ ( .A(N89), .E(n20), .Z(HRDATA[30]) );
+  BUFTSHD2X HRDATA_tri_31_ ( .A(N86), .E(n19), .Z(HRDATA[31]) );
+  TIEHHD U3 ( .Z(n_Logic1_) );
+  NAND4HDLX U4 ( .A(n13), .B(n_Logic1_), .C(\FLASH_state_c_out[6] ), .D(
+        n_Logic1_), .Z(n7) );
+  INVCLKHD4X U6 ( .A(\FLASH_state_c_out[0] ), .Z(n13) );
+  NAND4HD4X U7 ( .A(N54), .B(HTRANS_1_), .C(n10), .D(HSELx), .Z(n9) );
+  NAND2HD4X U8 ( .A(n17), .B(n9), .Z(n3) );
+  NOR2HD2X U9 ( .A(HWRITE), .B(n11), .Z(n10) );
+  NOR4HD1X U10 ( .A(HADDR[31]), .B(HADDR[30]), .C(HADDR[29]), .D(HADDR[28]), 
+        .Z(n11) );
+  OAI22B2HD1X U11 ( .C(n18), .D(n3), .AN(n3), .BN(n4), .Z(n51) );
+  OR4HD1X U12 ( .A(n57), .B(n7), .C(\FLASH_state_c_out[11] ), .D(n17), .Z(n4)
+         );
+  OAI21B2HD1X U13 ( .AN(FLASH_read_req), .BN(n6), .C(n5), .Z(n540) );
+  NAND4B1HDLX U16 ( .AN(n7), .B(\FLASH_state_c_out[11] ), .C(n8), .D(n3), .Z(
+        n6) );
+  NOR2HDLX U17 ( .A(\FLASH_state_c_out[12] ), .B(n52), .Z(n8) );
+  INVHDPX U18 ( .A(\FLASH_state_c_out[12] ), .Z(n57) );
+  OAI31HD1X U19 ( .A(n57), .B(\FLASH_state_c_out[11] ), .C(n7), .D(HRST_n), 
+        .Z(N84) );
+  NAND3HD1X U20 ( .A(n3), .B(HRST_n), .C(HSELx), .Z(n5) );
+  NAND2HDLX U21 ( .A(n17), .B(HRST_n), .Z(N83) );
+  NOR2HD1X U23 ( .A(HADDR[30]), .B(HADDR[31]), .Z(n2) );
+  OR3HD1X U24 ( .A(HADDR[26]), .B(HADDR[29]), .C(HADDR[27]), .Z(n1) );
+  NOR4B1HD1X U25 ( .AN(n2), .B(n1), .C(HADDR[25]), .D(HADDR[24]), .Z(n56) );
+  NOR3B1HD1X U26 ( .AN(n2), .B(HADDR[28]), .C(HADDR[29]), .Z(n55) );
+  NOR2HD1X U27 ( .A(HADDR[20]), .B(HADDR[19]), .Z(n15) );
+  OAI21HD1X U28 ( .A(HADDR[16]), .B(HADDR[17]), .C(HADDR[18]), .Z(n14) );
+  NOR3HD1X U29 ( .A(HADDR[21]), .B(HADDR[23]), .C(HADDR[22]), .Z(n12) );
+  AOI31HD1X U30 ( .A(n15), .B(n14), .C(n12), .D(n55), .Z(n16) );
+  AOI21B2HD1X U31 ( .AN(n56), .BN(n55), .C(n16), .Z(N54) );
+endmodule
+
+
+module FlashController_ASIC ( pad_HCLK, pad_HRST_n, pad_HADDR, pad_HWDATA, 
+        pad_HWRITE, pad_HSELx, pad_HSIZE, pad_HTRANS, pad_i_pad_pmodb_miso, 
+        pad_o_pad_pmodb_mosi, pad_o_pad_pmodb_cs, pad_o_pad_pmodb_spi_clk, 
+        pad_HREADY, pad_HRDATA, pad_HRESP );
+  input [31:0] pad_HADDR;
+  input [31:0] pad_HWDATA;
+  input [1:0] pad_HSIZE;
+  input [1:0] pad_HTRANS;
+  output [31:0] pad_HRDATA;
+  output [1:0] pad_HRESP;
+  input pad_HCLK, pad_HRST_n, pad_HWRITE, pad_HSELx, pad_i_pad_pmodb_miso;
+  output pad_o_pad_pmodb_mosi, pad_o_pad_pmodb_cs, pad_o_pad_pmodb_spi_clk,
+         pad_HREADY;
+  wire   n_Logic1_, net10662, HCLK, HRST_n, \HADDR[31] , \HADDR[30] ,
+         \HADDR[29] , \HADDR[28] , \HADDR[27] , \HADDR[26] , \HADDR[25] ,
+         \HADDR[24] , \HADDR[23] , \HADDR[22] , \HADDR[21] , \HADDR[20] ,
+         \HADDR[19] , \HADDR[18] , \HADDR[17] , \HADDR[16] , \HADDR[15] ,
+         \HADDR[14] , \HADDR[13] , \HADDR[12] , \HADDR[11] , \HADDR[10] ,
+         \HADDR[9] , \HADDR[8] , \HADDR[7] , \HADDR[6] , \HADDR[5] ,
+         \HADDR[4] , \HADDR[3] , \HADDR[2] , \HADDR[1] , \HADDR[0] , HWRITE,
+         HTRANS_1_, HSELx, i_pad_pmodb_miso, \HRDATA[31] , \HRDATA[30] ,
+         \HRDATA[29] , \HRDATA[28] , \HRDATA[27] , \HRDATA[26] , \HRDATA[25] ,
+         \HRDATA[24] , \HRDATA[23] , \HRDATA[22] , \HRDATA[21] , \HRDATA[20] ,
+         \HRDATA[19] , \HRDATA[18] , \HRDATA[17] , \HRDATA[16] , \HRDATA[15] ,
+         \HRDATA[14] , \HRDATA[13] , \HRDATA[12] , \HRDATA[11] , \HRDATA[10] ,
+         \HRDATA[9] , \HRDATA[8] , \HRDATA[7] , \HRDATA[6] , \HRDATA[5] ,
+         \HRDATA[4] , \HRDATA[3] , \HRDATA[2] , \HRDATA[1] , \HRDATA[0] ,
+         o_pad_pmodb_mosi, o_pad_pmodb_cs, HREADY;
+
+  PLBI8F U_clk_in ( .P(pad_HCLK), .A(net10662), .CONOF(n_Logic1_), .NEN(
+        net10662), .PD(net10662), .PEN(net10662), .PU(n_Logic1_), .SONOF(
+        net10662), .D(HCLK) );
+  PLBI8F U_reset_in ( .P(pad_HRST_n), .A(net10662), .CONOF(n_Logic1_), .NEN(
+        net10662), .PD(net10662), .PEN(net10662), .PU(n_Logic1_), .SONOF(
+        net10662), .D(HRST_n) );
+  PLBI8F U_haddr_in_0 ( .P(pad_HADDR[0]), .A(net10662), .CONOF(n_Logic1_), 
+        .NEN(net10662), .PD(net10662), .PEN(net10662), .PU(n_Logic1_), .SONOF(
+        net10662), .D(\HADDR[0] ) );
+  PLBI8F U_haddr_in_1 ( .P(pad_HADDR[1]), .A(net10662), .CONOF(n_Logic1_), 
+        .NEN(net10662), .PD(net10662), .PEN(net10662), .PU(n_Logic1_), .SONOF(
+        net10662), .D(\HADDR[1] ) );
+  PLBI8F U_haddr_in_2 ( .P(pad_HADDR[2]), .A(net10662), .CONOF(n_Logic1_), 
+        .NEN(net10662), .PD(net10662), .PEN(net10662), .PU(n_Logic1_), .SONOF(
+        net10662), .D(\HADDR[2] ) );
+  PLBI8F U_haddr_in_3 ( .P(pad_HADDR[3]), .A(net10662), .CONOF(n_Logic1_), 
+        .NEN(net10662), .PD(net10662), .PEN(net10662), .PU(n_Logic1_), .SONOF(
+        net10662), .D(\HADDR[3] ) );
+  PLBI8F U_haddr_in_4 ( .P(pad_HADDR[4]), .A(net10662), .CONOF(n_Logic1_), 
+        .NEN(net10662), .PD(net10662), .PEN(net10662), .PU(n_Logic1_), .SONOF(
+        net10662), .D(\HADDR[4] ) );
+  PLBI8F U_haddr_in_5 ( .P(pad_HADDR[5]), .A(net10662), .CONOF(n_Logic1_), 
+        .NEN(net10662), .PD(net10662), .PEN(net10662), .PU(n_Logic1_), .SONOF(
+        net10662), .D(\HADDR[5] ) );
+  PLBI8F U_haddr_in_6 ( .P(pad_HADDR[6]), .A(net10662), .CONOF(n_Logic1_), 
+        .NEN(net10662), .PD(net10662), .PEN(net10662), .PU(n_Logic1_), .SONOF(
+        net10662), .D(\HADDR[6] ) );
+  PLBI8F U_haddr_in_7 ( .P(pad_HADDR[7]), .A(net10662), .CONOF(n_Logic1_), 
+        .NEN(net10662), .PD(net10662), .PEN(net10662), .PU(n_Logic1_), .SONOF(
+        net10662), .D(\HADDR[7] ) );
+  PLBI8F U_haddr_in_8 ( .P(pad_HADDR[8]), .A(net10662), .CONOF(n_Logic1_), 
+        .NEN(net10662), .PD(net10662), .PEN(net10662), .PU(n_Logic1_), .SONOF(
+        net10662), .D(\HADDR[8] ) );
+  PLBI8F U_haddr_in_9 ( .P(pad_HADDR[9]), .A(net10662), .CONOF(n_Logic1_), 
+        .NEN(net10662), .PD(net10662), .PEN(net10662), .PU(n_Logic1_), .SONOF(
+        net10662), .D(\HADDR[9] ) );
+  PLBI8F U_haddr_in_10 ( .P(pad_HADDR[10]), .A(net10662), .CONOF(n_Logic1_), 
+        .NEN(net10662), .PD(net10662), .PEN(net10662), .PU(n_Logic1_), .SONOF(
+        net10662), .D(\HADDR[10] ) );
+  PLBI8F U_haddr_in_11 ( .P(pad_HADDR[11]), .A(net10662), .CONOF(n_Logic1_), 
+        .NEN(net10662), .PD(net10662), .PEN(net10662), .PU(n_Logic1_), .SONOF(
+        net10662), .D(\HADDR[11] ) );
+  PLBI8F U_haddr_in_12 ( .P(pad_HADDR[12]), .A(net10662), .CONOF(n_Logic1_), 
+        .NEN(net10662), .PD(net10662), .PEN(net10662), .PU(n_Logic1_), .SONOF(
+        net10662), .D(\HADDR[12] ) );
+  PLBI8F U_haddr_in_13 ( .P(pad_HADDR[13]), .A(net10662), .CONOF(n_Logic1_), 
+        .NEN(net10662), .PD(net10662), .PEN(net10662), .PU(n_Logic1_), .SONOF(
+        net10662), .D(\HADDR[13] ) );
+  PLBI8F U_haddr_in_14 ( .P(pad_HADDR[14]), .A(net10662), .CONOF(n_Logic1_), 
+        .NEN(net10662), .PD(net10662), .PEN(net10662), .PU(n_Logic1_), .SONOF(
+        net10662), .D(\HADDR[14] ) );
+  PLBI8F U_haddr_in_15 ( .P(pad_HADDR[15]), .A(net10662), .CONOF(n_Logic1_), 
+        .NEN(net10662), .PD(net10662), .PEN(net10662), .PU(n_Logic1_), .SONOF(
+        net10662), .D(\HADDR[15] ) );
+  PLBI8F U_haddr_in_16 ( .P(pad_HADDR[16]), .A(net10662), .CONOF(n_Logic1_), 
+        .NEN(net10662), .PD(net10662), .PEN(net10662), .PU(n_Logic1_), .SONOF(
+        net10662), .D(\HADDR[16] ) );
+  PLBI8F U_haddr_in_17 ( .P(pad_HADDR[17]), .A(net10662), .CONOF(n_Logic1_), 
+        .NEN(net10662), .PD(net10662), .PEN(net10662), .PU(n_Logic1_), .SONOF(
+        net10662), .D(\HADDR[17] ) );
+  PLBI8F U_haddr_in_18 ( .P(pad_HADDR[18]), .A(net10662), .CONOF(n_Logic1_), 
+        .NEN(net10662), .PD(net10662), .PEN(net10662), .PU(n_Logic1_), .SONOF(
+        net10662), .D(\HADDR[18] ) );
+  PLBI8F U_haddr_in_19 ( .P(pad_HADDR[19]), .A(net10662), .CONOF(n_Logic1_), 
+        .NEN(net10662), .PD(net10662), .PEN(net10662), .PU(n_Logic1_), .SONOF(
+        net10662), .D(\HADDR[19] ) );
+  PLBI8F U_haddr_in_20 ( .P(pad_HADDR[20]), .A(net10662), .CONOF(n_Logic1_), 
+        .NEN(net10662), .PD(net10662), .PEN(net10662), .PU(n_Logic1_), .SONOF(
+        net10662), .D(\HADDR[20] ) );
+  PLBI8F U_haddr_in_21 ( .P(pad_HADDR[21]), .A(net10662), .CONOF(n_Logic1_), 
+        .NEN(net10662), .PD(net10662), .PEN(net10662), .PU(n_Logic1_), .SONOF(
+        net10662), .D(\HADDR[21] ) );
+  PLBI8F U_haddr_in_22 ( .P(pad_HADDR[22]), .A(net10662), .CONOF(n_Logic1_), 
+        .NEN(net10662), .PD(net10662), .PEN(net10662), .PU(n_Logic1_), .SONOF(
+        net10662), .D(\HADDR[22] ) );
+  PLBI8F U_haddr_in_23 ( .P(pad_HADDR[23]), .A(net10662), .CONOF(n_Logic1_), 
+        .NEN(net10662), .PD(net10662), .PEN(net10662), .PU(n_Logic1_), .SONOF(
+        net10662), .D(\HADDR[23] ) );
+  PLBI8F U_haddr_in_24 ( .P(pad_HADDR[24]), .A(net10662), .CONOF(n_Logic1_), 
+        .NEN(net10662), .PD(net10662), .PEN(net10662), .PU(n_Logic1_), .SONOF(
+        net10662), .D(\HADDR[24] ) );
+  PLBI8F U_haddr_in_25 ( .P(pad_HADDR[25]), .A(net10662), .CONOF(n_Logic1_), 
+        .NEN(net10662), .PD(net10662), .PEN(net10662), .PU(n_Logic1_), .SONOF(
+        net10662), .D(\HADDR[25] ) );
+  PLBI8F U_haddr_in_26 ( .P(pad_HADDR[26]), .A(net10662), .CONOF(n_Logic1_), 
+        .NEN(net10662), .PD(net10662), .PEN(net10662), .PU(n_Logic1_), .SONOF(
+        net10662), .D(\HADDR[26] ) );
+  PLBI8F U_haddr_in_27 ( .P(pad_HADDR[27]), .A(net10662), .CONOF(n_Logic1_), 
+        .NEN(net10662), .PD(net10662), .PEN(net10662), .PU(n_Logic1_), .SONOF(
+        net10662), .D(\HADDR[27] ) );
+  PLBI8F U_haddr_in_28 ( .P(pad_HADDR[28]), .A(net10662), .CONOF(n_Logic1_), 
+        .NEN(net10662), .PD(net10662), .PEN(net10662), .PU(n_Logic1_), .SONOF(
+        net10662), .D(\HADDR[28] ) );
+  PLBI8F U_haddr_in_29 ( .P(pad_HADDR[29]), .A(net10662), .CONOF(n_Logic1_), 
+        .NEN(net10662), .PD(net10662), .PEN(net10662), .PU(n_Logic1_), .SONOF(
+        net10662), .D(\HADDR[29] ) );
+  PLBI8F U_haddr_in_30 ( .P(pad_HADDR[30]), .A(net10662), .CONOF(n_Logic1_), 
+        .NEN(net10662), .PD(net10662), .PEN(net10662), .PU(n_Logic1_), .SONOF(
+        net10662), .D(\HADDR[30] ) );
+  PLBI8F U_haddr_in_31 ( .P(pad_HADDR[31]), .A(net10662), .CONOF(n_Logic1_), 
+        .NEN(net10662), .PD(net10662), .PEN(net10662), .PU(n_Logic1_), .SONOF(
+        net10662), .D(\HADDR[31] ) );
+  PLBI8F U_hwdata_in_0 ( .P(pad_HWDATA[0]), .A(net10662), .CONOF(n_Logic1_), 
+        .NEN(net10662), .PD(net10662), .PEN(net10662), .PU(n_Logic1_), .SONOF(
+        net10662) );
+  PLBI8F U_hwdata_in_1 ( .P(pad_HWDATA[1]), .A(net10662), .CONOF(n_Logic1_), 
+        .NEN(net10662), .PD(net10662), .PEN(net10662), .PU(n_Logic1_), .SONOF(
+        net10662) );
+  PLBI8F U_hwdata_in_2 ( .P(pad_HWDATA[2]), .A(net10662), .CONOF(n_Logic1_), 
+        .NEN(net10662), .PD(net10662), .PEN(net10662), .PU(n_Logic1_), .SONOF(
+        net10662) );
+  PLBI8F U_hwdata_in_3 ( .P(pad_HWDATA[3]), .A(net10662), .CONOF(n_Logic1_), 
+        .NEN(net10662), .PD(net10662), .PEN(net10662), .PU(n_Logic1_), .SONOF(
+        net10662) );
+  PLBI8F U_hwdata_in_4 ( .P(pad_HWDATA[4]), .A(net10662), .CONOF(n_Logic1_), 
+        .NEN(net10662), .PD(net10662), .PEN(net10662), .PU(n_Logic1_), .SONOF(
+        net10662) );
+  PLBI8F U_hwdata_in_5 ( .P(pad_HWDATA[5]), .A(net10662), .CONOF(n_Logic1_), 
+        .NEN(net10662), .PD(net10662), .PEN(net10662), .PU(n_Logic1_), .SONOF(
+        net10662) );
+  PLBI8F U_hwdata_in_6 ( .P(pad_HWDATA[6]), .A(net10662), .CONOF(n_Logic1_), 
+        .NEN(net10662), .PD(net10662), .PEN(net10662), .PU(n_Logic1_), .SONOF(
+        net10662) );
+  PLBI8F U_hwdata_in_7 ( .P(pad_HWDATA[7]), .A(net10662), .CONOF(n_Logic1_), 
+        .NEN(net10662), .PD(net10662), .PEN(net10662), .PU(n_Logic1_), .SONOF(
+        net10662) );
+  PLBI8F U_hwdata_in_8 ( .P(pad_HWDATA[8]), .A(net10662), .CONOF(n_Logic1_), 
+        .NEN(net10662), .PD(net10662), .PEN(net10662), .PU(n_Logic1_), .SONOF(
+        net10662) );
+  PLBI8F U_hwdata_in_9 ( .P(pad_HWDATA[9]), .A(net10662), .CONOF(n_Logic1_), 
+        .NEN(net10662), .PD(net10662), .PEN(net10662), .PU(n_Logic1_), .SONOF(
+        net10662) );
+  PLBI8F U_hwdata_in_10 ( .P(pad_HWDATA[10]), .A(net10662), .CONOF(n_Logic1_), 
+        .NEN(net10662), .PD(net10662), .PEN(net10662), .PU(n_Logic1_), .SONOF(
+        net10662) );
+  PLBI8F U_hwdata_in_11 ( .P(pad_HWDATA[11]), .A(net10662), .CONOF(n_Logic1_), 
+        .NEN(net10662), .PD(net10662), .PEN(net10662), .PU(n_Logic1_), .SONOF(
+        net10662) );
+  PLBI8F U_hwdata_in_12 ( .P(pad_HWDATA[12]), .A(net10662), .CONOF(n_Logic1_), 
+        .NEN(net10662), .PD(net10662), .PEN(net10662), .PU(n_Logic1_), .SONOF(
+        net10662) );
+  PLBI8F U_hwdata_in_13 ( .P(pad_HWDATA[13]), .A(net10662), .CONOF(n_Logic1_), 
+        .NEN(net10662), .PD(net10662), .PEN(net10662), .PU(n_Logic1_), .SONOF(
+        net10662) );
+  PLBI8F U_hwdata_in_14 ( .P(pad_HWDATA[14]), .A(net10662), .CONOF(n_Logic1_), 
+        .NEN(net10662), .PD(net10662), .PEN(net10662), .PU(n_Logic1_), .SONOF(
+        net10662) );
+  PLBI8F U_hwdata_in_15 ( .P(pad_HWDATA[15]), .A(net10662), .CONOF(n_Logic1_), 
+        .NEN(net10662), .PD(net10662), .PEN(net10662), .PU(n_Logic1_), .SONOF(
+        net10662) );
+  PLBI8F U_hwdata_in_16 ( .P(pad_HWDATA[16]), .A(net10662), .CONOF(n_Logic1_), 
+        .NEN(net10662), .PD(net10662), .PEN(net10662), .PU(n_Logic1_), .SONOF(
+        net10662) );
+  PLBI8F U_hwdata_in_17 ( .P(pad_HWDATA[17]), .A(net10662), .CONOF(n_Logic1_), 
+        .NEN(net10662), .PD(net10662), .PEN(net10662), .PU(n_Logic1_), .SONOF(
+        net10662) );
+  PLBI8F U_hwdata_in_18 ( .P(pad_HWDATA[18]), .A(net10662), .CONOF(n_Logic1_), 
+        .NEN(net10662), .PD(net10662), .PEN(net10662), .PU(n_Logic1_), .SONOF(
+        net10662) );
+  PLBI8F U_hwdata_in_19 ( .P(pad_HWDATA[19]), .A(net10662), .CONOF(n_Logic1_), 
+        .NEN(net10662), .PD(net10662), .PEN(net10662), .PU(n_Logic1_), .SONOF(
+        net10662) );
+  PLBI8F U_hwdata_in_20 ( .P(pad_HWDATA[20]), .A(net10662), .CONOF(n_Logic1_), 
+        .NEN(net10662), .PD(net10662), .PEN(net10662), .PU(n_Logic1_), .SONOF(
+        net10662) );
+  PLBI8F U_hwdata_in_21 ( .P(pad_HWDATA[21]), .A(net10662), .CONOF(n_Logic1_), 
+        .NEN(net10662), .PD(net10662), .PEN(net10662), .PU(n_Logic1_), .SONOF(
+        net10662) );
+  PLBI8F U_hwdata_in_22 ( .P(pad_HWDATA[22]), .A(net10662), .CONOF(n_Logic1_), 
+        .NEN(net10662), .PD(net10662), .PEN(net10662), .PU(n_Logic1_), .SONOF(
+        net10662) );
+  PLBI8F U_hwdata_in_23 ( .P(pad_HWDATA[23]), .A(net10662), .CONOF(n_Logic1_), 
+        .NEN(net10662), .PD(net10662), .PEN(net10662), .PU(n_Logic1_), .SONOF(
+        net10662) );
+  PLBI8F U_hwdata_in_24 ( .P(pad_HWDATA[24]), .A(net10662), .CONOF(n_Logic1_), 
+        .NEN(net10662), .PD(net10662), .PEN(net10662), .PU(n_Logic1_), .SONOF(
+        net10662) );
+  PLBI8F U_hwdata_in_25 ( .P(pad_HWDATA[25]), .A(net10662), .CONOF(n_Logic1_), 
+        .NEN(net10662), .PD(net10662), .PEN(net10662), .PU(n_Logic1_), .SONOF(
+        net10662) );
+  PLBI8F U_hwdata_in_26 ( .P(pad_HWDATA[26]), .A(net10662), .CONOF(n_Logic1_), 
+        .NEN(net10662), .PD(net10662), .PEN(net10662), .PU(n_Logic1_), .SONOF(
+        net10662) );
+  PLBI8F U_hwdata_in_27 ( .P(pad_HWDATA[27]), .A(net10662), .CONOF(n_Logic1_), 
+        .NEN(net10662), .PD(net10662), .PEN(net10662), .PU(n_Logic1_), .SONOF(
+        net10662) );
+  PLBI8F U_hwdata_in_28 ( .P(pad_HWDATA[28]), .A(net10662), .CONOF(n_Logic1_), 
+        .NEN(net10662), .PD(net10662), .PEN(net10662), .PU(n_Logic1_), .SONOF(
+        net10662) );
+  PLBI8F U_hwdata_in_29 ( .P(pad_HWDATA[29]), .A(net10662), .CONOF(n_Logic1_), 
+        .NEN(net10662), .PD(net10662), .PEN(net10662), .PU(n_Logic1_), .SONOF(
+        net10662) );
+  PLBI8F U_hwdata_in_30 ( .P(pad_HWDATA[30]), .A(net10662), .CONOF(n_Logic1_), 
+        .NEN(net10662), .PD(net10662), .PEN(net10662), .PU(n_Logic1_), .SONOF(
+        net10662) );
+  PLBI8F U_hwdata_in_31 ( .P(pad_HWDATA[31]), .A(net10662), .CONOF(n_Logic1_), 
+        .NEN(net10662), .PD(net10662), .PEN(net10662), .PU(n_Logic1_), .SONOF(
+        net10662) );
+  PLBI8F U_hwrite_in ( .P(pad_HWRITE), .A(net10662), .CONOF(net10662), .NEN(
+        net10662), .PD(net10662), .PEN(net10662), .PU(n_Logic1_), .SONOF(
+        net10662), .D(HWRITE) );
+  PLBI8F U_hsize_in_0 ( .P(pad_HSIZE[0]), .A(net10662), .CONOF(net10662), 
+        .NEN(net10662), .PD(net10662), .PEN(net10662), .PU(n_Logic1_), .SONOF(
+        net10662) );
+  PLBI8F U_hsize_in_1 ( .P(pad_HSIZE[1]), .A(net10662), .CONOF(net10662), 
+        .NEN(net10662), .PD(net10662), .PEN(net10662), .PU(n_Logic1_), .SONOF(
+        net10662) );
+  PLBI8F U_htrans_in_0 ( .P(pad_HTRANS[0]), .A(net10662), .CONOF(net10662), 
+        .NEN(net10662), .PD(net10662), .PEN(net10662), .PU(n_Logic1_), .SONOF(
+        net10662) );
+  PLBI8F U_htrans_in_1 ( .P(pad_HTRANS[1]), .A(net10662), .CONOF(net10662), 
+        .NEN(net10662), .PD(net10662), .PEN(net10662), .PU(n_Logic1_), .SONOF(
+        net10662), .D(HTRANS_1_) );
+  PLBI8F U_hselx_in ( .P(pad_HSELx), .A(net10662), .CONOF(net10662), .NEN(
+        net10662), .PD(net10662), .PEN(net10662), .PU(n_Logic1_), .SONOF(
+        net10662), .D(HSELx) );
+  PLBI8F U_i_pad_pmodb_miso_in ( .P(pad_i_pad_pmodb_miso), .A(net10662), 
+        .CONOF(net10662), .NEN(net10662), .PD(net10662), .PEN(net10662), .PU(
+        n_Logic1_), .SONOF(net10662), .D(i_pad_pmodb_miso) );
+  PLBI8F U_hrdata_out_0 ( .P(pad_HRDATA[0]), .A(\HRDATA[0] ), .CONOF(net10662), 
+        .NEN(n_Logic1_), .PD(net10662), .PEN(n_Logic1_), .PU(n_Logic1_), 
+        .SONOF(net10662) );
+  PLBI8F U_hrdata_out_1 ( .P(pad_HRDATA[1]), .A(\HRDATA[1] ), .CONOF(net10662), 
+        .NEN(n_Logic1_), .PD(net10662), .PEN(n_Logic1_), .PU(n_Logic1_), 
+        .SONOF(net10662) );
+  PLBI8F U_hrdata_out_2 ( .P(pad_HRDATA[2]), .A(\HRDATA[2] ), .CONOF(net10662), 
+        .NEN(n_Logic1_), .PD(net10662), .PEN(n_Logic1_), .PU(n_Logic1_), 
+        .SONOF(net10662) );
+  PLBI8F U_hrdata_out_3 ( .P(pad_HRDATA[3]), .A(\HRDATA[3] ), .CONOF(net10662), 
+        .NEN(n_Logic1_), .PD(net10662), .PEN(n_Logic1_), .PU(n_Logic1_), 
+        .SONOF(net10662) );
+  PLBI8F U_hrdata_out_4 ( .P(pad_HRDATA[4]), .A(\HRDATA[4] ), .CONOF(net10662), 
+        .NEN(n_Logic1_), .PD(net10662), .PEN(n_Logic1_), .PU(n_Logic1_), 
+        .SONOF(net10662) );
+  PLBI8F U_hrdata_out_5 ( .P(pad_HRDATA[5]), .A(\HRDATA[5] ), .CONOF(net10662), 
+        .NEN(n_Logic1_), .PD(net10662), .PEN(n_Logic1_), .PU(n_Logic1_), 
+        .SONOF(net10662) );
+  PLBI8F U_hrdata_out_6 ( .P(pad_HRDATA[6]), .A(\HRDATA[6] ), .CONOF(net10662), 
+        .NEN(n_Logic1_), .PD(net10662), .PEN(n_Logic1_), .PU(n_Logic1_), 
+        .SONOF(net10662) );
+  PLBI8F U_hrdata_out_7 ( .P(pad_HRDATA[7]), .A(\HRDATA[7] ), .CONOF(net10662), 
+        .NEN(n_Logic1_), .PD(net10662), .PEN(n_Logic1_), .PU(n_Logic1_), 
+        .SONOF(net10662) );
+  PLBI8F U_hrdata_out_8 ( .P(pad_HRDATA[8]), .A(\HRDATA[8] ), .CONOF(net10662), 
+        .NEN(n_Logic1_), .PD(net10662), .PEN(n_Logic1_), .PU(n_Logic1_), 
+        .SONOF(net10662) );
+  PLBI8F U_hrdata_out_9 ( .P(pad_HRDATA[9]), .A(\HRDATA[9] ), .CONOF(net10662), 
+        .NEN(n_Logic1_), .PD(net10662), .PEN(n_Logic1_), .PU(n_Logic1_), 
+        .SONOF(net10662) );
+  PLBI8F U_hrdata_out_10 ( .P(pad_HRDATA[10]), .A(\HRDATA[10] ), .CONOF(
+        net10662), .NEN(n_Logic1_), .PD(net10662), .PEN(n_Logic1_), .PU(
+        n_Logic1_), .SONOF(net10662) );
+  PLBI8F U_hrdata_out_11 ( .P(pad_HRDATA[11]), .A(\HRDATA[11] ), .CONOF(
+        net10662), .NEN(n_Logic1_), .PD(net10662), .PEN(n_Logic1_), .PU(
+        n_Logic1_), .SONOF(net10662) );
+  PLBI8F U_hrdata_out_12 ( .P(pad_HRDATA[12]), .A(\HRDATA[12] ), .CONOF(
+        net10662), .NEN(n_Logic1_), .PD(net10662), .PEN(n_Logic1_), .PU(
+        n_Logic1_), .SONOF(net10662) );
+  PLBI8F U_hrdata_out_13 ( .P(pad_HRDATA[13]), .A(\HRDATA[13] ), .CONOF(
+        net10662), .NEN(n_Logic1_), .PD(net10662), .PEN(n_Logic1_), .PU(
+        n_Logic1_), .SONOF(net10662) );
+  PLBI8F U_hrdata_out_14 ( .P(pad_HRDATA[14]), .A(\HRDATA[14] ), .CONOF(
+        net10662), .NEN(n_Logic1_), .PD(net10662), .PEN(n_Logic1_), .PU(
+        n_Logic1_), .SONOF(net10662) );
+  PLBI8F U_hrdata_out_15 ( .P(pad_HRDATA[15]), .A(\HRDATA[15] ), .CONOF(
+        net10662), .NEN(n_Logic1_), .PD(net10662), .PEN(n_Logic1_), .PU(
+        n_Logic1_), .SONOF(net10662) );
+  PLBI8F U_hrdata_out_16 ( .P(pad_HRDATA[16]), .A(\HRDATA[16] ), .CONOF(
+        net10662), .NEN(n_Logic1_), .PD(net10662), .PEN(n_Logic1_), .PU(
+        n_Logic1_), .SONOF(net10662) );
+  PLBI8F U_hrdata_out_17 ( .P(pad_HRDATA[17]), .A(\HRDATA[17] ), .CONOF(
+        net10662), .NEN(n_Logic1_), .PD(net10662), .PEN(n_Logic1_), .PU(
+        n_Logic1_), .SONOF(net10662) );
+  PLBI8F U_hrdata_out_18 ( .P(pad_HRDATA[18]), .A(\HRDATA[18] ), .CONOF(
+        net10662), .NEN(n_Logic1_), .PD(net10662), .PEN(n_Logic1_), .PU(
+        n_Logic1_), .SONOF(net10662) );
+  PLBI8F U_hrdata_out_19 ( .P(pad_HRDATA[19]), .A(\HRDATA[19] ), .CONOF(
+        net10662), .NEN(n_Logic1_), .PD(net10662), .PEN(n_Logic1_), .PU(
+        n_Logic1_), .SONOF(net10662) );
+  PLBI8F U_hrdata_out_20 ( .P(pad_HRDATA[20]), .A(\HRDATA[20] ), .CONOF(
+        net10662), .NEN(n_Logic1_), .PD(net10662), .PEN(n_Logic1_), .PU(
+        n_Logic1_), .SONOF(net10662) );
+  PLBI8F U_hrdata_out_21 ( .P(pad_HRDATA[21]), .A(\HRDATA[21] ), .CONOF(
+        net10662), .NEN(n_Logic1_), .PD(net10662), .PEN(n_Logic1_), .PU(
+        n_Logic1_), .SONOF(net10662) );
+  PLBI8F U_hrdata_out_22 ( .P(pad_HRDATA[22]), .A(\HRDATA[22] ), .CONOF(
+        net10662), .NEN(n_Logic1_), .PD(net10662), .PEN(n_Logic1_), .PU(
+        n_Logic1_), .SONOF(net10662) );
+  PLBI8F U_hrdata_out_23 ( .P(pad_HRDATA[23]), .A(\HRDATA[23] ), .CONOF(
+        net10662), .NEN(n_Logic1_), .PD(net10662), .PEN(n_Logic1_), .PU(
+        n_Logic1_), .SONOF(net10662) );
+  PLBI8F U_hrdata_out_24 ( .P(pad_HRDATA[24]), .A(\HRDATA[24] ), .CONOF(
+        net10662), .NEN(n_Logic1_), .PD(net10662), .PEN(n_Logic1_), .PU(
+        n_Logic1_), .SONOF(net10662) );
+  PLBI8F U_hrdata_out_25 ( .P(pad_HRDATA[25]), .A(\HRDATA[25] ), .CONOF(
+        net10662), .NEN(n_Logic1_), .PD(net10662), .PEN(n_Logic1_), .PU(
+        n_Logic1_), .SONOF(net10662) );
+  PLBI8F U_hrdata_out_26 ( .P(pad_HRDATA[26]), .A(\HRDATA[26] ), .CONOF(
+        net10662), .NEN(n_Logic1_), .PD(net10662), .PEN(n_Logic1_), .PU(
+        n_Logic1_), .SONOF(net10662) );
+  PLBI8F U_hrdata_out_27 ( .P(pad_HRDATA[27]), .A(\HRDATA[27] ), .CONOF(
+        net10662), .NEN(n_Logic1_), .PD(net10662), .PEN(n_Logic1_), .PU(
+        n_Logic1_), .SONOF(net10662) );
+  PLBI8F U_hrdata_out_28 ( .P(pad_HRDATA[28]), .A(\HRDATA[28] ), .CONOF(
+        net10662), .NEN(n_Logic1_), .PD(net10662), .PEN(n_Logic1_), .PU(
+        n_Logic1_), .SONOF(net10662) );
+  PLBI8F U_hrdata_out_29 ( .P(pad_HRDATA[29]), .A(\HRDATA[29] ), .CONOF(
+        net10662), .NEN(n_Logic1_), .PD(net10662), .PEN(n_Logic1_), .PU(
+        n_Logic1_), .SONOF(net10662) );
+  PLBI8F U_hrdata_out_30 ( .P(pad_HRDATA[30]), .A(\HRDATA[30] ), .CONOF(
+        net10662), .NEN(n_Logic1_), .PD(net10662), .PEN(n_Logic1_), .PU(
+        n_Logic1_), .SONOF(net10662) );
+  PLBI8F U_hrdata_out_31 ( .P(pad_HRDATA[31]), .A(\HRDATA[31] ), .CONOF(
+        net10662), .NEN(n_Logic1_), .PD(net10662), .PEN(n_Logic1_), .PU(
+        n_Logic1_), .SONOF(net10662) );
+  PLBI8F U_o_pad_pmodb_mosi_out ( .P(pad_o_pad_pmodb_mosi), .A(
+        o_pad_pmodb_mosi), .CONOF(net10662), .NEN(n_Logic1_), .PD(net10662), 
+        .PEN(n_Logic1_), .PU(n_Logic1_), .SONOF(net10662) );
+  PLBI8F U_o_pad_pmod_cs_out ( .P(pad_o_pad_pmodb_cs), .A(o_pad_pmodb_cs), 
+        .CONOF(net10662), .NEN(n_Logic1_), .PD(net10662), .PEN(n_Logic1_), 
+        .PU(n_Logic1_), .SONOF(net10662) );
+  PLBI8F U_o_pad_pmod_spi_clk_out ( .P(pad_o_pad_pmodb_spi_clk), .A(
+        pad_o_pad_pmodb_spi_clk), .CONOF(net10662), .NEN(n_Logic1_), .PD(
+        net10662), .PEN(n_Logic1_), .PU(n_Logic1_), .SONOF(net10662) );
+  PLBI8F U_hready_out ( .P(pad_HREADY), .A(HREADY), .CONOF(net10662), .NEN(
+        n_Logic1_), .PD(net10662), .PEN(n_Logic1_), .PU(n_Logic1_), .SONOF(
+        net10662) );
+  PLBI8F U_hresp_out_0 ( .P(pad_HRESP[0]), .A(net10662), .CONOF(net10662), 
+        .NEN(n_Logic1_), .PD(net10662), .PEN(n_Logic1_), .PU(n_Logic1_), 
+        .SONOF(net10662) );
+  PLBI8F U_hresp_out_1 ( .P(pad_HRESP[1]), .A(net10662), .CONOF(net10662), 
+        .NEN(n_Logic1_), .PD(net10662), .PEN(n_Logic1_), .PU(n_Logic1_), 
+        .SONOF(net10662) );
+  AHB_Controler_FLASH_BOOT AHB_Controller_FLASH_BOOT_inst ( .HCLK(HCLK), 
+        .HRST_n(HRST_n), .HADDR({\HADDR[31] , \HADDR[30] , \HADDR[29] , 
+        \HADDR[28] , \HADDR[27] , \HADDR[26] , \HADDR[25] , \HADDR[24] , 
+        \HADDR[23] , \HADDR[22] , \HADDR[21] , \HADDR[20] , \HADDR[19] , 
+        \HADDR[18] , \HADDR[17] , \HADDR[16] , \HADDR[15] , \HADDR[14] , 
+        \HADDR[13] , \HADDR[12] , \HADDR[11] , \HADDR[10] , \HADDR[9] , 
+        \HADDR[8] , \HADDR[7] , \HADDR[6] , \HADDR[5] , \HADDR[4] , \HADDR[3] , 
+        \HADDR[2] , \HADDR[1] , \HADDR[0] }), .HWRITE(HWRITE), .HSELx(HSELx), 
+        .i_pad_pmodb_miso(i_pad_pmodb_miso), .o_pad_pmodb_mosi(
+        o_pad_pmodb_mosi), .o_pad_pmodb_cs(o_pad_pmodb_cs), .HRDATA({
+        \HRDATA[31] , \HRDATA[30] , \HRDATA[29] , \HRDATA[28] , \HRDATA[27] , 
+        \HRDATA[26] , \HRDATA[25] , \HRDATA[24] , \HRDATA[23] , \HRDATA[22] , 
+        \HRDATA[21] , \HRDATA[20] , \HRDATA[19] , \HRDATA[18] , \HRDATA[17] , 
+        \HRDATA[16] , \HRDATA[15] , \HRDATA[14] , \HRDATA[13] , \HRDATA[12] , 
+        \HRDATA[11] , \HRDATA[10] , \HRDATA[9] , \HRDATA[8] , \HRDATA[7] , 
+        \HRDATA[6] , \HRDATA[5] , \HRDATA[4] , \HRDATA[3] , \HRDATA[2] , 
+        \HRDATA[1] , \HRDATA[0] }), .HREADY(HREADY), .HTRANS_1_(HTRANS_1_) );
+  TIEHHD U3 ( .Z(n_Logic1_) );
+  TIELHD U4 ( .Z(net10662) );
+endmodule
+

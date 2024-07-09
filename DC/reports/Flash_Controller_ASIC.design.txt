@@ -1,0 +1,115 @@
+Information: Updating design information... (UID-85)
+Warning: Design 'Flash_Controller_ASIC' contains 3 high-fanout nets. A fanout number of 60 will be used for delay calculations involving these nets. (TIM-134)
+Information: Timing loop detected. (OPT-150)
+	AHB_Controller_FLASH_BOOT_inst/AHB2SPI_FLASH_ctrl/SF3/U3/BN AHB_Controller_FLASH_BOOT_inst/AHB2SPI_FLASH_ctrl/SF3/U3/Z 
+Warning: Disabling timing arc between pins 'BN' and 'Z' on cell 'AHB_Controller_FLASH_BOOT_inst/AHB2SPI_FLASH_ctrl/SF3/U3'
+         to break a timing loop. (OPT-314)
+Warning: Disabling timing arc between pins 'BN' and 'Z' on cell 'AHB_Controller_FLASH_BOOT_inst/AHB2SPI_FLASH_ctrl/SF3/U3'
+         to break a timing loop. (OPT-314)
+Warning: Disabling timing arc between pins 'BN' and 'Z' on cell 'AHB_Controller_FLASH_BOOT_inst/AHB2SPI_FLASH_ctrl/SF3/U3'
+         to break a timing loop. (OPT-314)
+ 
+****************************************
+Report : design
+Design : Flash_Controller_ASIC
+Version: R-2020.09-SP1
+Date   : Tue Jul  9 09:11:06 2024
+****************************************
+
+Design allows ideal nets on clock nets.
+
+Library(s) Used:
+
+    smic18_ss (File: /home/libingzheng/DC_AHB_FlashController/lib/SMIC18_Ver2.5/FEView_STDIO/STD/Synopsys/smic18_ss.db)
+
+Local Link Library:
+
+    {smic18_ss.db, smic18IO_line_ss.db}
+
+Flip-Flop Types:
+
+    No flip-flop types specified.
+
+Latch Types:
+
+    No latch types specified.
+
+Operating Conditions:
+
+
+    Operating Condition Name : worst
+    Library : smic18_ss
+    Process :   1.00
+    Temperature : 125.00
+    Voltage :   1.62
+
+Min Operating Conditions:
+
+
+    Operating Condition Name : best
+    Library : smic18_ff
+    Process :   1.00
+    Temperature :   0.00
+    Voltage :   1.98
+
+Wire Loading Model:
+
+    Selected manually by the user.
+
+Name           :   reference_area_10000000
+Location       :   smic18_ss
+Resistance     :   0.00038
+Capacitance    :   0.00025
+Area           :   0
+Slope          :   121.605
+Fanout   Length   Points Average Cap Std Deviation
+--------------------------------------------------------------
+     1    37.14
+     2    85.71
+     3   137.14
+     4   199.05
+     5   266.19
+     6   327.62
+     7   373.81
+     8   407.14
+     9   437.14
+    10   476.19
+    11   519.05
+    12   595.24
+    13   666.67
+    14   676.19
+    15   714.29
+    16   749.05
+    17   864.76
+    18   993.33
+    19  1118.10
+    20  1240.00
+
+
+
+Wire Loading Model Mode: segmented.
+
+Timing Ranges:
+
+    No timing ranges specified.
+
+Pin Input Delays:
+
+    None specified.
+
+Pin Output Delays:
+
+    None specified.
+
+Disabled Timing Arcs:
+
+    No arcs disabled.
+
+Required Licenses:
+
+    None Required
+
+Design Parameters:
+
+    None specified.
+1

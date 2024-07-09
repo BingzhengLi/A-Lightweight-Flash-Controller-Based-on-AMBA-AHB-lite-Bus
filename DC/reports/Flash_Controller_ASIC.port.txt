@@ -1,0 +1,130 @@
+ 
+****************************************
+Report : port
+Design : Flash_Controller_ASIC
+Version: R-2020.09-SP1
+Date   : Tue Jul  9 09:11:06 2024
+****************************************
+
+
+
+Attributes:
+    d - dont_touch_network
+    i - ideal_network
+
+                       Pin      Wire     Max     Max     Connection
+Port           Dir     Load     Load     Trans   Cap     Class      Attrs
+--------------------------------------------------------------------------------
+pad_HADDR[0]   in      0.0000   0.0000    3.60    0.46   --         
+pad_HADDR[1]   in      0.0000   0.0000    3.60    0.46   --         
+pad_HADDR[2]   in      0.0000   0.0000    3.60    0.46   --         
+pad_HADDR[3]   in      0.0000   0.0000    3.60    0.46   --         
+pad_HADDR[4]   in      0.0000   0.0000    3.60    0.46   --         
+pad_HADDR[5]   in      0.0000   0.0000    3.60    0.46   --         
+pad_HADDR[6]   in      0.0000   0.0000    3.60    0.46   --         
+pad_HADDR[7]   in      0.0000   0.0000    3.60    0.46   --         
+pad_HADDR[8]   in      0.0000   0.0000    3.60    0.46   --         
+pad_HADDR[9]   in      0.0000   0.0000    3.60    0.46   --         
+pad_HADDR[10]  in      0.0000   0.0000    3.60    0.46   --         
+pad_HADDR[11]  in      0.0000   0.0000    3.60    0.46   --         
+pad_HADDR[12]  in      0.0000   0.0000    3.60    0.46   --         
+pad_HADDR[13]  in      0.0000   0.0000    3.60    0.46   --         
+pad_HADDR[14]  in      0.0000   0.0000    3.60    0.46   --         
+pad_HADDR[15]  in      0.0000   0.0000    3.60    0.46   --         
+pad_HADDR[16]  in      0.0000   0.0000    3.60    0.46   --         
+pad_HADDR[17]  in      0.0000   0.0000    3.60    0.46   --         
+pad_HADDR[18]  in      0.0000   0.0000    3.60    0.46   --         
+pad_HADDR[19]  in      0.0000   0.0000    3.60    0.46   --         
+pad_HADDR[20]  in      0.0000   0.0000    3.60    0.46   --         
+pad_HADDR[21]  in      0.0000   0.0000    3.60    0.46   --         
+pad_HADDR[22]  in      0.0000   0.0000    3.60    0.46   --         
+pad_HADDR[23]  in      0.0000   0.0000    3.60    0.46   --         
+pad_HADDR[24]  in      0.0000   0.0000    3.60    0.46   --         
+pad_HADDR[25]  in      0.0000   0.0000    3.60    0.46   --         
+pad_HADDR[26]  in      0.0000   0.0000    3.60    0.46   --         
+pad_HADDR[27]  in      0.0000   0.0000    3.60    0.46   --         
+pad_HADDR[28]  in      0.0000   0.0000    3.60    0.46   --         
+pad_HADDR[29]  in      0.0000   0.0000    3.60    0.46   --         
+pad_HADDR[30]  in      0.0000   0.0000    3.60    0.46   --         
+pad_HADDR[31]  in      0.0000   0.0000    3.60    0.46   --         
+pad_HCLK       in      0.0000   0.0000   --      --      --         d
+pad_HRST_n     in      0.0000   0.0000   --      --      --         d, i
+pad_HSELx      in      0.0000   0.0000    3.60    0.46   --         
+pad_HSIZE[0]   in      0.0000   0.0000    3.60    0.46   --         
+pad_HSIZE[1]   in      0.0000   0.0000    3.60    0.46   --         
+pad_HTRANS[0]  in      0.0000   0.0000    3.60    0.46   --         
+pad_HTRANS[1]  in      0.0000   0.0000    3.60    0.46   --         
+pad_HWDATA[0]  in      0.0000   0.0000    3.60    0.46   --         
+pad_HWDATA[1]  in      0.0000   0.0000    3.60    0.46   --         
+pad_HWDATA[2]  in      0.0000   0.0000    3.60    0.46   --         
+pad_HWDATA[3]  in      0.0000   0.0000    3.60    0.46   --         
+pad_HWDATA[4]  in      0.0000   0.0000    3.60    0.46   --         
+pad_HWDATA[5]  in      0.0000   0.0000    3.60    0.46   --         
+pad_HWDATA[6]  in      0.0000   0.0000    3.60    0.46   --         
+pad_HWDATA[7]  in      0.0000   0.0000    3.60    0.46   --         
+pad_HWDATA[8]  in      0.0000   0.0000    3.60    0.46   --         
+pad_HWDATA[9]  in      0.0000   0.0000    3.60    0.46   --         
+pad_HWDATA[10] in      0.0000   0.0000    3.60    0.46   --         
+pad_HWDATA[11] in      0.0000   0.0000    3.60    0.46   --         
+pad_HWDATA[12] in      0.0000   0.0000    3.60    0.46   --         
+pad_HWDATA[13] in      0.0000   0.0000    3.60    0.46   --         
+pad_HWDATA[14] in      0.0000   0.0000    3.60    0.46   --         
+pad_HWDATA[15] in      0.0000   0.0000    3.60    0.46   --         
+pad_HWDATA[16] in      0.0000   0.0000    3.60    0.46   --         
+pad_HWDATA[17] in      0.0000   0.0000    3.60    0.46   --         
+pad_HWDATA[18] in      0.0000   0.0000    3.60    0.46   --         
+pad_HWDATA[19] in      0.0000   0.0000    3.60    0.46   --         
+pad_HWDATA[20] in      0.0000   0.0000    3.60    0.46   --         
+pad_HWDATA[21] in      0.0000   0.0000    3.60    0.46   --         
+pad_HWDATA[22] in      0.0000   0.0000    3.60    0.46   --         
+pad_HWDATA[23] in      0.0000   0.0000    3.60    0.46   --         
+pad_HWDATA[24] in      0.0000   0.0000    3.60    0.46   --         
+pad_HWDATA[25] in      0.0000   0.0000    3.60    0.46   --         
+pad_HWDATA[26] in      0.0000   0.0000    3.60    0.46   --         
+pad_HWDATA[27] in      0.0000   0.0000    3.60    0.46   --         
+pad_HWDATA[28] in      0.0000   0.0000    3.60    0.46   --         
+pad_HWDATA[29] in      0.0000   0.0000    3.60    0.46   --         
+pad_HWDATA[30] in      0.0000   0.0000    3.60    0.46   --         
+pad_HWDATA[31] in      0.0000   0.0000    3.60    0.46   --         
+pad_HWRITE     in      0.0000   0.0000    3.60    0.46   --         
+pad_i_pad_pmodb_miso in   0.0000   0.0000    3.60    0.46   --      
+pad_HRDATA[0]  out     0.0522   0.0000   --      --      --         
+pad_HRDATA[1]  out     0.0522   0.0000   --      --      --         
+pad_HRDATA[2]  out     0.0522   0.0000   --      --      --         
+pad_HRDATA[3]  out     0.0522   0.0000   --      --      --         
+pad_HRDATA[4]  out     0.0522   0.0000   --      --      --         
+pad_HRDATA[5]  out     0.0522   0.0000   --      --      --         
+pad_HRDATA[6]  out     0.0522   0.0000   --      --      --         
+pad_HRDATA[7]  out     0.0522   0.0000   --      --      --         
+pad_HRDATA[8]  out     0.0522   0.0000   --      --      --         
+pad_HRDATA[9]  out     0.0522   0.0000   --      --      --         
+pad_HRDATA[10] out     0.0522   0.0000   --      --      --         
+pad_HRDATA[11] out     0.0522   0.0000   --      --      --         
+pad_HRDATA[12] out     0.0522   0.0000   --      --      --         
+pad_HRDATA[13] out     0.0522   0.0000   --      --      --         
+pad_HRDATA[14] out     0.0522   0.0000   --      --      --         
+pad_HRDATA[15] out     0.0522   0.0000   --      --      --         
+pad_HRDATA[16] out     0.0522   0.0000   --      --      --         
+pad_HRDATA[17] out     0.0522   0.0000   --      --      --         
+pad_HRDATA[18] out     0.0522   0.0000   --      --      --         
+pad_HRDATA[19] out     0.0522   0.0000   --      --      --         
+pad_HRDATA[20] out     0.0522   0.0000   --      --      --         
+pad_HRDATA[21] out     0.0522   0.0000   --      --      --         
+pad_HRDATA[22] out     0.0522   0.0000   --      --      --         
+pad_HRDATA[23] out     0.0522   0.0000   --      --      --         
+pad_HRDATA[24] out     0.0522   0.0000   --      --      --         
+pad_HRDATA[25] out     0.0522   0.0000   --      --      --         
+pad_HRDATA[26] out     0.0522   0.0000   --      --      --         
+pad_HRDATA[27] out     0.0522   0.0000   --      --      --         
+pad_HRDATA[28] out     0.0522   0.0000   --      --      --         
+pad_HRDATA[29] out     0.0522   0.0000   --      --      --         
+pad_HRDATA[30] out     0.0522   0.0000   --      --      --         
+pad_HRDATA[31] out     0.0522   0.0000   --      --      --         
+pad_HREADY     out     0.0522   0.0000   --      --      --         
+pad_HRESP[0]   out     0.0522   0.0000   --      --      --         
+pad_HRESP[1]   out     0.0522   0.0000   --      --      --         
+pad_o_pad_pmodb_cs out   0.0522   0.0000   --    --      --         
+pad_o_pad_pmodb_mosi out   0.0522   0.0000   --    --    --         
+pad_o_pad_pmodb_spi_clk out   0.0522   0.0000   --    --    --      
+
+1

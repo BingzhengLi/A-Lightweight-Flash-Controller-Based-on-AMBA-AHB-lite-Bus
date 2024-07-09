@@ -1,0 +1,14 @@
+ 
+****************************************
+Report : timing_requirements
+        -attributes
+Design : Flash_Controller_ASIC
+Version: R-2020.09-SP1
+Date   : Tue Jul  9 09:11:06 2024
+****************************************
+
+Description                            Setup               Hold
+--------------------------------------------------------------------------------
+TIMING EXCEPTION                       FALSE               FALSE                -from pad_HRST_n
+
+1

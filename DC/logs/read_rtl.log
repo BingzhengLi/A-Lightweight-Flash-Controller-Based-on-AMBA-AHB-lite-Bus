@@ -1,0 +1,387 @@
+
+                           Design Compiler Graphical 
+                                 DC Ultra (TM)
+                                  DFTMAX (TM)
+                              Power Compiler (TM)
+                                 DesignWare (R)
+                                 DC Expert (TM)
+                               Design Vision (TM)
+                               HDL Compiler (TM)
+                               VHDL Compiler (TM)
+                                  DFT Compiler
+                               Design Compiler(R)
+
+               Version R-2020.09-SP1 for linux64 - Oct 28, 2020 
+
+                    Copyright (c) 1988 - 2020 Synopsys, Inc.
+   This software and the associated documentation are proprietary to Synopsys,
+ Inc. This software may only be used in accordance with the terms and conditions
+ of a written license agreement with Synopsys, Inc. All other use, reproduction,
+            or distribution of this software is strictly prohibited.
+Initializing...
+#****************************************************
+date
+Tue Jul  9 09:10:38 2024
+#****************************************************
+set exit_switch 	[getenv exit_switch]
+true
+#set TOP_MODULE  aes_ASIC
+#set TOP_MODULE SM3_ASIC
+set TOP_MODULE Flash_Controller_ASIC
+Flash_Controller_ASIC
+set_svf ${svfDir}/${TOP_MODULE}.svf
+1
+define_design_lib WORK -path WORK
+1
+analyze -format verilog -lib WORK  [sh ls $topDir/*.v]
+Running PRESTO HDLC
+Compiling source file ../rtl/AHB_Controler_FLASH_BOOT.v
+Compiling source file ../rtl/Flash_Controller_ASIC.v
+Compiling source file ../rtl/flash_sf3.v
+Compiling source file ../rtl/spi_SF3.v
+Presto compilation completed successfully.
+Loading db file '/home/libingzheng/DC_AHB_FlashController/lib/SMIC18_Ver2.5/FEView_STDIO/STD/Synopsys/smic18_ss.db'
+Loading db file '/home/libingzheng/DC_AHB_FlashController/lib/SMIC18_Ver2.5/FEView_STDIO/IO/Synopsys/smic18IO_line_ss.db'
+Loading db file '/home/EDA/Synopsys/DC2020/R-2020.09-SP1/libraries/syn/dw_foundation.sldb'
+1
+elaborate $TOP_MODULE
+Loading db file '/home/EDA/Synopsys/DC2020/R-2020.09-SP1/libraries/syn/gtech.db'
+Loading db file '/home/EDA/Synopsys/DC2020/R-2020.09-SP1/libraries/syn/standard.sldb'
+  Loading link library 'smic18_ss'
+  Loading link library 'smic18IO_line_ss'
+  Loading link library 'gtech'
+Running PRESTO HDLC
+Warning:  ../rtl/Flash_Controller_ASIC.v:20: Net pad_HREADY connected to instance AHB_Controller_FLASH_BOOT_inst is declared as reg data type but is not driven by an always block. (VER-1004)
+Presto compilation completed successfully. (Flash_Controller_ASIC)
+Elaborated 1 design.
+Current design is now 'Flash_Controller_ASIC'.
+Information: Building the design 'AHB_Controler_FLASH_BOOT'. (HDL-193)
+
+Statistics for case statements in always block at line 159 in file
+	'../rtl/AHB_Controler_FLASH_BOOT.v'
+===============================================
+|           Line           |  full/ parallel  |
+===============================================
+|           167            |    auto/auto     |
+===============================================
+
+Statistics for case statements in always block at line 289 in file
+	'../rtl/AHB_Controler_FLASH_BOOT.v'
+===============================================
+|           Line           |  full/ parallel  |
+===============================================
+|           298            |    auto/auto     |
+===============================================
+
+Inferred memory devices in process
+	in routine AHB_Controler_FLASH_BOOT line 150 in file
+		'../rtl/AHB_Controler_FLASH_BOOT.v'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|  SLAVE_state_c_reg  | Flip-flop |   3   |  Y  | N  | Y  | N  | N  | N  | N  |
+===============================================================================
+
+Inferred memory devices in process
+	in routine AHB_Controler_FLASH_BOOT line 159 in file
+		'../rtl/AHB_Controler_FLASH_BOOT.v'.
+=======================================================================================
+|        Register Name        |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+=======================================================================================
+|      SLAVE_state_n_reg      | Flip-flop |   3   |  Y  | N  | Y  | N  | N  | N  | N  |
+|     FLASH_read_addr_reg     | Flip-flop |  24   |  Y  | N  | N  | N  | N  | N  | N  |
+|     FLASH_read_req_reg      | Flip-flop |   1   |  N  | N  | N  | N  | N  | N  | N  |
+| FLASH_sector_erase_req_reg  | Flip-flop |   1   |  N  | N  | N  | N  | N  | N  | N  |
+|     FLASH_write_req_reg     | Flip-flop |   1   |  N  | N  | N  | N  | N  | N  | N  |
+|   FLASH_write_en_req_reg    | Flip-flop |   1   |  N  | N  | N  | N  | N  | N  | N  |
+| FLASH_sector_erase_addr_reg | Flip-flop |  24   |  Y  | N  | N  | N  | N  | N  | N  |
+|    FLASH_write_page_reg     | Flip-flop |  24   |  Y  | N  | N  | N  | N  | N  | N  |
+|    FLASH_write_data_reg     | Flip-flop |  32   |  Y  | N  | N  | N  | N  | N  | N  |
+=======================================================================================
+
+Inferred memory devices in process
+	in routine AHB_Controler_FLASH_BOOT line 289 in file
+		'../rtl/AHB_Controler_FLASH_BOOT.v'.
+=============================================================================
+|     Register Name     | Type  | Width | Bus | MB | AR | AS | SR | SS | ST |
+=============================================================================
+|      HRDATA_reg       | Latch |  32   |  Y  | N  | N  | N  | -  | -  | -  |
+| HRDATA_tri_enable_reg | Latch |  32   |  Y  | N  | N  | N  | -  | -  | -  |
+=============================================================================
+
+Inferred tri-state devices in process
+	in routine AHB_Controler_FLASH_BOOT line 289 in file
+		'../rtl/AHB_Controler_FLASH_BOOT.v'.
+============================================
+| Register Name |       Type       | Width |
+============================================
+|  HRDATA_tri   | Tri-State Buffer |  32   |
+============================================
+Presto compilation completed successfully. (AHB_Controler_FLASH_BOOT)
+Information: Building the design 'flash_sf3'. (HDL-193)
+
+Statistics for case statements in always block at line 169 in file
+	'../rtl/flash_sf3.v'
+===============================================
+|           Line           |  full/ parallel  |
+===============================================
+|           171            |    auto/auto     |
+===============================================
+Warning:  ../rtl/flash_sf3.v:256: Net spi_cs or a directly connected net may be driven by more than one process or block. (ELAB-405)
+
+Statistics for case statements in always block at line 370 in file
+	'../rtl/flash_sf3.v'
+===============================================
+|           Line           |  full/ parallel  |
+===============================================
+|           379            |    auto/auto     |
+===============================================
+
+Inferred memory devices in process
+	in routine flash_sf3 line 127 in file
+		'../rtl/flash_sf3.v'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|     state_c_reg     | Flip-flop |  12   |  Y  | N  | Y  | N  | N  | N  | N  |
+|     state_c_reg     | Flip-flop |   1   |  N  | N  | N  | Y  | N  | N  | N  |
+===============================================================================
+
+Inferred memory devices in process
+	in routine flash_sf3 line 135 in file
+		'../rtl/flash_sf3.v'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|     state_w_reg     | Flip-flop |  12   |  Y  | N  | Y  | N  | N  | N  | N  |
+|     state_w_reg     | Flip-flop |   1   |  N  | N  | N  | Y  | N  | N  | N  |
+===============================================================================
+
+Inferred memory devices in process
+	in routine flash_sf3 line 157 in file
+		'../rtl/flash_sf3.v'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|    wait_cnt_reg     | Flip-flop |  33   |  Y  | N  | Y  | N  | N  | N  | N  |
+===============================================================================
+
+Inferred memory devices in process
+	in routine flash_sf3 line 246 in file
+		'../rtl/flash_sf3.v'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|   spi_cs_reg_reg    | Flip-flop |   1   |  N  | N  | N  | Y  | N  | N  | N  |
+===============================================================================
+
+Inferred memory devices in process
+	in routine flash_sf3 line 259 in file
+		'../rtl/flash_sf3.v'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|  spi_byte_cnt_reg   | Flip-flop |  10   |  Y  | N  | Y  | N  | N  | N  | N  |
+===============================================================================
+
+Inferred memory devices in process
+	in routine flash_sf3 line 274 in file
+		'../rtl/flash_sf3.v'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+| read_data_word_reg  | Flip-flop |  32   |  Y  | N  | Y  | N  | N  | N  | N  |
+===============================================================================
+
+Inferred memory devices in process
+	in routine flash_sf3 line 291 in file
+		'../rtl/flash_sf3.v'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+| write_data_shif_reg | Flip-flop |  32   |  Y  | N  | N  | N  | N  | N  | N  |
+===============================================================================
+
+Inferred memory devices in process
+	in routine flash_sf3 line 335 in file
+		'../rtl/flash_sf3.v'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|  flash_id_reg_reg   | Flip-flop |  160  |  Y  | N  | Y  | N  | N  | N  | N  |
+===============================================================================
+
+Inferred memory devices in process
+	in routine flash_sf3 line 370 in file
+		'../rtl/flash_sf3.v'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+| spi_write_data_reg  | Flip-flop |   8   |  Y  | N  | Y  | N  | N  | N  | N  |
+===============================================================================
+Information:  Complex logic will not be considered for set/reset inference. (ELAB-2008)
+Presto compilation completed successfully. (flash_sf3)
+Information: Building the design 'spi_SF3'. (HDL-193)
+
+Statistics for case statements in always block at line 285 in file
+	'../rtl/spi_SF3.v'
+===============================================
+|           Line           |  full/ parallel  |
+===============================================
+|           287            |    auto/auto     |
+===============================================
+
+Inferred memory devices in process
+	in routine spi_SF3 line 63 in file
+		'../rtl/spi_SF3.v'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|   spi_clk_reg_reg   | Flip-flop |   1   |  N  | N  | N  | Y  | N  | N  | N  |
+===============================================================================
+
+Inferred memory devices in process
+	in routine spi_SF3 line 106 in file
+		'../rtl/spi_SF3.v'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|    spi_clk_3_reg    | Flip-flop |   1   |  N  | N  | Y  | N  | N  | N  | N  |
+|    spi_clk_2_reg    | Flip-flop |   1   |  N  | N  | Y  | N  | N  | N  | N  |
+|    spi_clk_1_reg    | Flip-flop |   1   |  N  | N  | Y  | N  | N  | N  | N  |
+===============================================================================
+
+Inferred memory devices in process
+	in routine spi_SF3 line 130 in file
+		'../rtl/spi_SF3.v'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|   spi_state_c_reg   | Flip-flop |   1   |  N  | N  | Y  | N  | N  | N  | N  |
+|   spi_state_c_reg   | Flip-flop |   2   |  Y  | N  | Y  | N  | Y  | N  | N  |
+|   spi_state_c_reg   | Flip-flop |   1   |  N  | N  | N  | Y  | N  | Y  | N  |
+===============================================================================
+
+Inferred memory devices in process
+	in routine spi_SF3 line 202 in file
+		'../rtl/spi_SF3.v'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|    cnt_write_reg    | Flip-flop |   4   |  Y  | N  | Y  | N  | N  | N  | N  |
+===============================================================================
+
+Inferred memory devices in process
+	in routine spi_SF3 line 227 in file
+		'../rtl/spi_SF3.v'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|  read_data_reg_reg  | Flip-flop |   8   |  Y  | N  | Y  | N  | N  | N  | N  |
+|    cnt_read_reg     | Flip-flop |   4   |  Y  | N  | Y  | N  | N  | N  | N  |
+===============================================================================
+Statistics for MUX_OPs
+======================================================
+| block name/line  | Inputs | Outputs | # sel inputs |
+======================================================
+|   spi_SF3/199    |   8    |    1    |      3       |
+======================================================
+Information:  Complex logic will not be considered for set/reset inference. (ELAB-2008)
+Presto compilation completed successfully. (spi_SF3)
+1
+current_design $TOP_MODULE	
+Current design is 'Flash_Controller_ASIC'.
+{Flash_Controller_ASIC}
+link
+
+  Linking design 'Flash_Controller_ASIC'
+  Using the following designs and libraries:
+  --------------------------------------------------------------------------
+  * (4 designs)               /home/libingzheng/DC_AHB_FlashController/DC/Flash_Controller_ASIC.db, etc
+  smic18_ss (library)         /home/libingzheng/DC_AHB_FlashController/lib/SMIC18_Ver2.5/FEView_STDIO/STD/Synopsys/smic18_ss.db
+  smic18IO_line_ss (library)  /home/libingzheng/DC_AHB_FlashController/lib/SMIC18_Ver2.5/FEView_STDIO/IO/Synopsys/smic18IO_line_ss.db
+  dw_foundation.sldb (library) /home/EDA/Synopsys/DC2020/R-2020.09-SP1/libraries/syn/dw_foundation.sldb
+
+1
+if { [link] == 0 } {
+	echo "Linking Error when deal with $TOP_MODULE"
+	exit;
+}
+
+  Linking design 'Flash_Controller_ASIC'
+  Using the following designs and libraries:
+  --------------------------------------------------------------------------
+  * (4 designs)               /home/libingzheng/DC_AHB_FlashController/DC/Flash_Controller_ASIC.db, etc
+  smic18_ss (library)         /home/libingzheng/DC_AHB_FlashController/lib/SMIC18_Ver2.5/FEView_STDIO/STD/Synopsys/smic18_ss.db
+  smic18IO_line_ss (library)  /home/libingzheng/DC_AHB_FlashController/lib/SMIC18_Ver2.5/FEView_STDIO/IO/Synopsys/smic18IO_line_ss.db
+  dw_foundation.sldb (library) /home/EDA/Synopsys/DC2020/R-2020.09-SP1/libraries/syn/dw_foundation.sldb
+
+uniquify
+1
+if { [check_design] == 0 } {
+	echo "Check Design Error when deal with $TOP_MODULE"
+	exit;
+}
+ 
+****************************************
+check_design summary:
+Version:     R-2020.09-SP1
+Date:        Tue Jul  9 09:10:40 2024
+****************************************
+
+                   Name                                            Total
+--------------------------------------------------------------------------------
+Cells                                                              32
+    Cells with unconnected inputs (LINT-0)                         32
+--------------------------------------------------------------------------------
+
+Warning: In design 'AHB_Controler_FLASH_BOOT', input pin 'clocked_on' of leaf cell 'HRDATA_tri_enable_reg[31]' is not connected to any net.  Logic 0 assumed. (LINT-0)
+Warning: In design 'AHB_Controler_FLASH_BOOT', input pin 'clocked_on' of leaf cell 'HRDATA_tri_enable_reg[30]' is not connected to any net.  Logic 0 assumed. (LINT-0)
+Warning: In design 'AHB_Controler_FLASH_BOOT', input pin 'clocked_on' of leaf cell 'HRDATA_tri_enable_reg[29]' is not connected to any net.  Logic 0 assumed. (LINT-0)
+Warning: In design 'AHB_Controler_FLASH_BOOT', input pin 'clocked_on' of leaf cell 'HRDATA_tri_enable_reg[28]' is not connected to any net.  Logic 0 assumed. (LINT-0)
+Warning: In design 'AHB_Controler_FLASH_BOOT', input pin 'clocked_on' of leaf cell 'HRDATA_tri_enable_reg[27]' is not connected to any net.  Logic 0 assumed. (LINT-0)
+Warning: In design 'AHB_Controler_FLASH_BOOT', input pin 'clocked_on' of leaf cell 'HRDATA_tri_enable_reg[26]' is not connected to any net.  Logic 0 assumed. (LINT-0)
+Warning: In design 'AHB_Controler_FLASH_BOOT', input pin 'clocked_on' of leaf cell 'HRDATA_tri_enable_reg[25]' is not connected to any net.  Logic 0 assumed. (LINT-0)
+Warning: In design 'AHB_Controler_FLASH_BOOT', input pin 'clocked_on' of leaf cell 'HRDATA_tri_enable_reg[24]' is not connected to any net.  Logic 0 assumed. (LINT-0)
+Warning: In design 'AHB_Controler_FLASH_BOOT', input pin 'clocked_on' of leaf cell 'HRDATA_tri_enable_reg[23]' is not connected to any net.  Logic 0 assumed. (LINT-0)
+Warning: In design 'AHB_Controler_FLASH_BOOT', input pin 'clocked_on' of leaf cell 'HRDATA_tri_enable_reg[22]' is not connected to any net.  Logic 0 assumed. (LINT-0)
+Warning: In design 'AHB_Controler_FLASH_BOOT', input pin 'clocked_on' of leaf cell 'HRDATA_tri_enable_reg[21]' is not connected to any net.  Logic 0 assumed. (LINT-0)
+Warning: In design 'AHB_Controler_FLASH_BOOT', input pin 'clocked_on' of leaf cell 'HRDATA_tri_enable_reg[20]' is not connected to any net.  Logic 0 assumed. (LINT-0)
+Warning: In design 'AHB_Controler_FLASH_BOOT', input pin 'clocked_on' of leaf cell 'HRDATA_tri_enable_reg[19]' is not connected to any net.  Logic 0 assumed. (LINT-0)
+Warning: In design 'AHB_Controler_FLASH_BOOT', input pin 'clocked_on' of leaf cell 'HRDATA_tri_enable_reg[18]' is not connected to any net.  Logic 0 assumed. (LINT-0)
+Warning: In design 'AHB_Controler_FLASH_BOOT', input pin 'clocked_on' of leaf cell 'HRDATA_tri_enable_reg[17]' is not connected to any net.  Logic 0 assumed. (LINT-0)
+Warning: In design 'AHB_Controler_FLASH_BOOT', input pin 'clocked_on' of leaf cell 'HRDATA_tri_enable_reg[16]' is not connected to any net.  Logic 0 assumed. (LINT-0)
+Warning: In design 'AHB_Controler_FLASH_BOOT', input pin 'clocked_on' of leaf cell 'HRDATA_tri_enable_reg[15]' is not connected to any net.  Logic 0 assumed. (LINT-0)
+Warning: In design 'AHB_Controler_FLASH_BOOT', input pin 'clocked_on' of leaf cell 'HRDATA_tri_enable_reg[14]' is not connected to any net.  Logic 0 assumed. (LINT-0)
+Warning: In design 'AHB_Controler_FLASH_BOOT', input pin 'clocked_on' of leaf cell 'HRDATA_tri_enable_reg[13]' is not connected to any net.  Logic 0 assumed. (LINT-0)
+Warning: In design 'AHB_Controler_FLASH_BOOT', input pin 'clocked_on' of leaf cell 'HRDATA_tri_enable_reg[12]' is not connected to any net.  Logic 0 assumed. (LINT-0)
+Warning: In design 'AHB_Controler_FLASH_BOOT', input pin 'clocked_on' of leaf cell 'HRDATA_tri_enable_reg[11]' is not connected to any net.  Logic 0 assumed. (LINT-0)
+Warning: In design 'AHB_Controler_FLASH_BOOT', input pin 'clocked_on' of leaf cell 'HRDATA_tri_enable_reg[10]' is not connected to any net.  Logic 0 assumed. (LINT-0)
+Warning: In design 'AHB_Controler_FLASH_BOOT', input pin 'clocked_on' of leaf cell 'HRDATA_tri_enable_reg[9]' is not connected to any net.  Logic 0 assumed. (LINT-0)
+Warning: In design 'AHB_Controler_FLASH_BOOT', input pin 'clocked_on' of leaf cell 'HRDATA_tri_enable_reg[8]' is not connected to any net.  Logic 0 assumed. (LINT-0)
+Warning: In design 'AHB_Controler_FLASH_BOOT', input pin 'clocked_on' of leaf cell 'HRDATA_tri_enable_reg[7]' is not connected to any net.  Logic 0 assumed. (LINT-0)
+Warning: In design 'AHB_Controler_FLASH_BOOT', input pin 'clocked_on' of leaf cell 'HRDATA_tri_enable_reg[6]' is not connected to any net.  Logic 0 assumed. (LINT-0)
+Warning: In design 'AHB_Controler_FLASH_BOOT', input pin 'clocked_on' of leaf cell 'HRDATA_tri_enable_reg[5]' is not connected to any net.  Logic 0 assumed. (LINT-0)
+Warning: In design 'AHB_Controler_FLASH_BOOT', input pin 'clocked_on' of leaf cell 'HRDATA_tri_enable_reg[4]' is not connected to any net.  Logic 0 assumed. (LINT-0)
+Warning: In design 'AHB_Controler_FLASH_BOOT', input pin 'clocked_on' of leaf cell 'HRDATA_tri_enable_reg[3]' is not connected to any net.  Logic 0 assumed. (LINT-0)
+Warning: In design 'AHB_Controler_FLASH_BOOT', input pin 'clocked_on' of leaf cell 'HRDATA_tri_enable_reg[2]' is not connected to any net.  Logic 0 assumed. (LINT-0)
+Warning: In design 'AHB_Controler_FLASH_BOOT', input pin 'clocked_on' of leaf cell 'HRDATA_tri_enable_reg[1]' is not connected to any net.  Logic 0 assumed. (LINT-0)
+Warning: In design 'AHB_Controler_FLASH_BOOT', input pin 'clocked_on' of leaf cell 'HRDATA_tri_enable_reg[0]' is not connected to any net.  Logic 0 assumed. (LINT-0)
+write -format ddc -hierarchy -output ${netlistDir}/${TOP_MODULE}_unmapped.ddc
+Writing ddc file '/home/libingzheng/DC_AHB_FlashController/DC/netlist/Flash_Controller_ASIC_unmapped.ddc'.
+1
+date
+Tue Jul  9 09:10:40 2024
+#****************************************************
+#  Finish and Quit
+#****************************************************
+if {$exit_switch == "true"} {
+exit
+}
+
+Memory usage for this session 150 Mbytes.
+Memory usage for this session including child processes 150 Mbytes.
+CPU usage for this session 5 seconds ( 0.00 hours ).
+Elapsed time for this session 7 seconds ( 0.00 hours ).
+
+Thank you...

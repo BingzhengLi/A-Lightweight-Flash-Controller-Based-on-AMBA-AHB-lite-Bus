@@ -1,0 +1,877 @@
+
+                           Design Compiler Graphical 
+                                 DC Ultra (TM)
+                                  DFTMAX (TM)
+                              Power Compiler (TM)
+                                 DesignWare (R)
+                                 DC Expert (TM)
+                               Design Vision (TM)
+                               HDL Compiler (TM)
+                               VHDL Compiler (TM)
+                                  DFT Compiler
+                               Design Compiler(R)
+
+               Version R-2020.09-SP1 for linux64 - Oct 28, 2020 
+
+                    Copyright (c) 1988 - 2020 Synopsys, Inc.
+   This software and the associated documentation are proprietary to Synopsys,
+ Inc. This software may only be used in accordance with the terms and conditions
+ of a written license agreement with Synopsys, Inc. All other use, reproduction,
+            or distribution of this software is strictly prohibited.
+Initializing...
+#****************************************************
+#Note: 	clocks and reset signals were assumed as ideal
+#****************************************************
+#****************************************************
+#MAX freq : 125M
+#set SYS_CLK_PERIOD 9.0
+#set SYS_CLK_PERIOD 12.0 # 83MHz.
+set SYS_CLK_PERIOD 8.0
+8.0
+#****************************************************
+#****************************************************
+date
+Tue Jul  9 09:10:54 2024
+#****************************************************
+set fix_hold_switch 	[getenv fix_hold_switch]
+false
+set exit_switch 	[getenv exit_switch]
+true
+set area_switch  	[getenv area_switch]
+false
+set power_switch  	[getenv power_switch]
+false
+set ultra_switch 	[getenv ultra_switch]
+false
+set high_switch  	[getenv high_switch]
+true
+set remove_tie_dont_use_switch [getenv remove_tie_dont_use_switch]
+true
+# Define some variables for design -- {aes_ASIC}
+#****************************************************
+#set TOP_MODULE		aes_ASIC
+#set TOP_MODULE SM3_ASIC
+set TOP_MODULE Flash_Controller_ASIC
+Flash_Controller_ASIC
+#set Rst_list		[list PAD_wb_rst_i]
+set Rst_list [list pad_HRST_n]
+pad_HRST_n
+#set Clk_list		[list PAD_wb_clk_i]
+set Clk_list [list pad_HCLK]
+pad_HCLK
+set_svf 	${svfDir}/${TOP_MODULE}.svf
+1
+#Read saved unmapped ddc file
+read_ddc  ${netlistDir}/${TOP_MODULE}_unmapped.ddc
+Loading db file '/home/libingzheng/DC_AHB_FlashController/lib/SMIC18_Ver2.5/FEView_STDIO/STD/Synopsys/smic18_ss.db'
+Loading db file '/home/libingzheng/DC_AHB_FlashController/lib/SMIC18_Ver2.5/FEView_STDIO/IO/Synopsys/smic18IO_line_ss.db'
+Loading db file '/home/EDA/Synopsys/DC2020/R-2020.09-SP1/libraries/syn/dw_foundation.sldb'
+Loading db file '/home/EDA/Synopsys/DC2020/R-2020.09-SP1/libraries/syn/gtech.db'
+Loading db file '/home/EDA/Synopsys/DC2020/R-2020.09-SP1/libraries/syn/standard.sldb'
+  Loading link library 'smic18_ss'
+  Loading link library 'smic18IO_line_ss'
+  Loading link library 'gtech'
+Reading ddc file '/home/libingzheng/DC_AHB_FlashController/DC/netlist/Flash_Controller_ASIC_unmapped.ddc'.
+Loaded 4 designs.
+Current design is 'Flash_Controller_ASIC'.
+Flash_Controller_ASIC AHB_Controler_FLASH_BOOT flash_sf3 spi_SF3
+#****************************************************
+# Define The Design Enviroment
+#****************************************************
+set_min_library smic18_ss.db -min_version smic18_ff.db
+Loading db file '/home/libingzheng/DC_AHB_FlashController/lib/SMIC18_Ver2.5/FEView_STDIO/STD/Synopsys/smic18_ff.db'
+1
+set_min_library smic18IO_line_ss.db -min_version smic18IO_line_ff.db
+Loading db file '/home/libingzheng/DC_AHB_FlashController/lib/SMIC18_Ver2.5/FEView_STDIO/IO/Synopsys/smic18IO_line_ff.db'
+1
+#set_min_library smic18IO_stagger_ss.db -min_version smic18IO_stagger_ff.db
+#set_min_library  vs_dp_16x64_worst.db	-min_version vs_dp_16x64_best.db
+set_operating_conditions -analysis_type bc_wc -min best -max worst
+Using operating conditions 'worst' found in library 'smic18_ss'.
+Using operating conditions 'best' found in library 'smic18_ff'.
+1
+set_wire_load_mode  "segmented"
+1
+set_wire_load_model -name reference_area_10000000 -library smic18_ss
+1
+#****************************************************
+# List of dont use cells. Avoiding scan and jk flip-flops, latches
+#****************************************************
+if 1 {
+set_dont_use smic18_ss/FFSD*
+set_dont_use smic18_ss/FFSED*
+set_dont_use smic18_ss/FFJK*
+set_dont_use smic18_ss/FFSJK*
+
+#if set_dont_use latch, the result is wrong
+#set_dont_use smic18_ss/LAT*
+#set_dont_use smic18_ss/RSLAT*
+
+#set_dont_use smic18_ss/*LX
+#set_dont_use smic18_ss/*1X
+
+
+#set_dont_use smic18_tt/FFSD*
+#set_dont_use smic18_tt/FFSED*
+#set_dont_use smic18_tt/FFJK*
+#set_dont_use smic18_tt/FFSJK*
+
+#set_dont_use smic18_tt/LAT*
+#set_dont_use smic18_tt/RSLAT*
+#set_dont_use smic18_tt/*LX
+#set_dont_use smic18_tt/*1X
+
+set_dont_use smic18_ff/FFSD*
+set_dont_use smic18_ff/FFSED*
+set_dont_use smic18_ff/FFJK*
+set_dont_use smic18_ff/FFSJK*
+#set_dont_use smic18_ff/LAT*
+#set_dont_use smic18_ff/RSLAT*
+#set_dont_use smic18_ff/*LX
+#set_dont_use smic18_ff/*1X
+
+}
+1
+#****************************************************
+# remove dont_use attribute
+#****************************************************
+if { $remove_tie_dont_use_switch == "true" } {
+	set_attribute  [get_lib_cells smic18_ss/TIE*] dont_touch false
+#	set_attribute  [get_lib_cells smic18_tt/TIE*] dont_touch false
+	set_attribute  [get_lib_cells smic18_ff/TIE*] dont_touch false
+
+	set_attribute  [get_lib_cells smic18_ss/TIE*] dont_use false
+#	set_attribute  [get_lib_cells smic18_tt/TIE*] dont_use false
+	set_attribute  [get_lib_cells smic18_ff/TIE*] dont_use false
+}
+Information: Attribute 'dont_touch' is set on 2 objects. (UID-186)
+Information: Attribute 'dont_touch' is set on 2 objects. (UID-186)
+Information: Attribute 'dont_use' is set on 2 objects. (UID-186)
+Information: Attribute 'dont_use' is set on 2 objects. (UID-186)
+smic18_ff/TIEHHD smic18_ff/TIELHD
+#****************************************************
+# clock defination and reset
+#****************************************************
+#MAX freq : 125M
+#physical clock and reset
+current_design $TOP_MODULE
+Current design is 'Flash_Controller_ASIC'.
+{Flash_Controller_ASIC}
+#should use pins? Can PAD_* be used?
+#create_clock -name wb_clk -period $SYS_CLK_PERIOD -waveform [list 0 [expr $SYS_CLK_PERIOD /2]]  [get_ports PAD_wb_clk_i]
+create_clock -name PAD_clk -period $SYS_CLK_PERIOD -waveform [list 0 [expr $SYS_CLK_PERIOD/2]]  [get_ports pad_HCLK]
+1
+#create_clock -name wb_clk -period $SYS_CLK_PERIOD -waveform [list 0 [expr $SYS_CLK_PERIOD/2]]  [get_pins U_wb_clk_i/D]
+set_dont_touch_network  [all_clocks]
+1
+#wb_clk
+#set_ideal_network [get_pins "U_wb_clk_i/D"]
+set_ideal_network [get_pins "U_clk_in"]
+Warning: Can't find object 'U_clk_in' in design 'Flash_Controller_ASIC'. (UID-95)
+Error: Value for list 'object_list' must have 1 elements. (CMD-036)
+0
+set_dont_touch_network  [get_ports "$Rst_list"]
+1
+set_ideal_network [get_ports "$Rst_list"]
+1
+#****************************************************
+# clock constraints
+#****************************************************
+set_clock_latency	0.8	[all_clocks]
+1
+#set_clock_uncertainty	0.3	[all_clocks]
+set_clock_uncertainty   0.1    [all_clocks]
+1
+set_clock_transition    0.3     [all_clocks]
+1
+report_clocks -nosplit >  ${reportsDir}/${TOP_MODULE}.clocks.txt
+#****************************************************
+# drive and load, max_fanout,max_capacitance
+#****************************************************
+#set MAX_LOAD	[load_of smic18_ss/NAND2HD2X/A]
+set MAX_LOAD    [load_of smic18_ss/INVHD4X/A]
+0.0174056
+set_drive 0	[get_ports "$Rst_list"]
+1
+set_drive 0 	[get_ports "$Clk_list"]
+1
+#set_driving_cell -lib_cell PLBI8S [remove_from_collection [all_inputs] #         [get_ports [list PAD_wb_clk_i PAD_wb_rst_i]]]
+set_driving_cell -lib_cell INVHD2X [remove_from_collection [all_inputs]          [get_ports [list pad_HCLK pad_HRST_n]]]
+1
+set_max_capacitance [expr $MAX_LOAD*12] [get_designs *]
+1
+#set_load [expr $MAX_LOAD*15] [all_outputs]
+set_load [expr $MAX_LOAD*3] [all_outputs]
+1
+set_max_fanout 10 [all_inputs]
+1
+set_max_transition 1.0 $TOP_MODULE
+1
+#****************************************************
+# input delay and output delay
+# input delay and output delay were set to 50% clock period
+#****************************************************
+#should use -max and -min
+#define ports (exclude *clk ports)
+#jtag ports; use set_case_analysis?
+#input delay : max : period - setup
+#input delay : min : hold
+#output delay : max : setup
+#output delay : min : -hold
+#set wb_in_ports [remove_from_collection [all_inputs]  [get_ports [list PAD_wb_clk_i PAD_wb_rst_i]]]
+#set wb_out_ports [get_ports [list PAD_wb_dat_o PAD_wb_ack_o]]
+set PAD_in_ports [remove_from_collection [all_inputs]  [get_ports [list pad_HCLK  pad_HRST_n]]]
+{pad_HADDR[31] pad_HADDR[30] pad_HADDR[29] pad_HADDR[28] pad_HADDR[27] pad_HADDR[26] pad_HADDR[25] pad_HADDR[24] pad_HADDR[23] pad_HADDR[22] pad_HADDR[21] pad_HADDR[20] pad_HADDR[19] pad_HADDR[18] pad_HADDR[17] pad_HADDR[16] pad_HADDR[15] pad_HADDR[14] pad_HADDR[13] pad_HADDR[12] pad_HADDR[11] pad_HADDR[10] pad_HADDR[9] pad_HADDR[8] pad_HADDR[7] pad_HADDR[6] pad_HADDR[5] pad_HADDR[4] pad_HADDR[3] pad_HADDR[2] pad_HADDR[1] pad_HADDR[0] pad_HWDATA[31] pad_HWDATA[30] pad_HWDATA[29] pad_HWDATA[28] pad_HWDATA[27] pad_HWDATA[26] pad_HWDATA[25] pad_HWDATA[24] pad_HWDATA[23] pad_HWDATA[22] pad_HWDATA[21] pad_HWDATA[20] pad_HWDATA[19] pad_HWDATA[18] pad_HWDATA[17] pad_HWDATA[16] pad_HWDATA[15] pad_HWDATA[14] pad_HWDATA[13] pad_HWDATA[12] pad_HWDATA[11] pad_HWDATA[10] pad_HWDATA[9] pad_HWDATA[8] pad_HWDATA[7] pad_HWDATA[6] pad_HWDATA[5] pad_HWDATA[4] pad_HWDATA[3] pad_HWDATA[2] pad_HWDATA[1] pad_HWDATA[0] pad_HWRITE pad_HSELx pad_HSIZE[1] pad_HSIZE[0] pad_HTRANS[1] pad_HTRANS[0] pad_i_pad_pmodb_miso}
+set PAD_out_ports [get_ports [list pad_o_pad_pmodb_mosi pad_o_pad_pmodb_cs pad_o_pad_pmodb_spi_clk  pad_HREADY pad_HRESP]]
+{pad_o_pad_pmodb_mosi pad_o_pad_pmodb_cs pad_o_pad_pmodb_spi_clk pad_HREADY pad_HRESP[1] pad_HRESP[0]}
+#set_input_delay -max 5 -clock wb_clk $wb_in_ports
+#set_input_delay -min 0.1 -clock wb_clk $wb_in_ports
+set_input_delay -max [expr $SYS_CLK_PERIOD/2] -clock PAD_clk $PAD_in_ports
+1
+set_input_delay -min 0.1 -clock PAD_clk $PAD_in_ports
+1
+#set_output_delay -max 5 -clock wb_clk $wb_out_ports
+#set_output_delay -min -1 -clock wb_clk $wb_out_ports
+set_output_delay -max [expr $SYS_CLK_PERIOD/2] -clock PAD_clk $PAD_out_ports
+1
+set_output_delay -min -1 -clock PAD_clk $PAD_out_ports
+1
+#exit
+#****************************************************
+# false path
+#****************************************************
+#set_case_analysis is enough?
+set_false_path -from [get_ports "$Rst_list"]
+1
+#****************************************************
+# case_analysis
+#****************************************************
+#set_case_analysis 0 [get_pins "U_wb_rst_i/D"]
+set_case_analysis 0 [get_pins "U_reset_in"]
+Warning: Can't find object 'U_reset_in' in design 'Flash_Controller_ASIC'. (UID-95)
+Error: Value for list 'port_or_pin_list' must have 1 elements. (CMD-036)
+0
+#****************************************************
+# area and power
+#****************************************************
+if { $area_switch == "true" } {
+	set_max_area     0   
+}
+if { $power_switch == "true" } {
+	set_max_total_power 0 uw
+}
+#****************************************************
+# don't touch
+#****************************************************
+set_dont_touch        [get_cells U_* ]
+Warning: Can't find objects matching 'U_*' in design 'Flash_Controller_ASIC'. (UID-95)
+Error: Value for list 'object_list' must have 1 elements. (CMD-036)
+0
+#****************************************************
+#  Map and Optimize the design
+#****************************************************
+check_design
+ 
+****************************************
+check_design summary:
+Version:     R-2020.09-SP1
+Date:        Tue Jul  9 09:10:57 2024
+****************************************
+
+                   Name                                            Total
+--------------------------------------------------------------------------------
+Cells                                                              32
+    Cells with unconnected inputs (LINT-0)                         32
+--------------------------------------------------------------------------------
+
+Warning: In design 'AHB_Controler_FLASH_BOOT', input pin 'clocked_on' of leaf cell 'HRDATA_tri_enable_reg[31]' is not connected to any net.  Logic 0 assumed. (LINT-0)
+Warning: In design 'AHB_Controler_FLASH_BOOT', input pin 'clocked_on' of leaf cell 'HRDATA_tri_enable_reg[30]' is not connected to any net.  Logic 0 assumed. (LINT-0)
+Warning: In design 'AHB_Controler_FLASH_BOOT', input pin 'clocked_on' of leaf cell 'HRDATA_tri_enable_reg[29]' is not connected to any net.  Logic 0 assumed. (LINT-0)
+Warning: In design 'AHB_Controler_FLASH_BOOT', input pin 'clocked_on' of leaf cell 'HRDATA_tri_enable_reg[28]' is not connected to any net.  Logic 0 assumed. (LINT-0)
+Warning: In design 'AHB_Controler_FLASH_BOOT', input pin 'clocked_on' of leaf cell 'HRDATA_tri_enable_reg[27]' is not connected to any net.  Logic 0 assumed. (LINT-0)
+Warning: In design 'AHB_Controler_FLASH_BOOT', input pin 'clocked_on' of leaf cell 'HRDATA_tri_enable_reg[26]' is not connected to any net.  Logic 0 assumed. (LINT-0)
+Warning: In design 'AHB_Controler_FLASH_BOOT', input pin 'clocked_on' of leaf cell 'HRDATA_tri_enable_reg[25]' is not connected to any net.  Logic 0 assumed. (LINT-0)
+Warning: In design 'AHB_Controler_FLASH_BOOT', input pin 'clocked_on' of leaf cell 'HRDATA_tri_enable_reg[24]' is not connected to any net.  Logic 0 assumed. (LINT-0)
+Warning: In design 'AHB_Controler_FLASH_BOOT', input pin 'clocked_on' of leaf cell 'HRDATA_tri_enable_reg[23]' is not connected to any net.  Logic 0 assumed. (LINT-0)
+Warning: In design 'AHB_Controler_FLASH_BOOT', input pin 'clocked_on' of leaf cell 'HRDATA_tri_enable_reg[22]' is not connected to any net.  Logic 0 assumed. (LINT-0)
+Warning: In design 'AHB_Controler_FLASH_BOOT', input pin 'clocked_on' of leaf cell 'HRDATA_tri_enable_reg[21]' is not connected to any net.  Logic 0 assumed. (LINT-0)
+Warning: In design 'AHB_Controler_FLASH_BOOT', input pin 'clocked_on' of leaf cell 'HRDATA_tri_enable_reg[20]' is not connected to any net.  Logic 0 assumed. (LINT-0)
+Warning: In design 'AHB_Controler_FLASH_BOOT', input pin 'clocked_on' of leaf cell 'HRDATA_tri_enable_reg[19]' is not connected to any net.  Logic 0 assumed. (LINT-0)
+Warning: In design 'AHB_Controler_FLASH_BOOT', input pin 'clocked_on' of leaf cell 'HRDATA_tri_enable_reg[18]' is not connected to any net.  Logic 0 assumed. (LINT-0)
+Warning: In design 'AHB_Controler_FLASH_BOOT', input pin 'clocked_on' of leaf cell 'HRDATA_tri_enable_reg[17]' is not connected to any net.  Logic 0 assumed. (LINT-0)
+Warning: In design 'AHB_Controler_FLASH_BOOT', input pin 'clocked_on' of leaf cell 'HRDATA_tri_enable_reg[16]' is not connected to any net.  Logic 0 assumed. (LINT-0)
+Warning: In design 'AHB_Controler_FLASH_BOOT', input pin 'clocked_on' of leaf cell 'HRDATA_tri_enable_reg[15]' is not connected to any net.  Logic 0 assumed. (LINT-0)
+Warning: In design 'AHB_Controler_FLASH_BOOT', input pin 'clocked_on' of leaf cell 'HRDATA_tri_enable_reg[14]' is not connected to any net.  Logic 0 assumed. (LINT-0)
+Warning: In design 'AHB_Controler_FLASH_BOOT', input pin 'clocked_on' of leaf cell 'HRDATA_tri_enable_reg[13]' is not connected to any net.  Logic 0 assumed. (LINT-0)
+Warning: In design 'AHB_Controler_FLASH_BOOT', input pin 'clocked_on' of leaf cell 'HRDATA_tri_enable_reg[12]' is not connected to any net.  Logic 0 assumed. (LINT-0)
+Warning: In design 'AHB_Controler_FLASH_BOOT', input pin 'clocked_on' of leaf cell 'HRDATA_tri_enable_reg[11]' is not connected to any net.  Logic 0 assumed. (LINT-0)
+Warning: In design 'AHB_Controler_FLASH_BOOT', input pin 'clocked_on' of leaf cell 'HRDATA_tri_enable_reg[10]' is not connected to any net.  Logic 0 assumed. (LINT-0)
+Warning: In design 'AHB_Controler_FLASH_BOOT', input pin 'clocked_on' of leaf cell 'HRDATA_tri_enable_reg[9]' is not connected to any net.  Logic 0 assumed. (LINT-0)
+Warning: In design 'AHB_Controler_FLASH_BOOT', input pin 'clocked_on' of leaf cell 'HRDATA_tri_enable_reg[8]' is not connected to any net.  Logic 0 assumed. (LINT-0)
+Warning: In design 'AHB_Controler_FLASH_BOOT', input pin 'clocked_on' of leaf cell 'HRDATA_tri_enable_reg[7]' is not connected to any net.  Logic 0 assumed. (LINT-0)
+Warning: In design 'AHB_Controler_FLASH_BOOT', input pin 'clocked_on' of leaf cell 'HRDATA_tri_enable_reg[6]' is not connected to any net.  Logic 0 assumed. (LINT-0)
+Warning: In design 'AHB_Controler_FLASH_BOOT', input pin 'clocked_on' of leaf cell 'HRDATA_tri_enable_reg[5]' is not connected to any net.  Logic 0 assumed. (LINT-0)
+Warning: In design 'AHB_Controler_FLASH_BOOT', input pin 'clocked_on' of leaf cell 'HRDATA_tri_enable_reg[4]' is not connected to any net.  Logic 0 assumed. (LINT-0)
+Warning: In design 'AHB_Controler_FLASH_BOOT', input pin 'clocked_on' of leaf cell 'HRDATA_tri_enable_reg[3]' is not connected to any net.  Logic 0 assumed. (LINT-0)
+Warning: In design 'AHB_Controler_FLASH_BOOT', input pin 'clocked_on' of leaf cell 'HRDATA_tri_enable_reg[2]' is not connected to any net.  Logic 0 assumed. (LINT-0)
+Warning: In design 'AHB_Controler_FLASH_BOOT', input pin 'clocked_on' of leaf cell 'HRDATA_tri_enable_reg[1]' is not connected to any net.  Logic 0 assumed. (LINT-0)
+Warning: In design 'AHB_Controler_FLASH_BOOT', input pin 'clocked_on' of leaf cell 'HRDATA_tri_enable_reg[0]' is not connected to any net.  Logic 0 assumed. (LINT-0)
+1
+#compile
+#avoid "assign"
+set verilogout_no_tri true
+true
+set verilogout_equation false
+false
+#dxzhang:should be used only once
+set_fix_multiple_port_nets -buffer_constants -all
+1
+#compile  -map_effort high -boundary_optimization
+#compile  -map_effort medium -boundary_optimization
+if {$ultra_switch == "true"} {
+	set_ultra_optimization true -force
+	}
+if {$high_switch == "true"} {
+	compile -map_effort high -boundary_optimization
+} else {
+	compile -map_effort medium -boundary_optimization
+	}
+Information: Evaluating DesignWare library utilization. (UISN-27)
+
+============================================================================
+| DesignWare Building Block Library  |         Version         | Available |
+============================================================================
+| Basic DW Building Blocks           | R-2020.09-DWBB_202009.1 |     *     |
+| Licensed DW Building Blocks        | R-2020.09-DWBB_202009.1 |     *     |
+============================================================================
+
+
+Information: There are 263 potential problems in your design. Please run 'check_design' for more information. (LINT-99)
+
+
+Warning: IO pad 'PLOSCR14M' is unusable: unknown logic function.  (OPT-1022)
+Warning: IO pad 'PLOSC14M' is unusable: unknown logic function.  (OPT-1022)
+Warning: IO pad 'PLBI8S' is unusable: unknown logic function.  (OPT-1022)
+Warning: IO pad 'PLBI8N' is unusable: unknown logic function.  (OPT-1022)
+Warning: IO pad 'PLBI8F' is unusable: unknown logic function.  (OPT-1022)
+Warning: IO pad 'PLBI4S' is unusable: unknown logic function.  (OPT-1022)
+Warning: IO pad 'PLBI4N' is unusable: unknown logic function.  (OPT-1022)
+Warning: IO pad 'PLBI4F' is unusable: unknown logic function.  (OPT-1022)
+Warning: IO pad 'PLBI2S' is unusable: unknown logic function.  (OPT-1022)
+Warning: IO pad 'PLBI2N' is unusable: unknown logic function.  (OPT-1022)
+Warning: IO pad 'PLBI2F' is unusable: unknown logic function.  (OPT-1022)
+Warning: IO pad 'PLBI24S' is unusable: unknown logic function.  (OPT-1022)
+Warning: IO pad 'PLBI24N' is unusable: unknown logic function.  (OPT-1022)
+Warning: IO pad 'PLBI24F' is unusable: unknown logic function.  (OPT-1022)
+Warning: IO pad 'PLBI16S' is unusable: unknown logic function.  (OPT-1022)
+Warning: IO pad 'PLBI16N' is unusable: unknown logic function.  (OPT-1022)
+Warning: IO pad 'PLBI16F' is unusable: unknown logic function.  (OPT-1022)
+
+  Beginning Pass 1 Mapping
+  ------------------------
+  Processing 'spi_SF3'
+Information: Changed minimum wire load model for 'DW01_inc_width4_DW01_inc_0' from 'reference_area_20000' to 'reference_area_20000'. (OPT-171)
+Information: Changed minimum wire load model for 'spi_SF3_MUX_OP_8_3_1' from 'reference_area_20000' to 'reference_area_20000'. (OPT-171)
+Information: Changed minimum wire load model for 'DW01_inc_width4_DW01_inc_1' from 'reference_area_20000' to 'reference_area_20000'. (OPT-171)
+Information: Changed minimum wire load model for 'DW01_sub_width3_DW01_sub_0' from 'reference_area_20000' to 'reference_area_20000'. (OPT-171)
+Information: The register 'spi_state_c_reg[3]' is a constant and will be removed. (OPT-1206)
+Information: The register 'cnt_write_reg[3]' is a constant and will be removed. (OPT-1206)
+Information: The register 'cnt_read_reg[3]' is a constant and will be removed. (OPT-1206)
+  Processing 'flash_sf3'
+Information: Added key list 'DesignWare' to design 'flash_sf3'. (DDB-72)
+Information: The register 'state_c_reg[7]' is a constant and will be removed. (OPT-1206)
+Information: The register 'state_c_reg[5]' is a constant and will be removed. (OPT-1206)
+Information: The register 'state_c_reg[4]' is a constant and will be removed. (OPT-1206)
+Information: The register 'state_c_reg[2]' is a constant and will be removed. (OPT-1206)
+Information: The register 'state_w_reg[12]' is a constant and will be removed. (OPT-1206)
+Information: The register 'state_w_reg[2]' is a constant and will be removed. (OPT-1206)
+Information: The register 'state_w_reg[3]' is a constant and will be removed. (OPT-1206)
+Information: The register 'state_w_reg[4]' is a constant and will be removed. (OPT-1206)
+Information: The register 'state_w_reg[5]' is a constant and will be removed. (OPT-1206)
+Information: The register 'state_w_reg[7]' is a constant and will be removed. (OPT-1206)
+Information: The register 'state_w_reg[11]' is a constant and will be removed. (OPT-1206)
+  Processing 'AHB_Controler_FLASH_BOOT'
+  Processing 'Flash_Controller_ASIC'
+
+  Updating timing information
+Information: Changed minimum wire load model for 'dp_cluster_2_3' from 'reference_area_20000' to 'reference_area_20000'. (OPT-171)
+Information: Changed minimum wire load model for 'dp_cluster_1_2' from 'reference_area_20000' to 'reference_area_20000'. (OPT-171)
+Information: Changed minimum wire load model for 'dp_cluster_0_1' from 'reference_area_20000' to 'reference_area_20000'. (OPT-171)
+Information: Changed minimum wire load model for 'spi_SF3_MUX_OP_8_3_1' from 'reference_area_20000' to 'reference_area_20000'. (OPT-171)
+Information: Changed minimum wire load model for 'spi_SF3' from 'area_zero' to 'reference_area_20000'. (OPT-171)
+Information: Changed minimum wire load model for 'flash_sf3' from 'area_zero' to 'reference_area_100000'. (OPT-171)
+Information: Changed minimum wire load model for 'AHB_Controler_FLASH_BOOT' from 'area_zero' to 'reference_area_100000'. (OPT-171)
+Information: Changed minimum wire load model for 'Flash_Controller_ASIC' from 'reference_area_10000000' to 'reference_area_100000'. (OPT-171)
+Information: Updating design information... (UID-85)
+Information: Timing loop detected. (OPT-150)
+	AHB_Controller_FLASH_BOOT_inst/AHB2SPI_FLASH_ctrl/SF3/U3/BN AHB_Controller_FLASH_BOOT_inst/AHB2SPI_FLASH_ctrl/SF3/U3/Z 
+Warning: Disabling timing arc between pins 'BN' and 'Z' on cell 'AHB_Controller_FLASH_BOOT_inst/AHB2SPI_FLASH_ctrl/SF3/U3'
+         to break a timing loop. (OPT-314)
+Warning: Disabling timing arc between pins 'BN' and 'Z' on cell 'AHB_Controller_FLASH_BOOT_inst/AHB2SPI_FLASH_ctrl/SF3/U3'
+         to break a timing loop. (OPT-314)
+Warning: Disabling timing arc between pins 'BN' and 'Z' on cell 'AHB_Controller_FLASH_BOOT_inst/AHB2SPI_FLASH_ctrl/SF3/U3'
+         to break a timing loop. (OPT-314)
+
+  Beginning Implementation Selection
+  ----------------------------------
+  Mapping 'AHB_Controler_FLASH_BOOT_DW_cmp_0'
+  Processing 'flash_sf3_DW01_inc_0_DW01_inc_2'
+Information: Changed minimum wire load model for 'AHB_Controler_FLASH_BOOT_DW_cmp_0' from 'reference_area_20000' to 'reference_area_20000'. (OPT-171)
+Information: Changed minimum wire load model for 'flash_sf3_DW01_inc_0_DW01_inc_2' from 'reference_area_20000' to 'reference_area_20000'. (OPT-171)
+Information: Changed minimum wire load model for 'Flash_Controller_ASIC' from 'reference_area_10000000' to 'reference_area_100000'. (OPT-171)
+  Processing 'flash_sf3_DW01_inc_1_DW01_inc_3'
+Information: Changed minimum wire load model for 'flash_sf3_DW01_inc_1_DW01_inc_3' from 'reference_area_20000' to 'reference_area_20000'. (OPT-171)
+Information: Changed minimum wire load model for 'Flash_Controller_ASIC' from 'reference_area_10000000' to 'reference_area_100000'. (OPT-171)
+  Mapping 'flash_sf3_DW_cmp_0'
+  Mapping 'flash_sf3_DW_cmp_1'
+  Processing 'flash_sf3_DW01_add_0'
+  Processing 'flash_sf3_DW01_add_1'
+Information: Changed minimum wire load model for 'DW01_add_width10.model.rpl' from 'reference_area_20000' to 'reference_area_20000'. (OPT-171)
+Information: Changed minimum wire load model for 'DW01_dec_width10.model.rpl' from 'reference_area_20000' to 'reference_area_20000'. (OPT-171)
+Information: Changed minimum wire load model for 'flash_sf3_DW01_add_1' from 'reference_area_20000' to 'reference_area_20000'. (OPT-171)
+Information: Changed minimum wire load model for 'flash_sf3_DW01_add_0' from 'reference_area_20000' to 'reference_area_20000'. (OPT-171)
+Information: Changed minimum wire load model for 'DW01_dec_width11.model.rpl' from 'reference_area_20000' to 'reference_area_20000'. (OPT-171)
+Information: Changed minimum wire load model for 'DW01_add_width13.model.rpl' from 'reference_area_20000' to 'reference_area_20000'. (OPT-171)
+Information: Changed minimum wire load model for 'DW01_add_width13.model.rpl' from 'reference_area_20000' to 'reference_area_20000'. (OPT-171)
+Information: Changed minimum wire load model for 'DW01_dec_width13.model.rpl' from 'reference_area_20000' to 'reference_area_20000'. (OPT-171)
+Information: Changed minimum wire load model for 'Flash_Controller_ASIC' from 'reference_area_10000000' to 'reference_area_100000'. (OPT-171)
+  Processing 'flash_sf3_DW01_dec_0'
+Information: Changed minimum wire load model for 'flash_sf3_DW01_dec_0' from 'reference_area_20000' to 'reference_area_20000'. (OPT-171)
+Information: Changed minimum wire load model for 'Flash_Controller_ASIC' from 'reference_area_10000000' to 'reference_area_100000'. (OPT-171)
+  Processing 'flash_sf3_DW01_dec_1'
+Information: Changed minimum wire load model for 'flash_sf3_DW01_dec_1' from 'reference_area_20000' to 'reference_area_20000'. (OPT-171)
+Information: Changed minimum wire load model for 'Flash_Controller_ASIC' from 'reference_area_10000000' to 'reference_area_100000'. (OPT-171)
+  Processing 'flash_sf3_DW01_add_3'
+  Processing 'flash_sf3_DW01_add_4'
+Information: Changed minimum wire load model for 'flash_sf3_DW01_add_4' from 'reference_area_20000' to 'reference_area_20000'. (OPT-171)
+Information: Changed minimum wire load model for 'flash_sf3_DW01_add_3' from 'reference_area_20000' to 'reference_area_20000'. (OPT-171)
+Information: Changed minimum wire load model for 'Flash_Controller_ASIC' from 'reference_area_10000000' to 'reference_area_100000'. (OPT-171)
+  Processing 'flash_sf3_DW01_dec_2'
+Information: Changed minimum wire load model for 'flash_sf3_DW01_dec_2' from 'reference_area_20000' to 'reference_area_20000'. (OPT-171)
+Information: Changed minimum wire load model for 'Flash_Controller_ASIC' from 'reference_area_10000000' to 'reference_area_100000'. (OPT-171)
+Information: Complementing port 'read_data[7]' in design 'spi_SF3'.
+	 The new name of the port is 'read_data[7]_BAR'. (OPT-319)
+Information: Complementing port 'read_data[6]' in design 'spi_SF3'.
+	 The new name of the port is 'read_data[6]_BAR'. (OPT-319)
+Information: Complementing port 'read_data[5]' in design 'spi_SF3'.
+	 The new name of the port is 'read_data[5]_BAR'. (OPT-319)
+Information: Complementing port 'read_data[4]' in design 'spi_SF3'.
+	 The new name of the port is 'read_data[4]_BAR'. (OPT-319)
+Information: Complementing port 'read_data[3]' in design 'spi_SF3'.
+	 The new name of the port is 'read_data[3]_BAR'. (OPT-319)
+Information: Complementing port 'read_data[2]' in design 'spi_SF3'.
+	 The new name of the port is 'read_data[2]_BAR'. (OPT-319)
+Information: Complementing port 'read_data[1]' in design 'spi_SF3'.
+	 The new name of the port is 'read_data[1]_BAR'. (OPT-319)
+Information: Complementing port 'read_data[0]' in design 'spi_SF3'.
+	 The new name of the port is 'read_data[0]_BAR'. (OPT-319)
+
+  Beginning Mapping Optimizations  (High effort)
+  -------------------------------
+Information: Added key list 'DesignWare' to design 'AHB_Controler_FLASH_BOOT'. (DDB-72)
+Information: Changed minimum wire load model for 'Flash_Controller_ASIC' from 'reference_area_10000000' to 'reference_area_100000'. (OPT-171)
+  Mapping Optimization (Phase 1)
+Information: Changed minimum wire load model for 'Flash_Controller_ASIC' from 'reference_area_10000000' to 'reference_area_100000'. (OPT-171)
+Information: Changed minimum wire load model for 'Flash_Controller_ASIC' from 'reference_area_10000000' to 'reference_area_100000'. (OPT-171)
+Information: The register 'AHB_Controller_FLASH_BOOT_inst/AHB2SPI_FLASH_ctrl/state_w_reg[10]' is a constant and will be removed. (OPT-1206)
+Information: The register 'AHB_Controller_FLASH_BOOT_inst/AHB2SPI_FLASH_ctrl/state_c_reg[10]' is a constant and will be removed. (OPT-1206)
+Information: The register 'AHB_Controller_FLASH_BOOT_inst/AHB2SPI_FLASH_ctrl/state_c_reg[3]' is a constant and will be removed. (OPT-1206)
+Information: Changed minimum wire load model for 'Flash_Controller_ASIC' from 'reference_area_10000000' to 'reference_area_100000'. (OPT-171)
+
+                                  TOTAL                                      
+   ELAPSED            WORST NEG   SETUP    DESIGN                            
+    TIME      AREA      SLACK     COST    RULE COST         ENDPOINT         
+  --------- --------- --------- --------- --------- -------------------------
+    0:00:05   44853.3      0.00       0.0     776.0                          
+    0:00:05   44853.3      0.00       0.0     776.0                          
+    0:00:05   44853.3      0.00       0.0     776.0                          
+    0:00:05   44853.3      0.00       0.0     776.0                          
+    0:00:05   44853.3      0.00       0.0     776.0                          
+    0:00:05   30712.7      1.44       6.5     670.4                          
+Information: Changed minimum wire load model for 'flash_sf3' from 'reference_area_100000' to 'reference_area_20000'. (OPT-171)
+Information: Changed minimum wire load model for 'Flash_Controller_ASIC' from 'reference_area_10000000' to 'reference_area_100000'. (OPT-171)
+    0:00:06   31464.5      1.30       4.4     645.4                          
+    0:00:06   30736.0      1.16       3.9     612.1                          
+    0:00:06   30849.1      0.76       2.2     609.0                          
+    0:00:06   30892.3      0.44       1.1     609.0                          
+    0:00:06   30912.3      0.40       1.0     609.0                          
+    0:00:06   30948.9      0.27       0.6     609.0                          
+    0:00:06   30978.8      0.17       0.3     609.0                          
+    0:00:06   31012.1      0.00       0.0     609.0                          
+    0:00:06   30965.5      0.12       0.2     609.0                          
+    0:00:06   31022.1      0.00       0.0     609.0                          
+    0:00:06   31022.1      0.00       0.0     609.0                          
+    0:00:06   30775.9      0.00       0.0     609.0                          
+    0:00:06   30775.9      0.00       0.0     609.0                          
+    0:00:06   30825.8      0.00       0.0     588.6                          
+    0:00:06   30865.7      0.00       0.0     574.4                          
+    0:00:06   30865.7      0.00       0.0     574.4                          
+    0:00:06   30865.7      0.00       0.0     574.4                          
+    0:00:06   30865.7      0.00       0.0     574.4                          
+Information: Changed minimum wire load model for 'Flash_Controller_ASIC' from 'reference_area_10000000' to 'reference_area_100000'. (OPT-171)
+
+
+
+  Beginning Delay Optimization Phase
+  ----------------------------------
+
+                                  TOTAL                                      
+   ELAPSED            WORST NEG   SETUP    DESIGN                            
+    TIME      AREA      SLACK     COST    RULE COST         ENDPOINT         
+  --------- --------- --------- --------- --------- -------------------------
+    0:00:06   30865.7      0.00       0.0     574.4                          
+    0:00:06   30865.7      0.00       0.0     574.4                          
+    0:00:06   30639.5      0.00       0.0     584.6                          
+Information: Changed minimum wire load model for 'Flash_Controller_ASIC' from 'reference_area_10000000' to 'reference_area_100000'. (OPT-171)
+
+
+  Beginning Design Rule Fixing  (max_transition)  (max_capacitance)
+  ----------------------------
+
+                                  TOTAL                                      
+   ELAPSED            WORST NEG   SETUP    DESIGN                            
+    TIME      AREA      SLACK     COST    RULE COST         ENDPOINT         
+  --------- --------- --------- --------- --------- -------------------------
+    0:00:06   30639.5      0.00       0.0     584.6                          
+Information: Changed minimum wire load model for 'Flash_Controller_ASIC' from 'reference_area_10000000' to 'reference_area_100000'. (OPT-171)
+    0:00:06   30659.5      0.00       0.0     574.5                          
+
+
+  Beginning Area-Recovery Phase  (cleanup)
+  -----------------------------
+
+                                  TOTAL                                      
+   ELAPSED            WORST NEG   SETUP    DESIGN                            
+    TIME      AREA      SLACK     COST    RULE COST         ENDPOINT         
+  --------- --------- --------- --------- --------- -------------------------
+    0:00:06   30659.5      0.00       0.0     574.5                          
+    0:00:06   30659.5      0.00       0.0     574.5                          
+    0:00:06   30350.1      0.28       0.6     574.5                          
+    0:00:06   30227.0      0.21       0.4     574.5                          
+    0:00:06   30210.4      0.21       0.4     574.5                          
+    0:00:06   30210.4      0.21       0.4     574.5                          
+    0:00:06   30210.4      0.21       0.4     574.5                          
+    0:00:06   30210.4      0.21       0.4     574.5                          
+Information: Changed minimum wire load model for 'Flash_Controller_ASIC' from 'reference_area_10000000' to 'reference_area_100000'. (OPT-171)
+    0:00:06   30263.6      0.00       0.0     574.5                          
+    0:00:07   30137.2      0.01       0.0     574.5                          
+    0:00:07   30137.2      0.01       0.0     574.5                          
+    0:00:07   30137.2      0.01       0.0     574.5                          
+    0:00:07   30137.2      0.01       0.0     574.5                          
+    0:00:07   30137.2      0.01       0.0     574.5                          
+    0:00:07   30137.2      0.01       0.0     574.5                          
+Information: Changed minimum wire load model for 'Flash_Controller_ASIC' from 'reference_area_10000000' to 'reference_area_100000'. (OPT-171)
+Information: Changed minimum wire load model for 'Flash_Controller_ASIC' from 'reference_area_10000000' to 'reference_area_100000'. (OPT-171)
+Information: Changed minimum wire load model for 'Flash_Controller_ASIC' from 'reference_area_10000000' to 'reference_area_100000'. (OPT-171)
+    0:00:07   29990.9      0.00       0.0     574.5                          
+Loading db file '/home/libingzheng/DC_AHB_FlashController/lib/SMIC18_Ver2.5/FEView_STDIO/STD/Synopsys/smic18_ff.db'
+Loading db file '/home/libingzheng/DC_AHB_FlashController/lib/SMIC18_Ver2.5/FEView_STDIO/IO/Synopsys/smic18IO_line_ff.db'
+Loading db file '/home/libingzheng/DC_AHB_FlashController/lib/SMIC18_Ver2.5/FEView_STDIO/STD/Synopsys/smic18_ss.db'
+Loading db file '/home/libingzheng/DC_AHB_FlashController/lib/SMIC18_Ver2.5/FEView_STDIO/IO/Synopsys/smic18IO_line_ss.db'
+
+
+Note: Symbol # after min delay cost means estimated hold TNS across all active scenarios 
+
+
+  Optimization Complete
+  ---------------------
+Warning: Design 'Flash_Controller_ASIC' contains 3 high-fanout nets. A fanout number of 60 will be used for delay calculations involving these nets. (TIM-134)
+     Net 'AHB_Controller_FLASH_BOOT_inst/N161': 64 load(s), 1 driver(s)
+     Net 'AHB_Controller_FLASH_BOOT_inst/AHB2SPI_FLASH_ctrl/SF3/clk': 249 load(s), 1 driver(s)
+     Net 'AHB_Controller_FLASH_BOOT_inst/AHB2SPI_FLASH_ctrl/SF3/rst': 129 load(s), 1 driver(s)
+1
+#****************************************************
+#  fix_hold_time
+#****************************************************
+if {$fix_hold_switch == "true"} {
+        set_fix_hold [get_clocks *]
+        compile -incremental -only_hold_time
+}	
+check_design  >  ${reportsDir}/${TOP_MODULE}.check_design.txt
+check_timing  >  ${reportsDir}/${TOP_MODULE}.check_timing.txt
+#****************************************************
+#  Output Reports
+#****************************************************
+report_design -nosplit >  ${reportsDir}/${TOP_MODULE}.design.txt
+report_port -nosplit >  ${reportsDir}/${TOP_MODULE}.port.txt
+report_net -nosplit >  ${reportsDir}/${TOP_MODULE}.net.txt
+report_timing_requirements -nosplit >  ${reportsDir}/${TOP_MODULE}.timing_requirements.txt
+report_constraint -nosplit -all_violators >  ${reportsDir}/${TOP_MODULE}.constraint.txt
+report_timing -nosplit >  ${reportsDir}/${TOP_MODULE}.timing.txt
+report_area -nosplit >  ${reportsDir}/${TOP_MODULE}.area.txt
+report_power -nosplit > ${reportsDir}/${TOP_MODULE}.power.txt
+#****************************************************
+#  Change Naming Rule
+#****************************************************
+remove_unconnected_ports -blast_buses [find -hierarchy cell {"*"}]
+Removing port 'cs' from design 'spi_SF3'
+Removing port 'spi_state_c_m[3]' from design 'spi_SF3'
+Removing port 'spi_state_c_m[2]' from design 'spi_SF3'
+Removing port 'spi_state_c_m[1]' from design 'spi_SF3'
+Removing port 'spi_state_c_m[0]' from design 'spi_SF3'
+Removing port 'read_ack' from design 'spi_SF3'
+Removing port 'spi_clk' from design 'spi_SF3'
+Removing port 'read_size[9]' from design 'flash_sf3'
+Removing port 'read_size[8]' from design 'flash_sf3'
+Removing port 'read_size[7]' from design 'flash_sf3'
+Removing port 'read_size[6]' from design 'flash_sf3'
+Removing port 'read_size[5]' from design 'flash_sf3'
+Removing port 'read_size[4]' from design 'flash_sf3'
+Removing port 'read_size[3]' from design 'flash_sf3'
+Removing port 'read_size[2]' from design 'flash_sf3'
+Removing port 'read_size[1]' from design 'flash_sf3'
+Removing port 'read_size[0]' from design 'flash_sf3'
+Removing port 'read_id_rq' from design 'flash_sf3'
+Removing port 'read_data[7]' from design 'flash_sf3'
+Removing port 'read_data[6]' from design 'flash_sf3'
+Removing port 'read_data[5]' from design 'flash_sf3'
+Removing port 'read_data[4]' from design 'flash_sf3'
+Removing port 'read_data[3]' from design 'flash_sf3'
+Removing port 'read_data[2]' from design 'flash_sf3'
+Removing port 'read_data[1]' from design 'flash_sf3'
+Removing port 'read_data[0]' from design 'flash_sf3'
+Removing port 'flash_id[159]' from design 'flash_sf3'
+Removing port 'flash_id[158]' from design 'flash_sf3'
+Removing port 'flash_id[157]' from design 'flash_sf3'
+Removing port 'flash_id[156]' from design 'flash_sf3'
+Removing port 'flash_id[155]' from design 'flash_sf3'
+Removing port 'flash_id[154]' from design 'flash_sf3'
+Removing port 'flash_id[153]' from design 'flash_sf3'
+Removing port 'flash_id[152]' from design 'flash_sf3'
+Removing port 'flash_id[151]' from design 'flash_sf3'
+Removing port 'flash_id[150]' from design 'flash_sf3'
+Removing port 'flash_id[149]' from design 'flash_sf3'
+Removing port 'flash_id[148]' from design 'flash_sf3'
+Removing port 'flash_id[147]' from design 'flash_sf3'
+Removing port 'flash_id[146]' from design 'flash_sf3'
+Removing port 'flash_id[145]' from design 'flash_sf3'
+Removing port 'flash_id[144]' from design 'flash_sf3'
+Removing port 'flash_id[143]' from design 'flash_sf3'
+Removing port 'flash_id[142]' from design 'flash_sf3'
+Removing port 'flash_id[141]' from design 'flash_sf3'
+Removing port 'flash_id[140]' from design 'flash_sf3'
+Removing port 'flash_id[139]' from design 'flash_sf3'
+Removing port 'flash_id[138]' from design 'flash_sf3'
+Removing port 'flash_id[137]' from design 'flash_sf3'
+Removing port 'flash_id[136]' from design 'flash_sf3'
+Removing port 'flash_id[135]' from design 'flash_sf3'
+Removing port 'flash_id[134]' from design 'flash_sf3'
+Removing port 'flash_id[133]' from design 'flash_sf3'
+Removing port 'flash_id[132]' from design 'flash_sf3'
+Removing port 'flash_id[131]' from design 'flash_sf3'
+Removing port 'flash_id[130]' from design 'flash_sf3'
+Removing port 'flash_id[129]' from design 'flash_sf3'
+Removing port 'flash_id[128]' from design 'flash_sf3'
+Removing port 'flash_id[127]' from design 'flash_sf3'
+Removing port 'flash_id[126]' from design 'flash_sf3'
+Removing port 'flash_id[125]' from design 'flash_sf3'
+Removing port 'flash_id[124]' from design 'flash_sf3'
+Removing port 'flash_id[123]' from design 'flash_sf3'
+Removing port 'flash_id[122]' from design 'flash_sf3'
+Removing port 'flash_id[121]' from design 'flash_sf3'
+Removing port 'flash_id[120]' from design 'flash_sf3'
+Removing port 'flash_id[119]' from design 'flash_sf3'
+Removing port 'flash_id[118]' from design 'flash_sf3'
+Removing port 'flash_id[117]' from design 'flash_sf3'
+Removing port 'flash_id[116]' from design 'flash_sf3'
+Removing port 'flash_id[115]' from design 'flash_sf3'
+Removing port 'flash_id[114]' from design 'flash_sf3'
+Removing port 'flash_id[113]' from design 'flash_sf3'
+Removing port 'flash_id[112]' from design 'flash_sf3'
+Removing port 'flash_id[111]' from design 'flash_sf3'
+Removing port 'flash_id[110]' from design 'flash_sf3'
+Removing port 'flash_id[109]' from design 'flash_sf3'
+Removing port 'flash_id[108]' from design 'flash_sf3'
+Removing port 'flash_id[107]' from design 'flash_sf3'
+Removing port 'flash_id[106]' from design 'flash_sf3'
+Removing port 'flash_id[105]' from design 'flash_sf3'
+Removing port 'flash_id[104]' from design 'flash_sf3'
+Removing port 'flash_id[103]' from design 'flash_sf3'
+Removing port 'flash_id[102]' from design 'flash_sf3'
+Removing port 'flash_id[101]' from design 'flash_sf3'
+Removing port 'flash_id[100]' from design 'flash_sf3'
+Removing port 'flash_id[99]' from design 'flash_sf3'
+Removing port 'flash_id[98]' from design 'flash_sf3'
+Removing port 'flash_id[97]' from design 'flash_sf3'
+Removing port 'flash_id[96]' from design 'flash_sf3'
+Removing port 'flash_id[95]' from design 'flash_sf3'
+Removing port 'flash_id[94]' from design 'flash_sf3'
+Removing port 'flash_id[93]' from design 'flash_sf3'
+Removing port 'flash_id[92]' from design 'flash_sf3'
+Removing port 'flash_id[91]' from design 'flash_sf3'
+Removing port 'flash_id[90]' from design 'flash_sf3'
+Removing port 'flash_id[89]' from design 'flash_sf3'
+Removing port 'flash_id[88]' from design 'flash_sf3'
+Removing port 'flash_id[87]' from design 'flash_sf3'
+Removing port 'flash_id[86]' from design 'flash_sf3'
+Removing port 'flash_id[85]' from design 'flash_sf3'
+Removing port 'flash_id[84]' from design 'flash_sf3'
+Removing port 'flash_id[83]' from design 'flash_sf3'
+Removing port 'flash_id[82]' from design 'flash_sf3'
+Removing port 'flash_id[81]' from design 'flash_sf3'
+Removing port 'flash_id[80]' from design 'flash_sf3'
+Removing port 'flash_id[79]' from design 'flash_sf3'
+Removing port 'flash_id[78]' from design 'flash_sf3'
+Removing port 'flash_id[77]' from design 'flash_sf3'
+Removing port 'flash_id[76]' from design 'flash_sf3'
+Removing port 'flash_id[75]' from design 'flash_sf3'
+Removing port 'flash_id[74]' from design 'flash_sf3'
+Removing port 'flash_id[73]' from design 'flash_sf3'
+Removing port 'flash_id[72]' from design 'flash_sf3'
+Removing port 'flash_id[71]' from design 'flash_sf3'
+Removing port 'flash_id[70]' from design 'flash_sf3'
+Removing port 'flash_id[69]' from design 'flash_sf3'
+Removing port 'flash_id[68]' from design 'flash_sf3'
+Removing port 'flash_id[67]' from design 'flash_sf3'
+Removing port 'flash_id[66]' from design 'flash_sf3'
+Removing port 'flash_id[65]' from design 'flash_sf3'
+Removing port 'flash_id[64]' from design 'flash_sf3'
+Removing port 'flash_id[63]' from design 'flash_sf3'
+Removing port 'flash_id[62]' from design 'flash_sf3'
+Removing port 'flash_id[61]' from design 'flash_sf3'
+Removing port 'flash_id[60]' from design 'flash_sf3'
+Removing port 'flash_id[59]' from design 'flash_sf3'
+Removing port 'flash_id[58]' from design 'flash_sf3'
+Removing port 'flash_id[57]' from design 'flash_sf3'
+Removing port 'flash_id[56]' from design 'flash_sf3'
+Removing port 'flash_id[55]' from design 'flash_sf3'
+Removing port 'flash_id[54]' from design 'flash_sf3'
+Removing port 'flash_id[53]' from design 'flash_sf3'
+Removing port 'flash_id[52]' from design 'flash_sf3'
+Removing port 'flash_id[51]' from design 'flash_sf3'
+Removing port 'flash_id[50]' from design 'flash_sf3'
+Removing port 'flash_id[49]' from design 'flash_sf3'
+Removing port 'flash_id[48]' from design 'flash_sf3'
+Removing port 'flash_id[47]' from design 'flash_sf3'
+Removing port 'flash_id[46]' from design 'flash_sf3'
+Removing port 'flash_id[45]' from design 'flash_sf3'
+Removing port 'flash_id[44]' from design 'flash_sf3'
+Removing port 'flash_id[43]' from design 'flash_sf3'
+Removing port 'flash_id[42]' from design 'flash_sf3'
+Removing port 'flash_id[41]' from design 'flash_sf3'
+Removing port 'flash_id[40]' from design 'flash_sf3'
+Removing port 'flash_id[39]' from design 'flash_sf3'
+Removing port 'flash_id[38]' from design 'flash_sf3'
+Removing port 'flash_id[37]' from design 'flash_sf3'
+Removing port 'flash_id[36]' from design 'flash_sf3'
+Removing port 'flash_id[35]' from design 'flash_sf3'
+Removing port 'flash_id[34]' from design 'flash_sf3'
+Removing port 'flash_id[33]' from design 'flash_sf3'
+Removing port 'flash_id[32]' from design 'flash_sf3'
+Removing port 'flash_id[31]' from design 'flash_sf3'
+Removing port 'flash_id[30]' from design 'flash_sf3'
+Removing port 'flash_id[29]' from design 'flash_sf3'
+Removing port 'flash_id[28]' from design 'flash_sf3'
+Removing port 'flash_id[27]' from design 'flash_sf3'
+Removing port 'flash_id[26]' from design 'flash_sf3'
+Removing port 'flash_id[25]' from design 'flash_sf3'
+Removing port 'flash_id[24]' from design 'flash_sf3'
+Removing port 'flash_id[23]' from design 'flash_sf3'
+Removing port 'flash_id[22]' from design 'flash_sf3'
+Removing port 'flash_id[21]' from design 'flash_sf3'
+Removing port 'flash_id[20]' from design 'flash_sf3'
+Removing port 'flash_id[19]' from design 'flash_sf3'
+Removing port 'flash_id[18]' from design 'flash_sf3'
+Removing port 'flash_id[17]' from design 'flash_sf3'
+Removing port 'flash_id[16]' from design 'flash_sf3'
+Removing port 'flash_id[15]' from design 'flash_sf3'
+Removing port 'flash_id[14]' from design 'flash_sf3'
+Removing port 'flash_id[13]' from design 'flash_sf3'
+Removing port 'flash_id[12]' from design 'flash_sf3'
+Removing port 'flash_id[11]' from design 'flash_sf3'
+Removing port 'flash_id[10]' from design 'flash_sf3'
+Removing port 'flash_id[9]' from design 'flash_sf3'
+Removing port 'flash_id[8]' from design 'flash_sf3'
+Removing port 'flash_id[7]' from design 'flash_sf3'
+Removing port 'flash_id[6]' from design 'flash_sf3'
+Removing port 'flash_id[5]' from design 'flash_sf3'
+Removing port 'flash_id[4]' from design 'flash_sf3'
+Removing port 'flash_id[3]' from design 'flash_sf3'
+Removing port 'flash_id[2]' from design 'flash_sf3'
+Removing port 'flash_id[1]' from design 'flash_sf3'
+Removing port 'flash_id[0]' from design 'flash_sf3'
+Removing port 'read_id_end' from design 'flash_sf3'
+Removing port 'read_ack' from design 'flash_sf3'
+Removing port 'read_end' from design 'flash_sf3'
+Removing port 'FLASH_state_c_out[10]' from design 'flash_sf3'
+Removing port 'FLASH_state_c_out[7]' from design 'flash_sf3'
+Removing port 'FLASH_state_c_out[5]' from design 'flash_sf3'
+Removing port 'FLASH_state_c_out[4]' from design 'flash_sf3'
+Removing port 'FLASH_state_c_out[3]' from design 'flash_sf3'
+Removing port 'FLASH_state_c_out[2]' from design 'flash_sf3'
+Removing port 'write_size[7]' from design 'flash_sf3'
+Removing port 'write_size[6]' from design 'flash_sf3'
+Removing port 'write_size[5]' from design 'flash_sf3'
+Removing port 'write_size[4]' from design 'flash_sf3'
+Removing port 'write_size[3]' from design 'flash_sf3'
+Removing port 'write_size[2]' from design 'flash_sf3'
+Removing port 'write_size[1]' from design 'flash_sf3'
+Removing port 'write_size[0]' from design 'flash_sf3'
+Removing port 'bulk_erase_req' from design 'flash_sf3'
+Removing port 'sector_erase_end' from design 'flash_sf3'
+Removing port 'bulk_erase_end' from design 'flash_sf3'
+Removing port 'write_en_end' from design 'flash_sf3'
+Removing port 'write_ack' from design 'flash_sf3'
+Removing port 'write_end' from design 'flash_sf3'
+Removing port 'spi_state_c_m[3]' from design 'flash_sf3'
+Removing port 'spi_state_c_m[2]' from design 'flash_sf3'
+Removing port 'spi_state_c_m[1]' from design 'flash_sf3'
+Removing port 'spi_state_c_m[0]' from design 'flash_sf3'
+Removing port 'spi_clk' from design 'flash_sf3'
+Removing port 'HSIZE[1]' from design 'AHB_Controler_FLASH_BOOT'
+Removing port 'HSIZE[0]' from design 'AHB_Controler_FLASH_BOOT'
+Removing port 'HTRANS[0]' from design 'AHB_Controler_FLASH_BOOT'
+Removing port 'o_pad_pmodb_spi_clk' from design 'AHB_Controler_FLASH_BOOT'
+Removing port 'HRESP[1]' from design 'AHB_Controler_FLASH_BOOT'
+Removing port 'HRESP[0]' from design 'AHB_Controler_FLASH_BOOT'
+1
+set bus_inference_style {%s[%d]}
+%s[%d]
+set bus_naming_style {%s[%d]}
+%s[%d]
+set hdlout_internal_busses true
+true
+change_names -hierarchy -rule verilog
+1
+define_name_rules name_rule -allowed {a-z A-Z 0-9 _} -max_length 255 -type cell
+1
+define_name_rules name_rule -allowed {a-z A-Z 0-9 _[]} -max_length 255 -type net
+1
+define_name_rules name_rule -map {{"\\*cell\\*" "cell"}}
+1
+define_name_rules name_rule -case_insensitive -remove_internal_net_bus -equal_ports_nets
+1
+change_names -hierarchy -rules name_rule
+1
+#****************************************************
+#  Output Results
+#****************************************************
+write -format verilog   -hierarchy      -output  ${netlistDir}/${TOP_MODULE}.vg
+Writing verilog file '/home/libingzheng/DC_AHB_FlashController/DC/netlist/Flash_Controller_ASIC.vg'.
+1
+write -format ddc -hierarchy -output ${netlistDir}/${TOP_MODULE}.ddc
+Writing ddc file '/home/libingzheng/DC_AHB_FlashController/DC/netlist/Flash_Controller_ASIC.ddc'.
+1
+write_sdf  ${netlistDir}/${TOP_MODULE}_post_dc.sdf
+Information: Annotated 'cell' delays are assumed to include load delay. (UID-282)
+Information: Writing timing information to file '/home/libingzheng/DC_AHB_FlashController/DC/netlist/Flash_Controller_ASIC_post_dc.sdf'. (WT-3)
+Information: Updating design information... (UID-85)
+Warning: Design 'Flash_Controller_ASIC' contains 3 high-fanout nets. A fanout number of 60 will be used for delay calculations involving these nets. (TIM-134)
+1
+write_sdc  -nosplit ${netlistDir}/${TOP_MODULE}.sdc
+1
+date
+Tue Jul  9 09:11:07 2024
+#****************************************************
+#  Finish and Quit
+#****************************************************
+if {$exit_switch == "true"} {
+exit
+}
+
+Memory usage for this session 222 Mbytes.
+Memory usage for this session including child processes 222 Mbytes.
+CPU usage for this session 15 seconds ( 0.00 hours ).
+Elapsed time for this session 17 seconds ( 0.00 hours ).
+
+Thank you...

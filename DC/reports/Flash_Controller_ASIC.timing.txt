@@ -1,0 +1,91 @@
+ 
+****************************************
+Report : timing
+        -path full
+        -delay max
+        -max_paths 1
+Design : Flash_Controller_ASIC
+Version: R-2020.09-SP1
+Date   : Tue Jul  9 09:11:06 2024
+****************************************
+
+ # A fanout number of 60 was used for high fanout net computations.
+
+Operating Conditions: worst   Library: smic18_ss
+Wire Load Model Mode: segmented
+
+  Startpoint: AHB_Controller_FLASH_BOOT_inst/AHB2SPI_FLASH_ctrl/wait_cnt_reg[1]
+              (rising edge-triggered flip-flop clocked by PAD_clk)
+  Endpoint: AHB_Controller_FLASH_BOOT_inst/AHB2SPI_FLASH_ctrl/wait_cnt_reg[31]
+            (rising edge-triggered flip-flop clocked by PAD_clk)
+  Path Group: PAD_clk
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  spi_SF3            reference_area_20000  smic18_ss
+  flash_sf3          reference_area_20000  smic18_ss
+  Flash_Controller_ASIC reference_area_10000000 smic18_ss
+  AHB_Controler_FLASH_BOOT reference_area_100000 smic18_ss
+  flash_sf3_DW01_inc_1_DW01_inc_3 reference_area_20000 smic18_ss
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock PAD_clk (rise edge)                               0.00       0.00
+  clock network delay (ideal)                             0.80       0.80
+  AHB_Controller_FLASH_BOOT_inst/AHB2SPI_FLASH_ctrl/wait_cnt_reg[1]/CK (FFDRHD1X)     0.00 #     0.80 r
+  AHB_Controller_FLASH_BOOT_inst/AHB2SPI_FLASH_ctrl/wait_cnt_reg[1]/Q (FFDRHD1X)     0.54     1.34 r
+  AHB_Controller_FLASH_BOOT_inst/AHB2SPI_FLASH_ctrl/U31/Z (INVHDPX)     0.08     1.42 f
+  AHB_Controller_FLASH_BOOT_inst/AHB2SPI_FLASH_ctrl/U34/Z (INVCLKHD4X)     0.09     1.51 r
+  AHB_Controller_FLASH_BOOT_inst/AHB2SPI_FLASH_ctrl/add_163/A[1] (flash_sf3_DW01_inc_1_DW01_inc_3)     0.00     1.51 r
+  AHB_Controller_FLASH_BOOT_inst/AHB2SPI_FLASH_ctrl/add_163/U23/Z (AND2HD1X)     0.23     1.75 r
+  AHB_Controller_FLASH_BOOT_inst/AHB2SPI_FLASH_ctrl/add_163/U1_1_2/CO (HAHD2X)     0.19     1.94 r
+  AHB_Controller_FLASH_BOOT_inst/AHB2SPI_FLASH_ctrl/add_163/U1_1_3/CO (HAHD2X)     0.18     2.12 r
+  AHB_Controller_FLASH_BOOT_inst/AHB2SPI_FLASH_ctrl/add_163/U22/Z (AND2HD1X)     0.22     2.33 r
+  AHB_Controller_FLASH_BOOT_inst/AHB2SPI_FLASH_ctrl/add_163/U8/Z (AND2HD2X)     0.20     2.53 r
+  AHB_Controller_FLASH_BOOT_inst/AHB2SPI_FLASH_ctrl/add_163/U11/Z (AND2HD1X)     0.22     2.75 r
+  AHB_Controller_FLASH_BOOT_inst/AHB2SPI_FLASH_ctrl/add_163/U17/Z (AND2HD1X)     0.24     2.99 r
+  AHB_Controller_FLASH_BOOT_inst/AHB2SPI_FLASH_ctrl/add_163/U1_1_8/CO (HAHD2X)     0.18     3.17 r
+  AHB_Controller_FLASH_BOOT_inst/AHB2SPI_FLASH_ctrl/add_163/U1_1_9/CO (HAHD1X)     0.23     3.39 r
+  AHB_Controller_FLASH_BOOT_inst/AHB2SPI_FLASH_ctrl/add_163/U18/Z (AND2HD1X)     0.23     3.62 r
+  AHB_Controller_FLASH_BOOT_inst/AHB2SPI_FLASH_ctrl/add_163/U10/Z (AND2HD2X)     0.20     3.82 r
+  AHB_Controller_FLASH_BOOT_inst/AHB2SPI_FLASH_ctrl/add_163/U2/Z (AND2HD2X)     0.18     4.00 r
+  AHB_Controller_FLASH_BOOT_inst/AHB2SPI_FLASH_ctrl/add_163/U1_1_13/CO (HAHD1X)     0.23     4.23 r
+  AHB_Controller_FLASH_BOOT_inst/AHB2SPI_FLASH_ctrl/add_163/U15/Z (AND2HD1X)     0.23     4.46 r
+  AHB_Controller_FLASH_BOOT_inst/AHB2SPI_FLASH_ctrl/add_163/U7/Z (AND2HD2X)     0.20     4.66 r
+  AHB_Controller_FLASH_BOOT_inst/AHB2SPI_FLASH_ctrl/add_163/U14/Z (AND2HD1X)     0.21     4.87 r
+  AHB_Controller_FLASH_BOOT_inst/AHB2SPI_FLASH_ctrl/add_163/U5/Z (AND2HD1X)     0.23     5.10 r
+  AHB_Controller_FLASH_BOOT_inst/AHB2SPI_FLASH_ctrl/add_163/U13/Z (AND2HD1X)     0.23     5.33 r
+  AHB_Controller_FLASH_BOOT_inst/AHB2SPI_FLASH_ctrl/add_163/U6/Z (AND2HD2X)     0.20     5.53 r
+  AHB_Controller_FLASH_BOOT_inst/AHB2SPI_FLASH_ctrl/add_163/U12/Z (AND2HD1X)     0.21     5.74 r
+  AHB_Controller_FLASH_BOOT_inst/AHB2SPI_FLASH_ctrl/add_163/U4/Z (AND2HD1X)     0.23     5.97 r
+  AHB_Controller_FLASH_BOOT_inst/AHB2SPI_FLASH_ctrl/add_163/U21/Z (AND2HD1X)     0.23     6.19 r
+  AHB_Controller_FLASH_BOOT_inst/AHB2SPI_FLASH_ctrl/add_163/U9/Z (AND2HD2X)     0.20     6.39 r
+  AHB_Controller_FLASH_BOOT_inst/AHB2SPI_FLASH_ctrl/add_163/U16/Z (AND2HD1X)     0.21     6.61 r
+  AHB_Controller_FLASH_BOOT_inst/AHB2SPI_FLASH_ctrl/add_163/U20/Z (AND2HD1X)     0.24     6.85 r
+  AHB_Controller_FLASH_BOOT_inst/AHB2SPI_FLASH_ctrl/add_163/U43/Z (NAND2HD1X)     0.11     6.95 f
+  AHB_Controller_FLASH_BOOT_inst/AHB2SPI_FLASH_ctrl/add_163/U37/Z (INVCLKHD2X)     0.08     7.04 r
+  AHB_Controller_FLASH_BOOT_inst/AHB2SPI_FLASH_ctrl/add_163/U19/Z (AND2HD1X)     0.23     7.26 r
+  AHB_Controller_FLASH_BOOT_inst/AHB2SPI_FLASH_ctrl/add_163/U1_1_28/CO (HAHD2X)     0.19     7.45 r
+  AHB_Controller_FLASH_BOOT_inst/AHB2SPI_FLASH_ctrl/add_163/U3/Z (AND2HD2X)     0.20     7.65 r
+  AHB_Controller_FLASH_BOOT_inst/AHB2SPI_FLASH_ctrl/add_163/U1/Z (AND2HD4X)     0.17     7.82 r
+  AHB_Controller_FLASH_BOOT_inst/AHB2SPI_FLASH_ctrl/add_163/U38/Z (XOR2HDLX)     0.40     8.21 r
+  AHB_Controller_FLASH_BOOT_inst/AHB2SPI_FLASH_ctrl/add_163/SUM[31] (flash_sf3_DW01_inc_1_DW01_inc_3)     0.00     8.21 r
+  AHB_Controller_FLASH_BOOT_inst/AHB2SPI_FLASH_ctrl/U26/Z (NOR2B1HD1X)     0.21     8.42 r
+  AHB_Controller_FLASH_BOOT_inst/AHB2SPI_FLASH_ctrl/wait_cnt_reg[31]/D (FFDRHDLX)     0.00     8.42 r
+  data arrival time                                                  8.42
+
+  clock PAD_clk (rise edge)                               8.00       8.00
+  clock network delay (ideal)                             0.80       8.80
+  clock uncertainty                                      -0.10       8.70
+  AHB_Controller_FLASH_BOOT_inst/AHB2SPI_FLASH_ctrl/wait_cnt_reg[31]/CK (FFDRHDLX)     0.00     8.70 r
+  library setup time                                     -0.27       8.43
+  data required time                                                 8.43
+  --------------------------------------------------------------------------
+  data required time                                                 8.43
+  data arrival time                                                 -8.42
+  --------------------------------------------------------------------------
+  slack (MET)                                                        0.00
+
+
+1

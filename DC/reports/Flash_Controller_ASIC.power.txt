@@ -1,0 +1,62 @@
+Loading db file '/home/libingzheng/DC_AHB_FlashController/lib/SMIC18_Ver2.5/FEView_STDIO/STD/Synopsys/smic18_ss.db'
+Information: Propagating switching activity (low effort zero delay simulation). (PWR-6)
+Warning: Design has unannotated primary inputs. (PWR-414)
+Warning: Design has unannotated sequential cell outputs. (PWR-415)
+ 
+****************************************
+Report : power
+        -analysis_effort low
+Design : Flash_Controller_ASIC
+Version: R-2020.09-SP1
+Date   : Tue Jul  9 09:11:07 2024
+****************************************
+
+
+Library(s) Used:
+
+    smic18_ss (File: /home/libingzheng/DC_AHB_FlashController/lib/SMIC18_Ver2.5/FEView_STDIO/STD/Synopsys/smic18_ss.db)
+
+
+Operating Conditions: worst   Library: smic18_ss
+Wire Load Model Mode: segmented
+
+Design        Wire Load Model            Library
+------------------------------------------------
+Flash_Controller_ASIC  reference_area_10000000 smic18_ss
+AHB_Controler_FLASH_BOOT reference_area_100000 smic18_ss
+flash_sf3              reference_area_20000 smic18_ss
+spi_SF3                reference_area_20000 smic18_ss
+flash_sf3_DW01_inc_0_DW01_inc_2 reference_area_20000 smic18_ss
+flash_sf3_DW01_inc_1_DW01_inc_3 reference_area_20000 smic18_ss
+
+
+Global Operating Voltage = 1.62 
+Power-specific unit information :
+    Voltage Units = 1V
+    Capacitance Units = 1.000000pf
+    Time Units = 1ns
+    Dynamic Power Units = 1mW    (derived from V,C,T units)
+    Leakage Power Units = 1nW
+
+
+  Cell Internal Power  =   1.9663 mW   (99%)
+  Net Switching Power  =  20.7760 uW    (1%)
+                         ---------
+Total Dynamic Power    =   1.9870 mW  (100%)
+
+Cell Leakage Power     = 809.8417 nW
+
+
+                 Internal         Switching           Leakage            Total
+Power Group      Power            Power               Power              Power   (   %    )  Attrs
+--------------------------------------------------------------------------------------------------
+io_pad             0.0000            0.0000            0.0000            0.0000  (   0.00%)
+memory             0.0000            0.0000            0.0000            0.0000  (   0.00%)
+black_box          0.0000            0.0000            0.0000            0.0000  (   0.00%)
+clock_network      0.0000            0.0000            0.0000            0.0000  (   0.00%)
+register           1.9327        1.3540e-03          386.6744            1.9344  (  97.31%)
+sequential     3.0426e-02        1.3443e-04           82.6651        3.0644e-02  (   1.54%)
+combinational  3.1751e-03        1.9288e-02          340.5022        2.2803e-02  (   1.15%)
+--------------------------------------------------------------------------------------------------
+Total              1.9663 mW     2.0776e-02 mW       809.8417 nW         1.9878 mW
+1

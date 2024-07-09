@@ -1,0 +1,31 @@
+Information: Checking out the license 'DesignWare'. (SEC-104)
+Information: Changed wire load model for 'spi_SF3' from '(none)' to 'area_zero'. (OPT-170)
+Information: Changed wire load model for 'flash_sf3' from '(none)' to 'area_zero'. (OPT-170)
+Information: Changed wire load model for 'AHB_Controler_FLASH_BOOT' from '(none)' to 'area_zero'. (OPT-170)
+Information: Changed minimum wire load model for 'Flash_Controller_ASIC' from 'reference_area_10000000' to 'area_zero'. (OPT-171)
+Information: Updating graph... (UID-83)
+Warning: Design 'Flash_Controller_ASIC' contains 16 high-fanout nets. A fanout number of 60 will be used for delay calculations involving these nets. (TIM-134)
+Information: Timing loop detected. (OPT-150)
+	AHB_Controller_FLASH_BOOT_inst/AHB2SPI_FLASH_ctrl/SF3/C324/DATA2_0 AHB_Controller_FLASH_BOOT_inst/AHB2SPI_FLASH_ctrl/SF3/C324/Z_0 
+Warning: Disabling timing arc between pins 'DATA2_0' and 'Z_0' on cell 'AHB_Controller_FLASH_BOOT_inst/AHB2SPI_FLASH_ctrl/SF3/C324'
+         to break a timing loop. (OPT-314)
+ 
+****************************************
+Report : clocks
+Design : Flash_Controller_ASIC
+Version: R-2020.09-SP1
+Date   : Tue Jul  9 09:10:57 2024
+****************************************
+
+Attributes:
+    d - dont_touch_network
+    f - fix_hold
+    p - propagated_clock
+    G - generated_clock
+    g - lib_generated_clock
+
+Clock          Period   Waveform            Attrs     Sources
+--------------------------------------------------------------------------------
+PAD_clk          8.00   {0 4}               d         {pad_HCLK}
+--------------------------------------------------------------------------------
+1
